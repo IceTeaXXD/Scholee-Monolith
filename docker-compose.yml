@@ -1,6 +1,17 @@
 version: '3.3'
 services:
-  web:
-    image: tubes-1:latest
+  # web:
+  #   image: tubes-1:latest
+  #   ports:
+  #     - 8008:80
+  php-apache:
+    image: php:8.0-apache
     ports:
-      - 8008:80
+      - 8000:80
+    volumes:
+      - .:/var/www/html
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - UPLOAD_LIMIT=10M
