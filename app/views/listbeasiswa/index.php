@@ -13,5 +13,3 @@
     <?php include($_SERVER['DOCUMENT_ROOT'] . '/public/navbar.html'); ?>
     <script src="../../../public/js/navbar.js"></script>
 </body>
-
-</html>
