@@ -9,10 +9,8 @@ class App {
   public function __construct()
   {
     $url = $this->parse_url();
-    // print url
-    print_r($url[0]);
     $this->controller = 'Home';
-    if (!empty($url) && $url[1] == 'listbeasiswa'){
+    if (!empty($url) && $url[0] == 'listbeasiswa'){
       $this->controller = 'ListBeasiswa';
       unset($url[0]);
     }
@@ -44,17 +42,16 @@ class App {
       $this->params = array_values($url);
     }
     call_user_func_array([$this->controller, $this->method], $this->params);
-
   }
 
   public function parse_url(){
     if (isset($_SERVER['REQUEST_URI'])) {
       $url = rtrim($_SERVER['REQUEST_URI'], '/');
-      // $url = ltrim($url, 'public/');
-      $url = str_replace('public/', '', $url);
+      $url = ltrim($url, '/');
+      // $url = str_replace('public/', '', $url);
       $url = filter_var($url, FILTER_SANITIZE_URL);
       // $url = ltrim($url, '?');
-      $url = str_replace('?', '', $url);
+      // $url = str_replace('?', '', $url);
       $url = explode('/', $url);
       return $url;
     }
