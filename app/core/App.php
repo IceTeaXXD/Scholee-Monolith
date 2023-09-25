@@ -11,6 +11,8 @@ class App
         $url = $this->parse_url();
         if (isset($url[0]) && $url[0] === 'profile/edit') {
             $url[0] = 'editprofile';
+        }else if (isset($url[0]) && $url[0] === 'scholarships/add'){
+            $url[0] = 'addbeasiswa';
         }
         if (file_exists('app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
