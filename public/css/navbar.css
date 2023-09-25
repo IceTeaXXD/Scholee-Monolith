@@ -5,6 +5,7 @@
    font-family: sans-serif;
    letter-spacing: 1px;
    font-weight: 300;
+   text-decoration: none;
 }
 
 body {
@@ -25,6 +26,16 @@ nav {
 .logo {
    padding: 1vh 1vw;
    text-align: center;
+   display: flex;
+   align-items: center;
+}
+
+.logo-text {
+   color: #01939c;
+   font-size: 26px;
+   font-weight: bold;
+   letter-spacing: 1px;
+   margin-left: 20px;
 }
 
 .logo img {
@@ -184,7 +195,6 @@ nav {
    }
 }
 
-/*Animating Hamburger Icon on Click*/
 .toggle .line1 {
    transform: rotate(-45deg) translate(-5px, 6px);
 }
@@ -196,4 +206,46 @@ nav {
 
 .toggle .line3 {
    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.dropbtn {
+   background-color: #4CAF50;
+   color: white;
+   padding: 16px;
+   font-size: 16px;
+   border: none;
+   cursor: pointer;
+}
+
+.dropdown {
+   position: relative;
+   display: inline-block;
+}
+
+.dropdown-content {
+   display: none;
+   position: absolute;
+   background-color: #f9f9f9;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+   z-index: 1;
+}
+
+.dropdown-content a {
+   color: black;
+   padding: 12px 16px;
+   text-decoration: none;
+   display: block;
+}
+
+.dropdown-content a:hover {
+   background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+   display: block;
+}
+
+.dropdown:hover .dropbtn {
+   background-color: #3e8e41;
 }
