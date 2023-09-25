@@ -1,8 +1,5 @@
-<?php
-$row = mysqli_fetch_array($data['user']);
-?>
 <div class="edit-profile">
-    <form action="/api/profile/update.php" method="post" class="profile-form" enctype="multipart/form-data">
+    <form action="/api/scholarship/add.php" method="post" class="profile-form">
         <div class="profile-info">
 
             <img id="profileDisplay" src="/public/image/profiles/<?php echo $row['image'];?>" alt="Profile Image" class="profile-image-display" height="200px">
@@ -14,7 +11,6 @@ $row = mysqli_fetch_array($data['user']);
             </div>
             <label for="fullName">Full Name:</label>
             <input type="text" id="fullName" name="name" value="<?php echo $row['name'];?>">
-            <?php if($_SESSION['role'] == 'student'){ ?>
             <label for="gender">University</label>
             <input type="text" name="university" value = "<?php echo $row['university'];?>">
             <label for="dob">Major</label>
@@ -32,10 +28,8 @@ $row = mysqli_fetch_array($data['user']);
             <input type="text" name="city" value = "<?php echo $row['city'];?>">
             <label for="dob">Zipcode</label>
             <input type="text" name="zipcode" value = "<?php echo $row['zipcode'];?>">
-            <?php } else if ($_SESSION['role'] == 'admin') { ?>
             <label for="gender">Organization</label>
             <input type="text" name="organization" value = "<?php echo $row['organization'];?>">
-            <?php } ?>
 
             <button type="submit" class="save-btn">Save Changes</button>
             <a href="/profile" class="cancel-btn">Cancel</a>

@@ -19,7 +19,9 @@ class User{
         if($role == "student"){
             $query = "select name, image, university, major, level, street, city, zipcode
                         from $this->table natural join student where email = ?";
-        }else{
+        }else if ($role == "admin"){
+            $query = "select name, image, organization from $this->table natural join administrator where email = ?";
+        }else {
             $query = "select name, image from $this->table where email = ?";
         }
         $stmt = $this->db->setSTMT($query);
