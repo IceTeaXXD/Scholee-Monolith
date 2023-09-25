@@ -8,7 +8,7 @@ class Scholarships extends Controller {
     public function index() {
         $data['judul'] = 'Scholarships';
         $data['style'] = "/public/css/scholarships.css";
-        // $this->view('header/index', $data);
+        $this->view('header/index', $data);
         $this->view('navbar/index', $data);
 
         $model = new Scholarship();

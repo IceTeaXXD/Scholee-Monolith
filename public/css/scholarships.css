@@ -1,12 +1,25 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Poppins:300);
+* {
+    margin: 0;
+    padding: 0;
+    color: #f2f5f7;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    font-weight: 300;
+    text-decoration: none;
+}
 
-body {
+.scholarship-body {
+    position: relative;
+    z-index: 1;
     font-family: Poppins;
     font-weight: 300;
     line-height: 1.42em;
     color: #A7A1AE;
     background-color: #1F2739;
+    margin-top: 4.5rem;
+    padding-top: 2rem; 
 }
 
 h1 {
