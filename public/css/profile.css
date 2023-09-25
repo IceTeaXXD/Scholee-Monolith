@@ -1,0 +1,62 @@
+/* Main container styling */
+.profile-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* This will center the content vertically */
+    width: 100%;
+}
+
+/* Inner container styling */
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Image styling */
+.profile-image-display {
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* Edit button styling */
+.edit-btn {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    /* Give a little space between the last paragraph and the button */
+}
+
+#fullNameDisplay {
+    color: black;
+}
+
+#genderDisplay {
+    color: black;
+}
+
+#dobDisplay {
+    color: black;
+}
+
+#countryDisplay {
+    color: black;
+}
+
+.edit-btn:hover {
+    background-color: #45a049;
+}
