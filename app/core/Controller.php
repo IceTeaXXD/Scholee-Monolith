@@ -12,4 +12,13 @@ class Controller
             die('View does not exist');
         }
     }
+    public function models($model)
+    {
+        if (file_exists('app/models/' . $model . '.php')) {
+            require_once 'app/models/' . $model . '.php';
+            return new $model;
+        } else {
+            die('Model does not exist');
+        }
+    }
 }
