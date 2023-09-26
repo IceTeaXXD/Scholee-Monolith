@@ -26,12 +26,24 @@
                         <form method="get">
                             <label for="itemsPerPage">Items Per Page:</label>
                             <select name="itemsPerPage" id="itemsPerPage" onchange="this.form.submit()">
-                                <option value="5" <?php if (isset($_GET['itemsPerPage']) && $_GET['itemsPerPage'] === '5') echo 'selected'; ?>>5</option>
-                                <option value="10" <?php if (isset($_GET['itemsPerPage']) && $_GET['itemsPerPage'] === '10') echo 'selected'; ?>>10</option>
-                                <option value="15" <?php if (isset($_GET['itemsPerPage']) && $_GET['itemsPerPage'] === '15') echo 'selected'; ?>>15</option>
-                                <option value="20" <?php if (isset($_GET['itemsPerPage']) && $_GET['itemsPerPage'] === '20') echo 'selected'; ?>>20</option>
+                                <option value="5" <?php if ($data['itemsPerPage'] == 5) echo 'selected'; ?>>5</option>
+                                <option value="10" <?php if ($data['itemsPerPage'] == 10) echo 'selected'; ?>>10</option>
+                                <option value="15" <?php if ($data['itemsPerPage'] == 15) echo 'selected'; ?>>15</option>
+                                <option value="all" <?php if ($data['itemsPerPage'] == 'all') echo 'selected'; ?>>All</option>
                             </select>
                         </form>
+                    </div>
+                    <div class="pagination-links">
+                        <?php
+                        if ($data['itemsPerPage'] == $data['totalScholarships']) {
+                            echo "<a href='scholarships?page=1&itemsPerPage=all'>1</a>";
+                        } else {
+                            $totalPages = ceil($data['totalScholarships'] / $data['itemsPerPage']);
+                            for ($i = 1; $i <= $totalPages; $i++) {
+                                echo "<a href='scholarships?page=$i&itemsPerPage=" . $data['itemsPerPage'] . "'>" . $i . "</a> ";
+                            }
+                        }
+                        ?>
                     </div>
                 </th>
             </tr>
