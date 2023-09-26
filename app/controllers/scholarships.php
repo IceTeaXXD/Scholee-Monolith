@@ -24,4 +24,19 @@ class Scholarships extends Controller {
         $data['currentPage'] = $currentPage;
         $this->view('scholarships/index', $data);
     }
+    public function search() {
+        $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
+        $model = new Scholarship();
+        $results = $model->searchScholarship($searchQuery, 0, 100);
+        foreach ($results as $row) {
+            echo '<tr>';
+            echo '<td>' . $row['title'] . '</td>';
+            echo '<td>' . $row['description'] . '</td>';
+            echo '<td>' . $row['contact_name'] . '</td>';
+            echo '<td>' . $row['contact_email'] . '</td>';
+            echo "<td><a href='scholarships?item_id=" . $row['title'] . "'><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Daftar</button></td>";
+            echo '</tr>';
+        }
+    }
+    
 }

@@ -63,3 +63,34 @@
         </tbody>
     </table>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('form').submit(function(e) {
+            e.preventDefault(); 
+            
+            var searchQuery = $('#search').val();
+            $.ajax({
+                type: 'GET',
+                url: '/scholarships/search',
+                data: { search: searchQuery },
+                success: function(data) {
+                    $('.scholarship-body tbody').html(data);
+                }
+            });
+        });
+
+        $('#search').on('input', function() {
+            var searchQuery = $(this).val();
+            $.ajax({
+                type: 'GET',
+                url: '/scholarships/search',
+                data: { search: searchQuery },
+                success: function(data) {
+                    $('.scholarship-body tbody').html(data);
+                }
+            });
+        });
+    });
+
+</script>

@@ -41,7 +41,7 @@ class App
                 parse_str($urlParts[1], $_GET);
             }
             $urlParts = explode('/', $urlParts[0]);
-            return $urlParts;        
+            return $urlParts;
         }
     }
 }
