@@ -25,7 +25,16 @@ class Scholarship
         $res = mysqli_stmt_execute($stmt);
         return $res;
     }
-
+    public function searchScholarship($query, $offset, $limit) {
+        $searchPattern = "%" . $query . "%";
+        $query = "SELECT * FROM $this->table WHERE title LIKE ? OR description LIKE ? LIMIT ?, ?";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_bind_param($stmt, "ssii", $searchPattern, $searchPattern, $offset, $limit);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        return $result;
+    }
+    
     public function getAllScholarship($offset, $limit){
         $query = "SELECT user_id, scholarship_id, title, description, coverage, contact_name, contact_email
                 FROM $this->table LIMIT ?, ?";
