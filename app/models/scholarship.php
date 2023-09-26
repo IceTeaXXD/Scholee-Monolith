@@ -26,14 +26,23 @@ class Scholarship
         return $res;
     }
 
-    public function getAllScholarship(){
+    public function getAllScholarship($offset, $limit){
         $query = "SELECT user_id, scholarship_id, title, description, coverage, contact_name, contact_email
-                FROM $this->table";
+                FROM $this->table LIMIT ?, ?";
         $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_bind_param($stmt, "ii", $offset, $limit);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         return $result;
     }
+    public function countScholarships(){
+        $query = "SELECT COUNT(*) as total FROM $this->table";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row = mysqli_fetch_assoc($result);
+        return $row['total'];
+    }    
 
     public function getUserId(){
         return $this->user_id;

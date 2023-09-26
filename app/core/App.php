@@ -39,8 +39,12 @@ class App
             $url = rtrim($_SERVER['REQUEST_URI'], '/');
             $url = ltrim($url, '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);
-            $url = explode('?', $url);
-            return $url;
+            $urlParts = explode('?', $url);
+            if (isset($urlParts[1])) {
+                parse_str($urlParts[1], $_GET);
+            }
+    
+            return $urlParts;        
         }
     }
 }
