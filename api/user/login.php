@@ -13,5 +13,5 @@ if($user->login($_POST['username'],$_POST['password'])){
     $_SESSION['email'] = $user -> getEmail();
     header("Location: /dashboard");
 }else{
-    header("Location: /login?error=login gagal");
+    header("Location: /login/error");
 }

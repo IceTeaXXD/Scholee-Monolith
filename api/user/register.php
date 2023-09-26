@@ -11,5 +11,5 @@ if ($succ === true) {
     header("Location: ../../login");
 } else {
     // return to register with errors and show error message
-    header('Location: /register?error=User Already Exists');
+    header('Location: /register/error');
 }
