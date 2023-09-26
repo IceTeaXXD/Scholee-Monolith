@@ -33,18 +33,6 @@
                             </select>
                         </form>
                     </div>
-                    <div class="pagination-links">
-                        <?php
-                        if ($data['itemsPerPage'] == $data['totalScholarships']) {
-                            echo "<a href='scholarships?page=1&itemsPerPage=all'>1</a>";
-                        } else {
-                            $totalPages = ceil($data['totalScholarships'] / $data['itemsPerPage']);
-                            for ($i = 1; $i <= $totalPages; $i++) {
-                                echo "<a href='scholarships?page=$i&itemsPerPage=" . $data['itemsPerPage'] . "'>" . $i . "</a> ";
-                            }
-                        }
-                        ?>
-                    </div>
                 </th>
             </tr>
         </thead>
@@ -62,18 +50,33 @@
             ?>
         </tbody>
     </table>
+    <div class="pagination-button">
+        <?php
+        if ($data['itemsPerPage'] == $data['totalScholarships']) {
+            echo "<a href='scholarships?page=1&itemsPerPage=all'>1</a>";
+        } else {
+            $totalPages = ceil($data['totalScholarships'] / $data['itemsPerPage']);
+            for ($i = 1; $i <= $totalPages; $i++) {
+                $isActive = $i == $data['currentPage'] ? 'active' : '';
+                echo "<a href='scholarships?page=$i&itemsPerPage=" . $data['itemsPerPage'] . "' class='$isActive'>" . $i . "</a> ";
+            }
+        }
+        ?>
+    </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
         $('form').submit(function(e) {
-            e.preventDefault(); 
-            
+            e.preventDefault();
+
             var searchQuery = $('#search').val();
             $.ajax({
                 type: 'GET',
                 url: '/scholarships/search',
-                data: { search: searchQuery },
+                data: {
+                    search: searchQuery
+                },
                 success: function(data) {
                     $('.scholarship-body tbody').html(data);
                 }
@@ -85,12 +88,13 @@
             $.ajax({
                 type: 'GET',
                 url: '/scholarships/search',
-                data: { search: searchQuery },
+                data: {
+                    search: searchQuery
+                },
                 success: function(data) {
                     $('.scholarship-body tbody').html(data);
                 }
             });
         });
     });
-
 </script>
