@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href=<?= $data['style']; ?>>
+<link rel="stylesheet" type="text/css" href="<?= $data['style']; ?>">
 <div class="scholarship-body">
     <table class="container">
         <div class="search-form">
@@ -44,9 +44,9 @@
                 echo '<td>' . $row['description'] . '</td>';
                 echo '<td>' . $row['contact_name'] . '</td>';
                 echo '<td>' . $row['contact_email'] . '</td>';
-                if($_SESSION['role'] == 'student'){
+                if ($_SESSION['role'] == 'student') {
                     echo "<td><a href='scholarships?item_id=" . $row['title'] . "'><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Daftar</button></td>";
-                } else if($_SESSION['role'] == 'admin') {
+                } else if ($_SESSION['role'] == 'admin') {
                     echo ("<td>
                             <a href='scholarships/edit?user_id=".$row['user_id'] ."&scholarship_id=".$row['scholarship_id']."'>
                                 <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Edit</button>
@@ -56,12 +56,12 @@
                             </a>
                         </td>");
                 }
-                    echo '</tr>';
+                echo '</tr>';
             }
             ?>
         </tbody>
     </table>
-    <div class="pagination-button">
+    <div class="pagination-button" id="pagination-button">
         <?php
         if ($data['totalScholarships'] == 0) {
             echo "<tr>";
@@ -86,6 +86,7 @@
         const searchForm = document.getElementById("search-form");
         const searchInput = document.getElementById("search");
         const scholarshipBody = document.querySelector(".scholarship-body tbody");
+        const paginationButton = document.getElementById("pagination-button");
 
         searchForm.addEventListener("submit", function (e) {
             e.preventDefault();
@@ -102,6 +103,7 @@
                 .then((response) => response.text())
                 .then((data) => {
                     scholarshipBody.innerHTML = data;
+                    paginationButton.style.display = "none";
                 })
                 .catch((error) => {
                     console.error("Error fetching data:", error);
