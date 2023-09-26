@@ -9,9 +9,6 @@ class App
     public function __construct()
     {
         $url = $this->parse_url();
-        if (isset($url[0]) && $url[0] === 'profile/edit') {
-            $url[0] = 'editprofile';
-        }
         if (file_exists('app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
             unset($url[0]);
@@ -43,7 +40,7 @@ class App
             if (isset($urlParts[1])) {
                 parse_str($urlParts[1], $_GET);
             }
-    
+            $urlParts = explode('/', $urlParts[0]);
             return $urlParts;        
         }
     }
