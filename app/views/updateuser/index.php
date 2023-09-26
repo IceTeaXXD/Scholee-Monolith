@@ -38,7 +38,17 @@ $row = mysqli_fetch_array($data['user']);
             <?php } ?>
 
             <button type="submit" class="save-btn">Save Changes</button>
-            <a href="/profile" class="cancel-btn">Cancel</a>
+            <?php 
+            if(strpos($_SERVER['REQUEST_URI'], "admin")==false){
+            ?>
+                <a href="/profile" class="cancel-btn">Cancel</a>
+            <?php
+            }else{
+            ?>
+                <a href="/admin/list" class="cancel-btn">Cancel</a>
+            <?php
+            }
+            ?>
         </div>
     </form>
 </div>
