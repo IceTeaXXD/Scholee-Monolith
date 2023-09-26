@@ -52,7 +52,7 @@
                                 <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Edit</button>
                             </a>
                             <a href='scholarships/delete?user_id=".$row['user_id'] ."&scholarship_id=".$row['scholarship_id']."'>
-                                <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#exampleModalCenter'>Delete</button>
+                                <button type='button' onclick = 'return deleteConfirmation()' class='btn btn-danger' data-toggle='modal' data-target='#exampleModalCenter'>Delete</button>
                             </a>
                         </td>");
                 }
@@ -108,4 +108,11 @@
             });
         });
     });
+</script>
+
+<script>
+    function deleteConfirmation(){
+        var result = confirm("Apakah ingin melakukan penghapusan?");
+        return result;
+    }
 </script>
