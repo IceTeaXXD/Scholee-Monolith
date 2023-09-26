@@ -14,7 +14,42 @@ class ScholarshipType
         $this->db = new Database;
     }
 
-    // Getters and setters for each property
+    public function addType($uid, $sid, $type){
+        $query = "INSERT INTO scholarshiptype (user_id, scholarship_id, type)
+                    VALUES (?,?,?)";
+        $stmt = $this->db->setSTMT($query);
+
+        mysqli_stmt_bind_param($stmt, "iis", $uid, $sid, $type);
+
+        mysqli_stmt_execute($stmt);
+    }
+
+    public function updateTypes($uid, $sid, $types){
+        $query = "DELETE FROM $this->table WHERE user_id = ? and scholarship_id = ?";
+
+        $stmt = $this->db->setSTMT($query);
+
+        mysqli_stmt_bind_param($stmt, "ii", $uid, $sid);
+
+        mysqli_stmt_execute($stmt);
+
+        foreach($types as $type){
+            $this->addType($uid, $sid, $type);
+        }
+    }
+    public function getTypes($uid, $sid){
+        $query = "SELECT type FROM scholarshiptype WHERE user_id = ? AND scholarship_id = ?";
+        $stmt = $this->db->setSTMT($query);
+
+        mysqli_stmt_bind_param($stmt, "ii", $uid, $sid);
+
+        mysqli_stmt_execute($stmt);
+
+        $result = mysqli_stmt_get_result($stmt);
+
+        return $result;
+    }
+    
     public function getUserId()
     {
         return $this->user_id;
@@ -33,11 +68,6 @@ class ScholarshipType
     public function setScholarshipId($scholarship_id)
     {
         $this->scholarship_id = $scholarship_id;
-    }
-
-    public function getType()
-    {
-        return $this->type;
     }
 
     public function setType($type)

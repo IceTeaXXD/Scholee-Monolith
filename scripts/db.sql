@@ -58,7 +58,7 @@ create table scholarshipType(
     user_id int not null,
     scholarship_id int not null,
     type varchar(50) not null,
-    primary key (user_id, scholarship_id),
+    primary key (user_id, scholarship_id, type),
     foreign key (user_id, scholarship_id) references scholarship(user_id, scholarship_id) on delete cascade
 );
 

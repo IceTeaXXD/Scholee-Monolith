@@ -44,8 +44,19 @@
                 echo '<td>' . $row['description'] . '</td>';
                 echo '<td>' . $row['contact_name'] . '</td>';
                 echo '<td>' . $row['contact_email'] . '</td>';
-                echo "<td><a href='scholarships?item_id=" . $row['title'] . "'><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Daftar</button></td>";
-                echo '</tr>';
+                if($_SESSION['role'] == 'student'){
+                    echo "<td><a href='scholarships?item_id=" . $row['title'] . "'><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Daftar</button></td>";
+                } else if($_SESSION['role'] == 'admin') {
+                    echo ("<td>
+                            <a href='scholarships/edit?user_id=".$row['user_id'] ."&scholarship_id=".$row['scholarship_id']."'>
+                                <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Edit</button>
+                            </a>
+                            <a href='scholarships/delete?user_id=".$row['user_id'] ."&scholarship_id=".$row['scholarship_id']."'>
+                                <button type='button' onclick = 'return deleteConfirmation()' class='btn btn-danger' data-toggle='modal' data-target='#exampleModalCenter'>Delete</button>
+                            </a>
+                        </td>");
+                }
+                    echo '</tr>';
             }
             ?>
         </tbody>
@@ -103,4 +114,11 @@
             });
         });
     });
+</script>
+
+<script>
+    function deleteConfirmation(){
+        var result = confirm("Apakah ingin melakukan penghapusan?");
+        return result;
+    }
 </script>

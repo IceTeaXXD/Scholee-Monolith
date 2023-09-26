@@ -57,6 +57,10 @@
     color: black;
 }
 
+.profile-text{
+    color: #000000;
+}
+
 .edit-btn:hover {
     background-color: #45a049;
 }
