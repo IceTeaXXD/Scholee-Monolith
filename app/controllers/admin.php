@@ -14,7 +14,6 @@ class Admin extends Controller{
         }
     }
 
-
     public function list(){
         $userModel = new User();
         $data['users'] = $userModel->getUserAll();
@@ -23,5 +22,20 @@ class Admin extends Controller{
         $this->view('header/index', $data);
         $this->view('navbar/index', $data);
         $this->view('userlist/index', $data);
+    }
+
+    public function update(){
+
+        $data['judul'] = 'Update User';
+        $data['style'] = "/public/css/editprofile.css";
+        $data['role'] = $_GET['role'];
+        $data['email'] = $_GET['email'];
+        $data['user_id'] = $_GET['user_id'];
+        $user = new User;
+        $data['user'] = $user->getUser($_GET['email'], $_GET['role']);
+
+        $this->view('header/index', $data);
+        $this->view('navbar/index', $data);
+        $this->view('updateuser/index', $data);
     }
 }

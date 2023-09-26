@@ -18,7 +18,7 @@
             <h3 class="name"><?php echo $row['name'];?></h3>
             <div class="attribute">Role: <?php echo $row['role'];?></div>
             <div class="attribute">Email: <?php echo $row['email'];?></div>
-            <a href=""> <button class="btn btn-primary">View More</button> </a>
+            <a href="/admin/update?user_id=<?php echo $row['user_id'];?>&email=<?php echo $row['email'];?>&role=<?php echo $row['role'];?>"> <button class="btn btn-primary">View More</button> </a>
 
             <a href=""><button class="btn btn-danger">Delete</button></a>
         </div> 
