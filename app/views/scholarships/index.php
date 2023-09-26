@@ -22,7 +22,7 @@
                     <h1>EMAIL</h1>
                 </th>
                 <th>
-                    <div class="pagination-form">
+                    <div class="pagination-form" id="pagination-form">
                         <form method="get">
                             <label for="itemsPerPage">Items Per Page:</label>
                             <select name="itemsPerPage" id="itemsPerPage" onchange="this.form.submit()">
@@ -86,7 +86,7 @@
         const searchForm = document.getElementById("search-form");
         const searchInput = document.getElementById("search");
         const scholarshipBody = document.querySelector(".scholarship-body tbody");
-        const paginationButton = document.getElementById("pagination-button");
+        const paginationForm = document.getElementById("pagination-form");
 
         searchForm.addEventListener("submit", function (e) {
             e.preventDefault();
@@ -103,7 +103,7 @@
                 .then((response) => response.text())
                 .then((data) => {
                     scholarshipBody.innerHTML = data;
-                    paginationButton.style.display = "none";
+                    paginationForm.style.display = "none";
                 })
                 .catch((error) => {
                     console.error("Error fetching data:", error);
