@@ -2,6 +2,7 @@
 require_once 'app/core/App.php';
 require_once 'app/core/Database.php';
 require_once 'app/models/User.php';
+require_once 'app/models/superadmin.php';
 require_once 'config/config.php';
 
 class Admin extends Controller{
@@ -37,5 +38,15 @@ class Admin extends Controller{
         $this->view('header/index', $data);
         $this->view('navbar/index', $data);
         $this->view('updateuser/index', $data);
+    }
+
+    public function delete(){
+        $model = new Superadmin;
+
+        $exec = $model->deleteUser($_GET['user_id']);
+
+        if($exec){
+            header("Location: /admin/list");
+        }
     }
 }
