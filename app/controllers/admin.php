@@ -49,4 +49,12 @@ class Admin extends Controller{
             header("Location: /admin/list");
         }
     }
+
+    public function add(){
+        $data['judul'] = 'Add User';
+        $data['style'] = "/public/css/addbeasiswa.css";
+        $this->view('header/index', $data);
+        $this->view('navbar/index', $data);
+        $this->view('addnewuser/index', $data);
+    }
 }

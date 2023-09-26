@@ -43,6 +43,7 @@
                     } else if ($_SESSION['role'] == 'super admin') {
             ?>
             <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/admin/add">Add User</a></li>
             <li><a href="/admin/list">List User</a></li>
             <div class="dropdown">
                 <a href="#" class="dropbtn"><?php echo $_SESSION['username']; ?></a>

@@ -7,6 +7,9 @@
             <option value="Administrator">Administrator</option>
             <option value="Reviewer">Reviewer</option>
         </select>
+
+        <label for="search">Search User</label>
+        <input type="text" id="search" name="search">
     </div>
 
     <div class="container">
