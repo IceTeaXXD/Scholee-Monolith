@@ -2,7 +2,7 @@
 <div class="scholarship-body">
     <table class="container">
         <div class="search-form">
-            <form method="get">
+            <form method="get" id="search-form">
                 <input type="text" name="search" id="search" placeholder="Search for items..." value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
                 <button type="submit">Search</button>
             </form>
@@ -81,38 +81,32 @@
         ?>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('form').submit(function(e) {
+    document.addEventListener("DOMContentLoaded", function () {
+        const searchForm = document.getElementById("search-form");
+        const searchInput = document.getElementById("search");
+        const scholarshipBody = document.querySelector(".scholarship-body tbody");
+
+        searchForm.addEventListener("submit", function (e) {
             e.preventDefault();
-
-            var searchQuery = $('#search').val();
-            $.ajax({
-                type: 'GET',
-                url: '/scholarships/search',
-                data: {
-                    search: searchQuery
-                },
-                success: function(data) {
-                    $('.scholarship-body tbody').html(data);
-                }
-            });
+            performSearch();
         });
 
-        $('#search').on('input', function() {
-            var searchQuery = $(this).val();
-            $.ajax({
-                type: 'GET',
-                url: '/scholarships/search',
-                data: {
-                    search: searchQuery
-                },
-                success: function(data) {
-                    $('.scholarship-body tbody').html(data);
-                }
-            });
+        searchInput.addEventListener("input", function () {
+            performSearch();
         });
+
+        function performSearch() {
+            const searchQuery = searchInput.value;
+            fetch(`/scholarships/search?search=${searchQuery}`)
+                .then((response) => response.text())
+                .then((data) => {
+                    scholarshipBody.innerHTML = data;
+                })
+                .catch((error) => {
+                    console.error("Error fetching data:", error);
+                });
+        }
     });
 </script>
 
