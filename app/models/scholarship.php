@@ -25,6 +25,22 @@ class Scholarship
         $res = mysqli_stmt_execute($stmt);
         return $res;
     }
+    public function updateScholarship($user_id, $scholarship_id, $title, $description, $coverage, $contact_name, $contact_email){
+        $query = "UPDATE $this->table SET title = ?, description = ?, coverage= ?, contact_name =? , contact_email = ?
+                    WHERE user_id = ? AND scholarship_id = ?";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_bind_param($stmt, "ssissii", $title, $description, $coverage, $contact_name, $contact_email, $user_id, $scholarship_id);
+        $res = mysqli_stmt_execute($stmt);
+        return $res;
+    }
+
+    public function deleteScholarship($user_id, $scholarship_id){
+        $query = "DELETE FROM $this->table WHERE user_id = ? AND scholarship_id = ?";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_bind_param($stmt, "ii", $user_id, $scholarship_id);
+        $exec = mysqli_stmt_execute($stmt);
+        return $exec;
+    }
     public function searchScholarship($query, $offset, $limit) {
         $searchPattern = "%" . $query . "%";
         $query = "SELECT * FROM $this->table WHERE title LIKE ? OR description LIKE ? LIMIT ?, ?";
@@ -35,6 +51,22 @@ class Scholarship
         return $result;
     }
     
+    public function getScholarship($uid, $sid){
+        $query = "SELECT user_id, scholarship_id, title, description, coverage, contact_name, contact_email
+                    FROM $this->table WHERE user_id = ? and scholarship_id = ?";
+
+        $stmt = $this->db->setSTMT($query);
+
+        mysqli_stmt_bind_param($stmt, "ii", $uid, $sid);
+
+        mysqli_stmt_execute($stmt);
+
+        $result = mysqli_stmt_get_result($stmt);
+
+        return $result;
+
+    }
+
     public function getAllScholarship($offset, $limit){
         $query = "SELECT user_id, scholarship_id, title, description, coverage, contact_name, contact_email
                 FROM $this->table LIMIT ?, ?";
