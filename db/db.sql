@@ -58,7 +58,7 @@ create table scholarshipType(
     user_id int not null,
     scholarship_id int not null,
     type varchar(50) not null,
-    primary key (user_id, scholarship_id),
+    primary key (user_id, scholarship_id, type),
     foreign key (user_id, scholarship_id) references scholarship(user_id, scholarship_id) on delete cascade
 );
 
@@ -91,3 +91,9 @@ create table review(
     foreign key (user_id_reviewer) references reviewer(user_id),
     foreign key (user_id_student, file_id) references additionalFiles(user_id, file_id)
 );
+
+insert into user(user_id, name, password, role, email) 
+values (1, 'Admin Beasiswa', '$2y$10$o8EcCzkJN1id5X.Yja/hS.dLPHP7JQyOP.uZ0JKb3Fs1khgaEaeWm', 'admin', 'admin1@beasiswah.com');
+
+insert into administrator(user_id, organization)
+values(1, 'Metaverse Lab');
