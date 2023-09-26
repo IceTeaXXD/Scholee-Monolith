@@ -10,18 +10,17 @@ class ScholarshipType
     private $table;   
 
     public function __construct() {
-        $this->table = 'scholarshiptype';
+        $this->table = 'scholarshipType';
         $this->db = new Database;
     }
 
     public function addType($uid, $sid, $type){
-        $query = "INSERT INTO scholarshiptype (user_id, scholarship_id, type)
+        $query = "INSERT INTO $this->table (user_id, scholarship_id, type)
                     VALUES (?,?,?)";
         $stmt = $this->db->setSTMT($query);
-
         mysqli_stmt_bind_param($stmt, "iis", $uid, $sid, $type);
-
-        mysqli_stmt_execute($stmt);
+        $res = mysqli_stmt_execute($stmt);
+        return $res;
     }
 
     public function updateTypes($uid, $sid, $types){
@@ -38,7 +37,7 @@ class ScholarshipType
         }
     }
     public function getTypes($uid, $sid){
-        $query = "SELECT type FROM scholarshiptype WHERE user_id = ? AND scholarship_id = ?";
+        $query = "SELECT type FROM $this->table WHERE user_id = ? AND scholarship_id = ?";
         $stmt = $this->db->setSTMT($query);
 
         mysqli_stmt_bind_param($stmt, "ii", $uid, $sid);
@@ -75,4 +74,3 @@ class ScholarshipType
         $this->type = $type;
     }
 }
-?>
