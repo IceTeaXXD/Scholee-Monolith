@@ -14,7 +14,16 @@ class ScholarshipType
         $this->db = new Database;
     }
 
-    // Getters and setters for each property
+    public function addType($uid, $sid, $type){
+        $query = "INSERT INTO scholarshiptype (user_id, scholarship_id, type)
+                    VALUES (?,?,?)";
+        $stmt = $this->db->setSTMT($query);
+
+        mysqli_stmt_bind_param($stmt, "iis", $uid, $sid, $type);
+
+        mysqli_stmt_execute($stmt);
+    }
+    
     public function getUserId()
     {
         return $this->user_id;

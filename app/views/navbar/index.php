@@ -31,7 +31,7 @@
         <?php   } else if ($_SESSION['role'] == 'admin') {?>
             <li><a href="/dashboard">Dashboard</a></li>
             <li><a href="/scholarships/add">Add Beasiswa</a></li>
-            <li><a href="">List Beasiswa</a></li>
+            <li><a href=" /scholarships">List Beasiswa</a></li>
             <div class="dropdown">
                 <a href="#" class="dropbtn"><?php echo $_SESSION['username']; ?></a>
                 <div class="dropdown-content">

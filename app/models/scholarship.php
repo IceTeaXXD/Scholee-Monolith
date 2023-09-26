@@ -21,7 +21,7 @@ class Scholarship
         $query = "INSERT INTO $this->table(user_id, scholarship_id, title, description, coverage, contact_name, contact_email)
                     VALUES (?,?,?,?,?,?,?)";
         $stmt = $this->db->setSTMT($query);
-        mysqli_stmt_bind_param($stmt, "ddssdss", $user_id, $tscholarship_id, $title, $description, $coverage, $contact_name, $contact_email);
+        mysqli_stmt_bind_param($stmt, "ddssdss", $user_id, $scholarship_id, $title, $description, $coverage, $contact_name, $contact_email);
         $res = mysqli_stmt_execute($stmt);
         return $res;
     }
@@ -52,6 +52,15 @@ class Scholarship
         $row = mysqli_fetch_assoc($result);
         return $row['total'];
     }    
+
+    public function countOrganizationScholarship($id){
+        $query = "SELECT count(user_id) as count FROM $this->table where user_id = $id";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row = mysqli_fetch_assoc($result);
+        return $row['count'];
+    }
 
     public function getUserId(){
         return $this->user_id;

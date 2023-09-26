@@ -2,12 +2,12 @@
 * {
    margin: 0;
    padding: 0;
-   color: #f2f5f7;
    font-family: sans-serif;
    letter-spacing: 1px;
    font-weight: 300;
    text-decoration: none;
 }
+
 .custom-style {
    margin: 0;
    padding: 0;
@@ -34,6 +34,7 @@ nav {
    z-index: 10;
    top: 0; 
    margin:0;
+   color: #f2f5f7;
 }
 
 /*Styling logo*/
@@ -71,6 +72,7 @@ nav {
 .nav-links li a {
    text-decoration: none;
    margin: 0 0.7vw;
+   color: #f2f5f7;
 }
 
 .nav-links li a:hover {
