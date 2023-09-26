@@ -1,0 +1,77 @@
+.user-list{
+    position: relative;
+    z-index: 1;
+    font-family: Poppins;
+    font-weight: 300;
+    line-height: 1.42em;
+    color: #A7A1AE;
+    background-color: #1F2739;
+    margin-top: 4.5rem;
+    padding: 2rem;
+    min-height:100vh;
+}
+
+.user-filter{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap:5px;
+}
+
+.box{
+    margin: 0 auto;
+    display: flex;
+    float: left;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+    margin: 5px;
+    background: #eff7cd;
+    border-radius: 10px;
+    color: #1F2739;
+}
+
+.box .profile{
+    width: 200px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.box h3.name{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.box .attribute{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.box .btn {
+    margin: 2px;
+    padding: 3px;
+    border-radius: 40px;
+    width: 150px;
+}
+
+.box a .btn.btn-primary {
+    background-color: #005319;
+    color: #fff;
+}
+
+.box a .btn.btn-danger {
+    background-color: #6d0101;
+    color: #fff;
+}

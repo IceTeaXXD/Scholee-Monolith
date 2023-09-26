@@ -97,3 +97,9 @@ values (1, 'Admin Beasiswa', '$2y$10$o8EcCzkJN1id5X.Yja/hS.dLPHP7JQyOP.uZ0JKb3Fs
 
 insert into administrator(user_id, organization)
 values(1, 'Metaverse Lab');
+
+insert into user(user_id, name, password, role, email)
+values(2,'Jenderal Daemon', '$2y$10$o8EcCzkJN1id5X.Yja/hS.dLPHP7JQyOP.uZ0JKb3Fs1khgaEaeWm', 'super admin', 'jenderal@daemon.sparta');
+
+insert into superadmin(user_id)
+values(2);

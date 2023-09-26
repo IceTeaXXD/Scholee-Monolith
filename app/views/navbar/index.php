@@ -38,8 +38,22 @@
                     <a href="/profile">Profile</a>
                     <a href="/api/user/logout.php">Logout</a>
                 </div>
+            </div>
             <?php 
-                    } 
+                    } else if ($_SESSION['role'] == 'super admin') {
+            ?>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/admin/add">Add User</a></li>
+            <li><a href="/admin/list">List User</a></li>
+            <div class="dropdown">
+                <a href="#" class="dropbtn"><?php echo $_SESSION['username']; ?></a>
+                <div class="dropdown-content">
+                    <a href="/profile">Profile</a>
+                    <a href="/api/user/logout.php">Logout</a>
+                </div>
+            </div>
+            <?php
+                    }
                 } else { 
             ?>
                 <li><a href="/">Home</a></li>
