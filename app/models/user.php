@@ -30,6 +30,13 @@ class User{
         return mysqli_stmt_get_result($stmt);
     }
 
+    public function getUserAll(){
+        $query = "select name, image, role, email from user where role != 'super admin' group by role order by role desc";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_execute($stmt);
+        return mysqli_stmt_get_result($stmt);
+    }
+
     public function update($editVal){
         if($editVal['image'] == ''){
             $query = "UPDATE $this->table SET 
