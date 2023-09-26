@@ -52,13 +52,19 @@
     </table>
     <div class="pagination-button">
         <?php
-        if ($data['itemsPerPage'] == $data['totalScholarships']) {
-            echo "<a href='scholarships?page=1&itemsPerPage=all'>1</a>";
+        if ($data['totalScholarships'] == 0) {
+            echo "<tr>";
+            echo "<td colspan='4'>There are no open submissions right now, please check back later! :D.</td>";
+            echo "</tr>";
         } else {
-            $totalPages = ceil($data['totalScholarships'] / $data['itemsPerPage']);
-            for ($i = 1; $i <= $totalPages; $i++) {
-                $isActive = $i == $data['currentPage'] ? 'active' : '';
-                echo "<a href='scholarships?page=$i&itemsPerPage=" . $data['itemsPerPage'] . "' class='$isActive'>" . $i . "</a> ";
+            if ($data['itemsPerPage'] == $data['totalScholarships']) {
+                echo "<a href='scholarships?page=1&itemsPerPage=all'>1</a>";
+            } else {
+                $totalPages = ceil($data['totalScholarships'] / $data['itemsPerPage']);
+                for ($i = 1; $i <= $totalPages; $i++) {
+                    $isActive = $i == $data['currentPage'] ? 'active' : '';
+                    echo "<a href='scholarships?page=$i&itemsPerPage=" . $data['itemsPerPage'] . "' class='$isActive'>" . $i . "</a> ";
+                }
             }
         }
         ?>
