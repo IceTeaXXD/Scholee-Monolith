@@ -6,15 +6,18 @@ class Scholarship
     private int $scholarship_id;
     private string $title;
     private string $description;
+    private $role;
     private $coverage; /*Jumlah beasiswanya*/
     private string $contact_name;
     private string $contact_email;
     private $db;
     private $table;
 
-    public function __construct(){
+    public function __construct($role, $user_id){
         $this->db = new Database();
         $this->table = 'scholarship';
+        $this->role = $role;
+        $this->user_id = $user_id;
     }
 
     public function addScholarship($user_id, $scholarship_id, $title, $description, $coverage, $contact_name, $contact_email){
@@ -68,10 +71,21 @@ class Scholarship
     }
 
     public function getAllScholarship($offset, $limit){
-        $query = "SELECT user_id, scholarship_id, title, description, coverage, contact_name, contact_email
-                FROM $this->table LIMIT ?, ?";
-        $stmt = $this->db->setSTMT($query);
-        mysqli_stmt_bind_param($stmt, "ii", $offset, $limit);
+        $query = '';
+        $stmt = null;
+        if($this->role == 'admin'){
+            $query .= "SELECT user_id, scholarship_id, title, description, coverage, contact_name, contact_email
+                    FROM $this->table 
+                    WHERE user_id = ?
+                    LIMIT ?, ?";
+            $stmt = $this->db->setSTMT($query);
+            mysqli_stmt_bind_param($stmt, "iii", $this->user_id, $offset, $limit);
+        }else{
+            $query = "SELECT user_id, scholarship_id, title, description, coverage, contact_name, contact_email
+            FROM $this->table LIMIT ?, ?";
+            $stmt = $this->db->setSTMT($query);
+            mysqli_stmt_bind_param($stmt, "ii", $offset, $limit);
+        }   
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         return $result;

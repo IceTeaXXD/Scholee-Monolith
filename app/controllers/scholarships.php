@@ -11,7 +11,7 @@ class Scholarships extends Controller {
         $data['style'] = "/public/css/scholarships.css";
         $this->view('header/index', $data);
         $this->view('navbar/index', $data);
-        $model = new Scholarship();
+        $model = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
         $itemsPerPage = isset($_GET['itemsPerPage']) ? $_GET['itemsPerPage'] : 5;
         $totalScholarships = $model->countScholarships();
         if ($itemsPerPage === 'all') {
@@ -27,7 +27,7 @@ class Scholarships extends Controller {
     }
     public function search() {
         $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
-        $model = new Scholarship();
+        $model = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
         $results = $model->searchScholarship($searchQuery, 0, 100);
         foreach ($results as $row) {
             echo '<tr>';
@@ -58,7 +58,7 @@ class Scholarships extends Controller {
         $data['style'] = "/public/css/dashboard.css";
         $data['style'] = "/public/css/addbeasiswa.css";
 
-        $scholarshipModel = new Scholarship;
+        $scholarshipModel = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
         $types = new ScholarshipType();
 
         $data['row'] = $scholarshipModel->getScholarship($_GET['user_id'],$_GET['scholarship_id']);
@@ -74,7 +74,7 @@ class Scholarships extends Controller {
     }
 
     public function delete(){
-        $model = new Scholarship;
+        $model = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
 
         $exec = $model->deleteScholarship($_SESSION['user_id'],$_GET['scholarship_id']);
 
