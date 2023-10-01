@@ -2,6 +2,20 @@ document.getElementById('register-form').addEventListener('submit', async functi
     e.preventDefault();
 
     let formData = new FormData(this);
+    let email = formData.get('email');
+    let password = formData.get('password');
+
+    if (!isValidEmail(email) || !isValidPassword(password)) {
+        let errorDiv = document.querySelector('.alert-danger');
+        if (!errorDiv) {
+            errorDiv = document.createElement('div');
+            errorDiv.className = 'alert alert-danger';
+            document.querySelector('.form').prepend(errorDiv);
+        }
+        errorDiv.innerText = "Invalid email or password!";
+        return;
+    }
+
     try {
         let response = await fetch('/api/user/register.php', {
             method: 'POST',
@@ -25,3 +39,13 @@ document.getElementById('register-form').addEventListener('submit', async functi
         console.error("There was an error:", err);
     }
 });
+
+function isValidEmail(email) {
+    const regex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    return regex.test(email);
+}
+
+function isValidPassword(password) {
+    const regex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    return regex.test(password);
+}
