@@ -22,6 +22,12 @@
                     <h1>EMAIL</h1>
                 </th>
                 <th>
+                    <h1>Coverage</h1>
+                </th>
+                <th>
+                    <h1>Priority
+                </th>
+                <th>
                     <div class="pagination-form" id="pagination-form">
                         <form method="get">
                             <label for="itemsPerPage">Items Per Page:</label>
@@ -38,23 +44,16 @@
         </thead>
         <tbody>
             <?php
-            while ($row = mysqli_fetch_array($data['scholarships'])) {
+            while ($row = mysqli_fetch_array($data['row'])) {
                 echo '<tr>';
                 echo '<td>' . $row['title'] . '</td>';
                 echo '<td>' . $row['description'] . '</td>';
                 echo '<td>' . $row['contact_name'] . '</td>';
                 echo '<td>' . $row['contact_email'] . '</td>';
+                echo '<td>' . $row['coverage'] . '</td>';
+                echo '<td>' . $row['priority'] . '</td>';
                 if ($_SESSION['role'] == 'student') {
-                    echo "<td><a href='bookmarks/add?uis=" . $row['user_id'] . "&sid=".$row['scholarship_id']."'><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Daftar</button></td>";
-                } else if ($_SESSION['role'] == 'admin') {
-                    echo ("<td>
-                            <a href='scholarships/edit?user_id=".$row['user_id'] ."&scholarship_id=".$row['scholarship_id']."'>
-                                <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Edit</button>
-                            </a>
-                            <a href='scholarships/delete?user_id=".$row['user_id'] ."&scholarship_id=".$row['scholarship_id']."'>
-                                <button type='button' onclick = 'return deleteConfirmation()' class='btn btn-danger' data-toggle='modal' data-target='#exampleModalCenter'>Delete</button>
-                            </a>
-                        </td>");
+                    echo "<td><a href=''><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Daftar</button></td>";
                 }
                 echo '</tr>';
             }

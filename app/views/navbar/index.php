@@ -18,7 +18,7 @@
                 <li><a href="/dashboard">Dashboard</a></li>
                 <li><a href="">Jason</a></li>
                 <li><a href="/scholarships">List Beasiswa</a></li>
-                <li><a href="">Bookmark</a></li>
+                <li><a href="/bookmarks">Bookmark</a></li>
                 <li><a href="">Cek CV</a></li>
                 <div class="dropdown">
                     <a href="#" class="dropbtn"><?php echo $_SESSION['username']; ?></a>
