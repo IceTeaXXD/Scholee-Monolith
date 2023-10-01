@@ -16,7 +16,7 @@ class Bookmark
 
     public function getUserBookmark(){
         $query = "SELECT title, description, priority, coverage, contact_name, contact_email
-                    FROM $this->table natural join scholarship
+                    FROM $this->table a inner join scholarship b on a.scholarship_id = b.scholarship_id and a.user_id_scholarship = b.user_id
                     Where user_id_student = ?";
 
         $stmt = $this->db->setSTMT($query);
