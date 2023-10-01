@@ -53,6 +53,18 @@
                 </div>
             </div>
             <?php
+                    } else if ($_SESSION['role'] == 'reviewer') {
+            ?>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/reviewer/docs">Review Documents</a></li>
+            <div class="dropdown">
+                <a href="#" class="dropbtn"><?php echo $_SESSION['username']; ?></a>
+                <div class="dropdown-content">
+                    <a href="/profile">Profile</a>
+                    <a href="/api/user/logout.php">Logout</a>
+                </div>
+            </div>
+            <?php
                     }
                 } else { 
             ?>
