@@ -1,6 +1,6 @@
 <div class="register-page">
     <div class="form">
-        <form id="register-form" method="post" action="/api/user/register.php">
+        <form id="register-form" method="post">
             <h2>Register</h2>
             <input type="text" placeholder="Full Name *" name="name" required />
             <input type="email" placeholder="Email *" name="email" required />
@@ -19,3 +19,4 @@
         </form>
     </div>
 </div>
+<script src="../../../public/js/register.js"></script>
