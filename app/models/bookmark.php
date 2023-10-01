@@ -14,6 +14,29 @@ class Bookmark
         $this->table = 'bookmark';
     }
 
+    public function getUserBookmark(){
+        $query = "SELECT title, description, priority, coverage, contact_name, contact_email
+                    FROM $this->table natural join scholarship
+                    Where user_id_student = ?";
+
+        $stmt = $this->db->setSTMT($query);
+
+        mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);
+
+        mysqli_stmt_execute($stmt);
+
+        return mysqli_stmt_get_result($stmt);
+    }
+
+    public function countUserBookmark(){
+        $query = "SELECT COUNT(*) as total FROM $this->table";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row = mysqli_fetch_assoc($result);
+        return $row['total'];
+    }
+
     public function newBookMark($uid, $uis, $sid, $prio){
         $query = "INSERT INTO bookmark(user_id_student, user_id_scholarship, scholarship_id, priority)
                     VALUES (?,?,?,?)";
