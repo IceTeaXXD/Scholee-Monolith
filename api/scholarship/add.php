@@ -7,7 +7,7 @@ require_once '../../config/config.php';
 
 session_start();
 
-$scholarship = new Scholarship;
+$scholarship = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
 $typeModel = new ScholarshipType;
 
 /* Explode into Array for Type */
