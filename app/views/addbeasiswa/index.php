@@ -2,7 +2,7 @@
     <h1>Add Beasiswa</h1>
     <div class="form">
         
-        <form method = "post" action = "/api/scholarship/add.php">
+        <form method = "post">
             <label for="scholarshipname">Scholarship Name</label>
             <input type="text" name="title" id = "scholarshipname" required />
             
@@ -21,9 +21,11 @@
             <label for="type">Scholarship Type(s)</label>
             <input type="text" name="type" id="type" required />
 
-            <button type = "submit" class="save-btn">Tambah Beasiswa</button>
+            <button type = "submit" class="save-btn" onclick="addBeasiswa()">Tambah Beasiswa</button>
             <a href = "/dashboard" class="cancel-btn">Cancel</a>
         </form>
 
     </div>
 </div>
+
+<script src="../../public/js/addBeasiswa.js"></script>

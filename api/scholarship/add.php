@@ -28,6 +28,6 @@ foreach($scholarshipTypes as $type){
     $typeModel->addType($_SESSION['user_id'], $scholarshipID, $type);
 }
 
-header('Location: /scholarships');
+echo json_encode(['status'=>'success']);
 
 ?>

@@ -9,7 +9,8 @@ function deleteConfirmation(uis, sid){
 } 
 
 async function confirmDelete(){
-    /* DELETE */    try {
+    /* DELETE */ 
+    try {
         const formData = new FormData();
         formData.append('uid', userID);
         formData.append('sid', studentID);
