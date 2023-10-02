@@ -10,22 +10,30 @@
         <thead>
             <tr>
                 <th>
-                    <h1>NAMA BEASISWA</h1>
+                    <h1>
+                        <?php 
+                            if($_SESSION['role']=='student'){
+                        ?>
+                        ID FILE
+                        <?php 
+                            }else{        
+                        ?>
+                        USER ID
+                        <?php } 
+                        ?>
+                    </h1>
                 </th>
                 <th>
-                    <h1>DESKRIPSI</h1>
+                    <h1>URL</h1>
                 </th>
                 <th>
-                    <h1>CP</h1>
+                    <h1>Type</h1>
                 </th>
                 <th>
-                    <h1>EMAIL</h1>
+                    <h1>Review Status</h1>
                 </th>
                 <th>
-                    <h1>Coverage</h1>
-                </th>
-                <th>
-                    <h1>Priority
+                    <h1>Comment</h1>
                 </th>
                 <th>
                     <div class="pagination-form" id="pagination-form">
@@ -46,14 +54,28 @@
             <?php
             while ($row = mysqli_fetch_array($data['row'])) {
                 echo '<tr>';
-                echo '<td>' . $row['title'] . '</td>';
-                echo '<td>' . $row['description'] . '</td>';
-                echo '<td>' . $row['contact_name'] . '</td>';
-                echo '<td>' . $row['contact_email'] . '</td>';
-                echo '<td>' . $row['coverage'] . '</td>';
-                echo '<td>' . $row['priority'] . '</td>';
                 if ($_SESSION['role'] == 'student') {
-                    echo "<td><a href=''><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Daftar</button></a></td>";
+                    echo '<td>' . $row['file_id'] . '</td>';
+                }else if($_SESSION['role'] == 'reviewer'){
+                    echo '<td>' . $row['user_id'] . '</td>';
+                }
+                if($row['type']!=='mp4'){
+                    echo '<td><a href="/public/files/'.$row['link'].'" target="pdf">' . $row['link'] . '</a></td>';
+                }else{
+                    /* Modal For Video*/
+                    echo "<td onclick='openVideoModal(\"/public/files/" . $row['link'] . "\")'>" . $row['link'] . "</td>";
+                }
+                echo '<td>' . $row['type'] . '</td>';
+                echo '<td>' . $row['review_status'] . '</td>';
+                if ($_SESSION['role'] == 'student') {
+                    echo '<td>' . $row['comment'] . '</td>';
+                }else if($_SESSION['role'] == 'reviewer'){
+                    echo '<td><input type="text" value="'.$row['comment'].'" id="comment-'.$row['user_id'].'-'.$row['file_id'].'" required></td>';
+                }
+                if ($_SESSION['role'] == 'student') {
+                    echo "<td><button type='button' onclick='submitDocument(".$_SESSION['user_id'].",".$row['file_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Daftarkan</button></td>";
+                }else if ($_SESSION['role'] == 'reviewer'){
+                    echo "<td><button type='button' onclick='commentDocument(".$row['user_id'].",".$row['file_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Comment</button></td>";
                 }
                 echo '</tr>';
             }
@@ -80,6 +102,18 @@
         ?>
     </div>
 </div>
+
+<div id="videoModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <video id="videoPlayer" width="320" height="240" controls>
+            <source id="videoSource" src="" type="video/mp4">
+        </video>
+    </div>
+</div>
+
+<script src="../../../public/js/submitDocument.js"></script>
+<script src="../../../public/js/modal.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const searchForm = document.getElementById("search-form");
@@ -110,7 +144,6 @@
         }
     });
 </script>
-
 <script>
     function deleteConfirmation(){
         var result = confirm("Apakah ingin melakukan penghapusan?");

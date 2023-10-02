@@ -4,6 +4,7 @@ require_once '../../app/core/App.php';
 require_once '../../app/core/Database.php';
 require_once '../../app/models/Student.php';
 require_once '../../app/models/Administrator.php';
+require_once '../../app/models/Reviewer.php';
 require_once '../../config/config.php';
 
 session_start();
@@ -27,6 +28,9 @@ if (!isset($_SESSION['role'])) {
     } else if ($_POST['role'] == 'admin') {
         $admin = new Administrator();
         $succ = $admin->register($_POST['name'], $_POST['role'], $_POST['email'], $_POST['password']);
+    }else if ($_POST['role'] == 'reviewer'){
+        $reviewer = new Reviewer();
+        $succ = $reviewer->register($_POST['name'], $_POST['role'], $_POST['email'], $_POST['password']);
     }
 
     if ($succ) {

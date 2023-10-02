@@ -19,7 +19,13 @@
                 <li><a href="">Jason</a></li>
                 <li><a href="/scholarships">List Beasiswa</a></li>
                 <li><a href="/bookmarks">Bookmark</a></li>
-                <li><a href="">Cek CV</a></li>
+                <div class="dropdown">
+                    <a href="" class="dropdownHead">Document Preparation</a>
+                    <div class="dropdown-content">
+                        <a href="/reviews">Check Document Review</a>
+                        <a href="/reviews/add">Add Document</a>
+                    </div>
+                </div>
                 <div class="dropdown">
                     <a href="#" class="dropbtn"><?php echo $_SESSION['username']; ?></a>
                     <div class="dropdown-content">
@@ -45,6 +51,18 @@
             <li><a href="/dashboard">Dashboard</a></li>
             <li><a href="/admin/add">Add User</a></li>
             <li><a href="/admin/list">List User</a></li>
+            <div class="dropdown">
+                <a href="#" class="dropbtn"><?php echo $_SESSION['username']; ?></a>
+                <div class="dropdown-content">
+                    <a href="/profile">Profile</a>
+                    <a href="/api/user/logout.php">Logout</a>
+                </div>
+            </div>
+            <?php
+                    } else if ($_SESSION['role'] == 'reviewer') {
+            ?>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/reviews">Review Documents</a></li>
             <div class="dropdown">
                 <a href="#" class="dropbtn"><?php echo $_SESSION['username']; ?></a>
                 <div class="dropdown-content">
