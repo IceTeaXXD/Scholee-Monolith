@@ -2,7 +2,7 @@
 $row = mysqli_fetch_array($data['user']);
 ?>
 <div class="edit-profile">
-    <form action="/api/profile/update.php" method="post" class="profile-form" enctype="multipart/form-data">
+    <form action="javascript:;" onsubmit="return submitForm()" method="post" class="profile-form" enctype="multipart/form-data">
         <div class="profile-info">
 
             <img id="profileDisplay" src="/public/image/profiles/<?php echo $row['image'];?>" alt="Profile Image" class="profile-image-display" height="200px">
@@ -16,25 +16,25 @@ $row = mysqli_fetch_array($data['user']);
             <input type="text" id="fullName" name="name" value="<?php echo $row['name'];?>">
             <?php if($_SESSION['role'] == 'student'){ ?>
             <label for="gender">University</label>
-            <input type="text" name="university" value = "<?php echo $row['university'];?>">
+            <input type="text" name="university" id="university" value = "<?php echo $row['university'];?>">
             <label for="dob">Major</label>
-            <input type="text" name="major" value = "<?= $row['major'];?>">
+            <input type="text" name="major" id="major" value = "<?= $row['major'];?>">
             <label for="level">Level:</label>
-            <select id="level" name="level">
+            <select id="level" name="level" id="level">
                 <option value="<?php echo $row['level'];?>"><?php echo $row['level'];?></option>
                 <option value="Undergraduate">Undergraduate</option>
                 <option value="Postgraduate">Postgraduate</option>
                 <option value="Doctoral">Doctoral</option>
             </select>
             <label for="dob">Street</label>
-            <input type="text" name="street" value = "<?php echo $row['street'];?>">
+            <input type="text" name="street" id="street" value = "<?php echo $row['street'];?>">
             <label for="dob">City</label>
-            <input type="text" name="city" value = "<?php echo $row['city'];?>">
+            <input type="text" name="city" id = "city"value = "<?php echo $row['city'];?>">
             <label for="dob">Zipcode</label>
-            <input type="text" name="zipcode" value = "<?php echo $row['zipcode'];?>">
+            <input type="text" name="zipcode" id="zipcode" value = "<?php echo $row['zipcode'];?>">
             <?php } else if ($_SESSION['role'] == 'admin') { ?>
             <label for="gender">Organization</label>
-            <input type="text" name="organization" value = "<?php echo $row['organization'];?>">
+            <input type="text" name="organization" id="organization"value = "<?php echo $row['organization'];?>">
             <?php } ?>
 
             <button type="submit" class="save-btn">Save Changes</button>
@@ -42,3 +42,4 @@ $row = mysqli_fetch_array($data['user']);
         </div>
     </form>
 </div>
+<script src="../../../public/js/updateProfile.js"></script>
