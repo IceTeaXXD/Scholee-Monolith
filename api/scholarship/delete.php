@@ -4,9 +4,13 @@ require_once '../../app/core/Database.php';
 require_once '../../app/models/Scholarship.php';
 require_once '../../config/config.php';
 
-$model = new Scholarship;
+session_start();
 
-$exec = $model->deleteScholarship($_SESSION['user_id'],$_GET['scholarship_id']);
+$model = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
 
-header("Location: /scholarships");
+$exec = $model->deleteScholarship($_POST['uid'],$_POST['sid']);
+
+if($exec){
+    echo json_encode(['status' => 'success']);
+}
 ?>

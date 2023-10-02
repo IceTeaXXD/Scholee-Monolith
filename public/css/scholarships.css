@@ -225,3 +225,7 @@ h2 a {
     padding: 10px;
     cursor: pointer;
 }
+
+.closebtn{
+    position: absolute;
+}

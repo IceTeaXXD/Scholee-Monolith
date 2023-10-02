@@ -72,14 +72,4 @@ class Scholarships extends Controller {
             header('Location: /login');
         }
     }
-
-    public function delete(){
-        $model = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
-
-        $exec = $model->deleteScholarship($_SESSION['user_id'],$_GET['scholarship_id']);
-
-        if($exec){
-            header("Location: /scholarships");
-        }
-    }
 }
