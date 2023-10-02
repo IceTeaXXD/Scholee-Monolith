@@ -13,7 +13,7 @@ $formatType = implode(', ', $types);
     <h1>Edit Beasiswa</h1>
     <div class="form">
         
-        <form method = "post" action = "/api/scholarship/update.php">
+        <form action="javascript:;" onsubmit="return submitForm()">
             <label for="scholarshipname">Scholarship Name</label>
             <input type="text" name="title" id = "scholarshipname" value="<?php echo $row['title'];?>"required />
             <input type="hidden" name="scholarship_id" value="<?php echo $row['scholarship_id'];?>">
@@ -39,3 +39,4 @@ $formatType = implode(', ', $types);
 
     </div>
 </div>
+<script src="../../../public/js/updateBeasiswa.js"></script>
