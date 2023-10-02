@@ -2,75 +2,66 @@
 
 class Review
 {
-    private $user_id_reviewer;
-    private $user_id_student;
-    private $file_id;
-    private $review_status;
-    private $comment;
+    private $db;
 
-    public function __construct(
-        $user_id_reviewer,
-        $user_id_student,
-        $file_id,
-        $review_status,
-        $comment
-    ) {
-        $this->user_id_reviewer = $user_id_reviewer;
-        $this->user_id_student = $user_id_student;
-        $this->file_id = $file_id;
-        $this->review_status = $review_status;
-        $this->comment = $comment;
+    public function __construct() {
+        $this->db = new Database;
     }
 
-    // Getters and setters for each property
-    public function getUserIdReviewer()
-    {
-        return $this->user_id_reviewer;
+    public function addStudentDocument($type, $link){
+        /* GET NUM OF USER FILES */
+        $query = "SELECT COUNT(*) as count FROM additionalfiles
+                    WHERE user_id = ?";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $num = mysqli_fetch_array($result)['count'];
+        $num += 1;
+
+        $query = "INSERT INTO additionalfiles values (?,?,?,?)";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_bind_param($stmt, "iiss", $_SESSION['user_id'], $num, $type, $link);
+        mysqli_stmt_execute($stmt);
     }
 
-    public function setUserIdReviewer($user_id_reviewer)
-    {
-        $this->user_id_reviewer = $user_id_reviewer;
+    public function submitForReview($uis, $fid){
+
+        /* Generate random */
+        $uir = 0;
+        $query = "SELECT user_id FROM reviewer ORDER BY RAND() LIMIT 1";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_execute($stmt);
+        $uir = mysqli_fetch_array(mysqli_stmt_get_result($stmt))['user_id'];
+
+        $query = "INSERT INTO review
+                    VALUES ($uir, $uis, $fid, 'waiting', NULL)";
+        $stmt = $this->db->setSTMT($query);
+        return mysqli_stmt_execute($stmt);
     }
 
-    public function getUserIdStudent()
-    {
-        return $this->user_id_student;
+    public function getStudentDocument(){
+        $query = "SELECT a.file_id, a.type, a.link, r.review_status, r.comment 
+                    FROM additionalfiles a left join review r on r.user_id_student = a.user_id and r.file_id = r.file_id
+                    WHERE a.user_id = ?";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        return $result;
     }
 
-    public function setUserIdStudent($user_id_student)
-    {
-        $this->user_id_student = $user_id_student;
+    public function getReviewerDocument(){
+        $query = "SELECT file_id, type, link, review_status, comment 
+                    FROM additionalfiles a inner join review r on r.user_id_student = a.user_id and r.file_id = r.file_id
+                    WHERE r.review_status = 'waiting'
+                    GROUP BY a.user_id";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        return $result;
     }
 
-    public function getFileId()
-    {
-        return $this->file_id;
-    }
-
-    public function setFileId($file_id)
-    {
-        $this->file_id = $file_id;
-    }
-
-    public function getReviewStatus()
-    {
-        return $this->review_status;
-    }
-
-    public function setReviewStatus($review_status)
-    {
-        $this->review_status = $review_status;
-    }
-
-    public function getComment()
-    {
-        return $this->comment;
-    }
-
-    public function setComment($comment)
-    {
-        $this->comment = $comment;
-    }
 }
 ?>
