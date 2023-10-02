@@ -2,7 +2,7 @@
     <h1>Add User</h1>
     <div class="form">
         
-        <form method = "post" action = "/api/user/register.php">
+        <form action="javascript:;" onsubmit="return submitForm()">
             <label for="scholarshipname">User Name</label>
             <input type="text" name="name" id = "scholarshipname" required />
 
@@ -25,3 +25,4 @@
 
     </div>
 </div>
+<script src="../../../public/js/addnewuser.js"></script>
