@@ -51,9 +51,7 @@
                             <a href='scholarships/edit?user_id=".$row['user_id'] ."&scholarship_id=".$row['scholarship_id']."'>
                                 <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Edit</button>
                             </a>
-                            <a href='scholarships/delete?user_id=".$row['user_id'] ."&scholarship_id=".$row['scholarship_id']."'>
-                                <button type='button' onclick = 'return deleteConfirmation()' class='btn btn-danger' data-toggle='modal' data-target='#exampleModalCenter'>Delete</button>
-                            </a>
+                            <button type='button' onclick = 'deleteConfirmation(".$row['user_id'].",".$row['scholarship_id'].")' class='btn btn-danger' data-toggle='modal' data-target='#exampleModalCenter'>Delete</button>
                         </td>");
                 }
                 echo '</tr>';
@@ -81,6 +79,17 @@
         ?>
     </div>
 </div>
+
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <h3>Apakah Anda benar ingin melakukan penghapusan?</h3>
+        <button onclick="confirmDelete()">Ya</button>
+        <button class="closebtn" onclick="cancelDelete()">Tidak</button>
+    </div>
+</div>
+
+<script src="../../public/js/deleteConfirm.js"></script>
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const searchForm = document.getElementById("search-form");
@@ -110,11 +119,4 @@
                 });
         }
     });
-</script>
-
-<script>
-    function deleteConfirmation(){
-        var result = confirm("Apakah ingin melakukan penghapusan?");
-        return result;
-    }
 </script>
