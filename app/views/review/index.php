@@ -10,7 +10,18 @@
         <thead>
             <tr>
                 <th>
-                    <h1>ID FILE</h1>
+                    <h1>
+                        <?php 
+                            if($_SESSION['role']=='student'){
+                        ?>
+                        ID FILE
+                        <?php 
+                            }else{        
+                        ?>
+                        USER ID
+                        <?php } 
+                        ?>
+                    </h1>
                 </th>
                 <th>
                     <h1>URL</h1>
@@ -43,7 +54,11 @@
             <?php
             while ($row = mysqli_fetch_array($data['row'])) {
                 echo '<tr>';
-                echo '<td>' . $row['file_id'] . '</td>';
+                if ($_SESSION['role'] == 'student') {
+                    echo '<td>' . $row['file_id'] . '</td>';
+                }else if($_SESSION['role'] == 'reviewer'){
+                    echo '<td>' . $row['user_id'] . '</td>';
+                }
                 if($row['type']!=='mp4'){
                     echo '<td><a href="/public/files/'.$row['link'].'" target="pdf">' . $row['link'] . '</a></td>';
                 }else{
@@ -52,9 +67,15 @@
                 }
                 echo '<td>' . $row['type'] . '</td>';
                 echo '<td>' . $row['review_status'] . '</td>';
-                echo '<td>' . $row['comment'] . '</td>';
+                if ($_SESSION['role'] == 'student') {
+                    echo '<td>' . $row['comment'] . '</td>';
+                }else if($_SESSION['role'] == 'reviewer'){
+                    echo '<td><input type="text" value="'.$row['comment'].'" id="comment-'.$row['user_id'].'-'.$row['file_id'].'" required></td>';
+                }
                 if ($_SESSION['role'] == 'student') {
                     echo "<td><button type='button' onclick='submitDocument(".$_SESSION['user_id'].",".$row['file_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Daftarkan</button></td>";
+                }else if ($_SESSION['role'] == 'reviewer'){
+                    echo "<td><button type='button' onclick='commentDocument(".$row['user_id'].",".$row['file_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Comment</button></td>";
                 }
                 echo '</tr>';
             }

@@ -42,7 +42,7 @@ class Review
 
     public function getStudentDocument(){
         $query = "SELECT a.file_id, a.type, a.link, r.review_status, r.comment 
-                    FROM additionalfiles a left join review r on r.user_id_student = a.user_id and r.file_id = r.file_id
+                    FROM additionalfiles a left join review r on r.user_id_student = a.user_id and r.file_id = a.file_id
                     WHERE a.user_id = ?";
         $stmt = $this->db->setSTMT($query);
         mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);
@@ -52,14 +52,25 @@ class Review
     }
 
     public function getReviewerDocument(){
-        $query = "SELECT file_id, type, link, review_status, comment 
-                    FROM additionalfiles a inner join review r on r.user_id_student = a.user_id and r.file_id = r.file_id
-                    WHERE r.review_status = 'waiting'
-                    GROUP BY a.user_id";
+        $query = "SELECT a.user_id, a.file_id, a.type, a.link, r.review_status, r.comment 
+                    FROM additionalfiles a inner join review r on r.user_id_student = a.user_id and r.file_id = a.file_id
+                    WHERE r.user_id_reviewer = ? and review_status = 'waiting'
+                    GROUP BY a.user_id, a.file_id
+                    ORDER BY review_status";
         $stmt = $this->db->setSTMT($query);
         mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
+        return $result;
+    }
+
+    public function comment($uis, $fid, $comment){
+        $query = "UPDATE review
+                    SET comment = ?, review_status = 'reviewed'
+                    WHERE user_id_student = ? and file_id = ?";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_bind_param($stmt, "sii", $comment, $uis, $fid);
+        $result = mysqli_stmt_execute($stmt);
         return $result;
     }
 

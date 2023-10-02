@@ -62,14 +62,7 @@
                     } else if ($_SESSION['role'] == 'reviewer') {
             ?>
             <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/reviewer/docs">Review Documents</a></li>
-            <div class="dropdown">
-                <a href="" class="dropdownHead">Document Preparation</a>
-                <div class="dropdown-content">
-                    <a href="/reviews">Check Document Review</a>
-                    <a href="/reviews/add">Add Document</a>
-                </div>
-            </div>
+            <li><a href="/reviews">Review Documents</a></li>
             <div class="dropdown">
                 <a href="#" class="dropbtn"><?php echo $_SESSION['username']; ?></a>
                 <div class="dropdown-content">

@@ -56,7 +56,7 @@ if($_SESSION['role'] == 'student'){
     $user -> update($value);
     $administrator -> update($value);
 
-} else if ($_SESSION['role'] == 'super admin') {
+} else if ($_SESSION['role'] == 'super admin' || $_SESSION['role'] == 'reviewer') {
     $value = array(
         "user_id" => $_SESSION['user_id'],
         "name" => $_POST['name'],
