@@ -1,10 +1,10 @@
 <div class="register-page">
     <div class="form">
-        <form id="register-form" method="post">
+        <form action="javascript:;" onsubmit="return submitForm()">
             <h2>Register</h2>
-            <input type="text" placeholder="Full Name *" name="name" required />
-            <input type="email" placeholder="Email *" name="email" required />
-            <input type="password" placeholder="Password *" name="password" required />
+            <input type="text" placeholder="Full Name *" name="name" id="fullname" required />
+            <input type="email" placeholder="Email *" name="email" id="email" required />
+            <input type="password" placeholder="Password *" name="password" id="password" required />
             <button type="submit" class="btn">
                 <span></span>
                 <span></span>

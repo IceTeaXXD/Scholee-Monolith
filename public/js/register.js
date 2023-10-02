@@ -1,44 +1,38 @@
-document.getElementById('register-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    let formData = new FormData(this);
-    let email = formData.get('email');
-    let password = formData.get('password');
-
-    if (!isValidEmail(email) || !isValidPassword(password)) {
-        let errorDiv = document.querySelector('.alert-danger');
-        if (!errorDiv) {
-            errorDiv = document.createElement('div');
-            errorDiv.className = 'alert alert-danger';
-            document.querySelector('.form').prepend(errorDiv);
-        }
-        errorDiv.innerText = "Invalid email or password!";
-        return;
+const submitForm = () => {
+    const name = document.getElementById('fullname').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    if (!name || !email || !password) {
+        alert('Please fill out all fields');
+        return false;
     }
+    
+    // check ameil and password 
+    if (!isValidEmail(email) || !isValidPassword(password)) {
+        alert('Invalid email or password!');
+        return false;
+    }
+    const data = new FormData();
+    data.append("name", name);
+    data.append("email", email);
+    data.append("password", password);
 
-    try {
-        let response = await fetch('/api/user/register.php', {
-            method: 'POST',
-            body: formData
-        });
-
-        let data = await response.json();
-
-        if (data.status === 'success') {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/user/register.php');
+    xhr.onload = () => {
+        const res = JSON.parse(xhr.response);
+        if (res.status === 'success') {
+            alert('User created successfully');
+            // go to login
             window.location.href = "../../login";
         } else {
-            let errorDiv = document.querySelector('.alert-danger');
-            if (!errorDiv) {
-                errorDiv = document.createElement('div');
-                errorDiv.className = 'alert alert-danger';
-                document.querySelector('.form').prepend(errorDiv);
-            }
-            errorDiv.innerText = data.error;
+            alert(res.error);
         }
-    } catch (err) {
-        console.error("There was an error:", err);
     }
-});
+    xhr.send(data);
+    console.log('sent')
+    return false;
+}
 
 function isValidEmail(email) {
     const regex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
