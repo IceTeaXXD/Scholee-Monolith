@@ -70,4 +70,4 @@ if($_GET['role'] == 'student'){
     $user -> update($value);
 }
 
-// header("Location: /admin/list");
+header("Location: /admin/list");
