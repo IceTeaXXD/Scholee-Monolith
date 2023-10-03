@@ -1,13 +1,13 @@
 .image-container {
-    background-image: url('../image/cover.jpg');
+    background-image: url('../image/wave.webp');
     background-size: cover;
-    background-position: center center;
+    /* background-position: center; */
+    background-repeat: no-repeat;
     height: 100vh;
     text-align: center;
     color: #fff;
     padding: 20px;
 }
-
 .content {
     text-align: left;
     color: #fff;
@@ -20,40 +20,49 @@
     flex: 1;
     padding-right: 20px;
 }
+.text-section h1 {
+    color: #4266B0;
+    font-size: 50px;
+}
 
+.text-section p {
+    color : #717171;
+}
 .image-section {
     flex: 1;
     text-align: right;
+    height: 500px;
+    width: 500px;
 }
 
-.content h1 {
-    font-size: 24px;
-}
-
-.content p {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.content button {
-    background-color: #61DAFB;
-    color: #fff;
+.get-started {
+    background-color: #4266B0;
+    color: white;
     border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.more-info {
+    background-color: #CBEBFA;
+    color: #4266B0;
+    border: 1px solid #4266B0;
+    text-align: center;
+    padding: 20px;
+    border-radius: 30px;
 }
 
 .content img {
-    width: 200px;
-    max-width: 100%;
+    /* width: 200px;
+    max-width: 100%; */
+    width: 70%;
     height: auto;
+    margin-top: -100px;
 }
 
-.button-container button {
-    display: block;
-    margin-top: 10px;
+.button-container {
+    margin-top: 40px;
 }
 
 /* VIDEO YT */
