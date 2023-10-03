@@ -91,7 +91,7 @@ nav {
 
 .login-button {
    background-color: transparent;
-   border: 1.5px solid white;
+   border: 1.5px solid black;
    border-radius: 2em;
    padding: 0.6rem 0.8rem;
    font-size: 1rem;
@@ -100,9 +100,13 @@ nav {
 
 .login-button:hover {
    color: #131418;
-   background-color: #f2f5f7;
+   background-color: #2C347F;
    border: 1.5px solid #f2f5f7;
    transition: all ease-in-out 350ms;
+}
+
+.login-button:hover a {
+   color: #f2f5f7;
 }
 
 .join-button {
@@ -126,7 +130,7 @@ nav {
 .hamburger div {
    width: 30px;
    height: 3px;
-   background: #f2f5f7;
+   background: black;
    margin: 5px;
    transition: all 0.3s ease;
 }
@@ -137,15 +141,18 @@ nav {
 
 .toggle .line1 {
    transform: rotate(-45deg) translate(-5px, 6px);
+   background: white;
 }
 
 .toggle .line2 {
    transition: all 0.7s ease;
    width: 0;
+   background: white;
 }
 
 .toggle .line3 {
    transform: rotate(45deg) translate(-5px, -6px);
+   background: white;
 }
 
 .dropbtn {
@@ -315,6 +322,16 @@ nav {
    .nav-links li:nth-child(7) {
       transition: all 0.5s ease 1s;
       margin: 0;
+   }
+
+   .nav-links li a {
+      text-decoration: none;
+      margin: 0 1.5vw;
+      color: white;
+   }
+
+   .login-button-container {
+      margin-right: auto;
    }
 
    li.fade {
