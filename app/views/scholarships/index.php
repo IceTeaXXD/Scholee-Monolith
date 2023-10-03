@@ -45,7 +45,7 @@
                 echo '<td>' . $row['contact_name'] . '</td>';
                 echo '<td>' . $row['contact_email'] . '</td>';
                 if ($_SESSION['role'] == 'student') {
-                    echo "<td><a href='bookmarks/add?uis=" . $row['user_id'] . "&sid=".$row['scholarship_id']."'><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Daftar</button></td>";
+                    echo "<td><button type='button' onclick='bookmark(".$row['user_id'].",".$row['scholarship_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Bookmark</button></td>";
                 } else if ($_SESSION['role'] == 'admin') {
                     echo ("<td>
                             <a href='scholarships/edit?user_id=".$row['user_id'] ."&scholarship_id=".$row['scholarship_id']."'>
@@ -89,7 +89,7 @@
 </div>
 
 <script src="../../public/js/deleteConfirm.js"></script>
-
+<script src="../../public/js/bookmark.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const searchForm = document.getElementById("search-form");

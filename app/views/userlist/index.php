@@ -22,7 +22,7 @@
             <div class="attribute">Role: <?php echo $row['role'];?></div>
             <div class="attribute">Email: <?php echo $row['email'];?></div>
             <a href="/admin/update?user_id=<?php echo $row['user_id'];?>&email=<?php echo $row['email'];?>&role=<?php echo $row['role'];?>"> <button class="btn btn-primary">View More</button> </a>
-            <a href="/admin/delete?user_id=<?php echo $row['user_id'];?>" onclick="return deleteConfirmation()"><button class="btn btn-danger">Delete</button></a>
+            <button class="btn btn-danger" onclick="deleteConfirmation('<?php echo $row['name'];?>',<?php echo $row['user_id'];?>)">Delete</button></a>
         </div> 
         <?php
         }
@@ -31,9 +31,14 @@
 
 </div>
 
-<script>
-    function deleteConfirmation(){
-        var result = confirm("Apakah ingin melakukan penghapusan?");
-        return result;
-    }
-</script>
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <h1>Delete Confirmation</h1>
+        <p>Do you want to delete <span id="modal-name"></span>?</p>
+
+        <button class="btn btn-danger" onclick="deleteUser()">Yes</button>
+        <button class="btn btn-primary"onclick="closeModal()">No</button>
+    </div>
+</div>
+
+<script src="/public/js/userlist.js"></script>

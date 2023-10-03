@@ -53,7 +53,7 @@
                 echo '<td>' . $row['coverage'] . '</td>';
                 echo '<td>' . $row['priority'] . '</td>';
                 if ($_SESSION['role'] == 'student') {
-                    echo "<td><a href=''><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Daftar</button></a></td>";
+                    echo "<td><button type='button' onclick='deleteBookmark(".$row['user_id_scholarship'].",".$row['scholarship_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Delete Bookmark</button></td>";
                 }
                 echo '</tr>';
             }
@@ -111,9 +111,4 @@
     });
 </script>
 
-<script>
-    function deleteConfirmation(){
-        var result = confirm("Apakah ingin melakukan penghapusan?");
-        return result;
-    }
-</script>
+<script src="/public/js/bookmark.js"></script>

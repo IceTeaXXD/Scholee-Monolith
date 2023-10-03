@@ -15,9 +15,9 @@ class Bookmark
     }
 
     public function getUserBookmark(){
-        $query = "SELECT title, description, priority, coverage, contact_name, contact_email
+        $query = "SELECT a.user_id_scholarship, a.scholarship_id, title, description, priority, coverage, contact_name, contact_email
                     FROM $this->table a inner join scholarship b on a.scholarship_id = b.scholarship_id and a.user_id_scholarship = b.user_id
-                    Where user_id_student = ?";
+                    WHERE user_id_student = ?";
 
         $stmt = $this->db->setSTMT($query);
 
@@ -26,6 +26,14 @@ class Bookmark
         mysqli_stmt_execute($stmt);
 
         return mysqli_stmt_get_result($stmt);
+    }
+
+    public function deleteUserBookmark($uid, $uis, $sid){
+        $query = "DELETE FROM $this->table WHERE user_id_student = ? and user_id_scholarship = ? and scholarship_id = ?";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_bind_param($stmt, "iii", $uid, $uis, $sid);
+
+        return mysqli_stmt_execute($stmt);
     }
 
     public function countUserBookmark(){
@@ -41,8 +49,9 @@ class Bookmark
         $query = "INSERT INTO bookmark(user_id_student, user_id_scholarship, scholarship_id, priority)
                     VALUES (?,?,?,?)";
         $stmt = $this->db->setSTMT($query);
-        mysqli_stmt_bind_param($stmt, "dddd", $uid, $uis, $sid, $prio);
-        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_param($stmt, "iiii", $uid, $uis, $sid, $prio);
+        $result = mysqli_stmt_execute($stmt);
+        return $result;
     }
 
     public function updatePrio($prio, $uid, $uis, $sid){
