@@ -103,17 +103,17 @@
     </div>
 </div>
 
-<div id="videoModal" class="modal">
+<div id="modal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <video id="videoPlayer" width="320" height="240" controls>
+        <h1>Video Player</h1>
+        <video id="videoPlayer" class="videoPlayer" controls>
             <source id="videoSource" src="" type="video/mp4">
         </video>
     </div>
 </div>
 
 <script src="../../../public/js/submitDocument.js"></script>
-<script src="../../../public/js/modal.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const searchForm = document.getElementById("search-form");
@@ -143,10 +143,4 @@
                 });
         }
     });
-</script>
-<script>
-    function deleteConfirmation(){
-        var result = confirm("Apakah ingin melakukan penghapusan?");
-        return result;
-    }
 </script>
