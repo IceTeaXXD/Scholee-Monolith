@@ -6,19 +6,44 @@ require_once '../../app/models/scholarshiptype.php';
 require_once '../../config/config.php';
 
 session_start();
+header('Content-Type: application/json');
 
-$scholarship = new Scholarship;
+$response = [];
+
+if (!isset($_SESSION['role'], $_SESSION['user_id'])) {
+    $response['status'] = 'error';
+    $response['message'] = 'You are not logged in.';
+    echo json_encode($response);
+    exit;
+}
+// check for data in post
+if (!isset($_POST['title'], $_POST['description'], $_POST['coverage'], $_POST['contact_name'], $_POST['contact_email'], $_POST['type'])) {
+    $response['status'] = 'error';
+    $response['message'] = 'Please complete the form.';
+    echo json_encode($response);
+    exit;
+}
+
+$scholarship = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
 $typeModel = new ScholarshipType;
 
-/* Explode into Array for Type */
+
 $types = explode(",", $_POST['type']);
 $scholarshipTypes = array_map('trim', $types);
 
-$scholarship->updateScholarship($_SESSION['user_id'], $_POST['scholarship_id'], $_POST['title'], $_POST['description'],
+$updateSuccess = $scholarship->updateScholarship($_SESSION['user_id'], $_POST['scholarship_id'], $_POST['title'], $_POST['description'],
                                 $_POST['coverage'], $_POST['contact_name'], $_POST['contact_email']);
 
-$typeModel->updateTypes($_SESSION['user_id'], $_POST['scholarship_id'], $scholarshipTypes);
+if ($updateSuccess) {
+    $typeModel->updateTypes($_SESSION['user_id'], $_POST['scholarship_id'], $scholarshipTypes);
+    $response['status'] = 'success';
+    $response['message'] = 'Scholarship updated successfully';
+} else {
+    $response['status'] = 'error';
+    $response['message'] = 'Failed to update scholarship';
+}
 
-header('Location: /scholarships');
+header('Content-Type: application/json');
+echo json_encode($response);
 
 ?>
