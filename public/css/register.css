@@ -1,0 +1,208 @@
+.RegisterPage {
+    display: flex;
+    position: relative;
+    height: 100vh;
+    overflow-x: hidden;
+    justify-content: center;
+}
+
+.LeftColumn {
+    width: 50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    padding: 100px;
+    margin-bottom:100px;
+}
+
+.RightColumn {
+    width: 50%;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-image: url('/public/image/register.webp');
+}
+
+.SectionText {
+    align-self: stretch;
+    height: 46px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    display: flex;
+}
+
+.Top {
+    align-self: stretch;
+    height: 46px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    display: flex;
+}
+
+.SecondaryHeadline {
+    align-self: stretch;
+    color: #21272A;
+    font-size: 42px;
+    font-family: Roboto;
+    font-weight: 700;
+    line-height: 46.20px;
+    word-wrap: break-word;
+}
+
+.register-form {
+    align-self: stretch;
+    height: 253px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+    display: flex;
+}
+
+.TextField {
+    align-self: stretch;
+    height: 76px;
+    margin-bottom: 16px;
+}
+
+.Text {
+    align-self: stretch;
+    height: 46px;
+    border: none; /* remove the border */
+    border-radius: 4px;
+    background-color: #F5F8FA;
+    color: #21272A;
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 12px 16px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.Text:focus {
+    outline: none;
+}
+
+.LabelAndField {
+    align-self: stretch;
+    height: 76px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    display: flex;
+    margin-top:10px;
+}
+
+.Label {
+    align-self: stretch;
+    color: #21272A;
+    font-size: 14px;
+    font-family: Roboto;
+    font-weight: 400;
+    line-height: 19.60px;
+    word-wrap: break-word;
+    margin-top: 10px;
+}
+
+.Field {
+    align-self: stretch;
+    height: 48px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background: #F2F4F8;
+    border-bottom: 1px #C1C7CD solid;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    display: inline-flex;
+}
+
+
+.IconJamIconsOutlineLogosEye {
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.Vector {
+    width: 20px;
+    height: 12px;
+    left: 2px;
+    top: 6px;
+    position: absolute;
+    background: #697077;
+}
+
+.Description {
+    align-self: stretch;
+    color: #697077;
+    font-size: 12px;
+    font-family: Roboto;
+    font-weight: 400;
+    line-height: 16.80px;
+    word-wrap: break-word;
+    padding-top:40px;
+}
+
+.Button {
+    align-self: stretch;
+    height: 50px;
+    margin-top: 55px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background: #0F62FE;
+    border: 2px #0F62FE solid;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.TextContainer {
+    padding-left: 16px;
+    padding-right: 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+}
+
+.ButtonText {
+    color: white;
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0.50px;
+    word-wrap: break-word;
+}
+
+.NoAccountYetSignUp {
+    align-self: stretch;
+    color: #001D6C;
+    font-size: 14px;
+    font-family: Roboto;
+    font-weight: 400;
+    line-height: 19.60px;
+    word-wrap: break-word;
+    /* margin-top: 30px; */
+}
+
+@media screen and (max-width: 991px) {
+    .RightColumn {
+        display: none;
+    }
+}

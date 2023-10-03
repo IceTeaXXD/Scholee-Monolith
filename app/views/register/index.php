@@ -1,22 +1,45 @@
-<div class="register-page">
-    <div class="form">
-        <form action="javascript:;" onsubmit="return submitForm()">
-            <h2>Register</h2>
-            <input type="text" placeholder="Full Name *" name="name" id="fullname" required />
-            <input type="email" placeholder="Email *" name="email" id="email" required />
-            <input type="password" placeholder="Password *" name="password" id="password" required />
-            <button type="submit" class="btn">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Register
+<div class="RegisterPage">
+    <div class="LeftColumn">
+        <div class="SectionText">
+            <div class="Top">
+                <div class="SecondaryHeadline">Register</div>
+            </div>
+        </div>
+        <form class="register-form" action="javascript:;" onsubmit="return submitForm()">
+            <div class="TextField">
+                <div class="LabelAndField">
+                    <div class="Label">Full Name</div>
+                    <div class="Field">
+                        <input type="text" class="Text" placeholder="Enter your full name" name="name" id="fullname" required />
+                    </div>
+                </div>
+            </div>
+            <div class="TextField">
+                <div class="LabelAndField">
+                    <div class="Label">Email Address</div>
+                    <div class="Field">
+                        <input type="email" class="Text" placeholder="Enter your email address" name="email" id="email" required />
+                    </div>
+                </div>
+            </div>
+            <div class="TextField">
+                <div class="LabelAndField">
+                    <div class="Label">Password</div>
+                    <div class="Field">
+                        <input type="password" class="Text" placeholder="Enter your password" name="password" id="password" required />
+                    </div>
+                </div>
+                <div class="Description">It must be a combination of minimum 8 letters, numbers, and symbols.</div>
+            </div>
+            <button type="submit" class="Button">
+                <div class="TextContainer">
+                    <div class="ButtonText">Register</div>
+                </div>
             </button>
-            <?php if (isset($data['error'])): ?>
-                <div class="alert alert-danger"><?php echo $data['error']; ?></div>
-            <?php endif; ?>
-            <p class="message">Already registered? <a href="/login">Sign In</a></p>
+            <div class="NoAccountYetSignUp">Already have an account? <a href="/login">Sign In</a></div>
         </form>
     </div>
+    <div class="RightColumn"></div>
 </div>
-<script src="../../../public/js/register.js"></script>
+
+<script src="/public/js/register.js"></script>
