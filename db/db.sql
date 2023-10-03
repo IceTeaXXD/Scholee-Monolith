@@ -47,6 +47,7 @@ create table scholarship(
     scholarship_id int not null,
     title varchar(50) not null,
     description longtext,
+    short_description varchar(255),
     coverage int not null,
     contact_name varchar(50) not null,
     contact_email varchar(50) not null,

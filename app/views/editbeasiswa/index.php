@@ -21,6 +21,9 @@ $formatType = implode(', ', $types);
             <label for="description">Scholarship Description</label>
             <textarea id="description" name="description" rows="10" required /><?php echo $row['description'];?></textarea>
 
+            <label for="shortDesc">Scholarship Description</label>
+            <textarea id="shortDesc" name="shortDescription" rows="10" required /><?php echo $row['short_description'];?></textarea>
+
             <label for="coverage">Coverage</label>
             <input type="text" name="coverage" id="coverage" value = "<?php echo $row['coverage'];?>" required />
 

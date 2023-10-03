@@ -2,13 +2,14 @@ const submitForm = () => {
     console.log('submitting');
     const title = document.getElementById('scholarshipname').value;
     const description = document.getElementById('description').value;
+    const shortDescription = document.getElementById('shortdescription').value;
     const coverage = document.getElementById('coverage').value;
     const contactName = document.getElementById('contact_name').value;
     const contactEmail = document.getElementById('contact_email').value;
     const type = document.getElementById('type').value;
 
-    console.log(title, description, coverage, contactName, contactEmail, type);
-    if (!title || !description || !coverage || !contactName || !contactEmail || !type) {
+    console.log(title, description, coverage, contactName, contactEmail, type, shortDescription);
+    if (!title || !description || !coverage || !contactName || !contactEmail || !type || !shortDescription) {
         alert('Please fill out all fields');
         return false;
     }
@@ -20,6 +21,7 @@ const submitForm = () => {
     data.append("contact_name", contactName);
     data.append("contact_email", contactEmail);
     data.append("type", type);
+    data.append("short_description", shortDescription);
 
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/scholarship/add.php');
