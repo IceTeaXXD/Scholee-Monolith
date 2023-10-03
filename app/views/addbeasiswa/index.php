@@ -6,8 +6,11 @@
             <label for="scholarshipname">Scholarship Name</label>
             <input type="text" name="title" id = "scholarshipname" required />
             
-            <label for="description">Scholarship Description</label>
+            <label for="description">Scholarship Full Description</label>
             <textarea id="description" name="description" rows="10" required /></textarea>
+
+            <label for="shortdescription">Scholarship Short Description</label>
+            <textarea id="shortdescription" name="shortDescription" rows="10" required /></textarea>
 
             <label for="coverage">Coverage</label>
             <input type="text" name="coverage" id="coverage" required />
@@ -21,7 +24,7 @@
             <label for="type">Scholarship Type(s)</label>
             <input type="text" name="type" id="type" required />
 
-            <button type = "submit" class="save-btn" onclick="addBeasiswa()">Tambah Beasiswa</button>
+            <button type = "submit" class="save-btn">Tambah Beasiswa</button>
             <a href = "/dashboard" class="cancel-btn">Cancel</a>
         </form>
 
