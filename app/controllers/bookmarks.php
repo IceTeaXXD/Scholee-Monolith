@@ -30,10 +30,4 @@ class Bookmarks extends Controller{
             header('Location: /login');
         }
     }
-
-    public function add(){
-        $model = new Bookmark;
-        $model->newBookMark($_SESSION['user_id'], $_GET['uis'], $_GET['sid'], 1);
-        header("Location: /bookmarks");
-    }
 }

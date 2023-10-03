@@ -41,8 +41,9 @@ class Bookmark
         $query = "INSERT INTO bookmark(user_id_student, user_id_scholarship, scholarship_id, priority)
                     VALUES (?,?,?,?)";
         $stmt = $this->db->setSTMT($query);
-        mysqli_stmt_bind_param($stmt, "dddd", $uid, $uis, $sid, $prio);
-        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_param($stmt, "iiii", $uid, $uis, $sid, $prio);
+        $result = mysqli_stmt_execute($stmt);
+        return $result;
     }
 
     public function updatePrio($prio, $uid, $uis, $sid){
