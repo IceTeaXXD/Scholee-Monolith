@@ -1,8 +1,7 @@
-
 * {
    margin: 0;
    padding: 0;
-   font-family: sans-serif;
+   font-family: 'Roboto';
    letter-spacing: 1px;
    font-weight: 300;
    text-decoration: none;
@@ -12,7 +11,6 @@
    margin: 0;
    padding: 0;
    color: #f2f5f7;
-   font-family: sans-serif;
    letter-spacing: 1px;
    font-weight: 300;
    text-decoration: none;
@@ -27,14 +25,14 @@
 nav {
    height: 4.5rem;
    width: 100%;
-   background-color: #131418;
+   background-color: black;
    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
    display: flex;
    position: fixed;
    z-index: 10;
-   top: 0; 
-   margin:0;
-   color: #f2f5f7;
+   top: 0;
+   margin: 0;
+   color: black;
 }
 
 /*Styling logo*/
@@ -46,7 +44,7 @@ nav {
 }
 
 .logo-text {
-   color: #01939c;
+   color: #0F62FE;
    font-size: 26px;
    font-weight: bold;
    letter-spacing: 1px;
@@ -63,16 +61,15 @@ nav {
    display: flex;
    list-style: none;
    width: 88vw;
-   padding: 0 0.7vw;
-   justify-content: space-evenly;
+   padding: 0 1vw;
    align-items: center;
    text-transform: uppercase;
 }
 
 .nav-links li a {
    text-decoration: none;
-   margin: 0 0.7vw;
-   color: #f2f5f7;
+   margin: 0 1.5vw;
+   color: white;
 }
 
 .nav-links li a:hover {
@@ -88,15 +85,17 @@ nav {
 }
 
 /*Styling Buttons*/
+.login-button-container {
+   margin-left: auto;
+}
+
 .login-button {
    background-color: transparent;
-   border: 1.5px solid #f2f5f7;
+   border: 1.5px solid white;
    border-radius: 2em;
    padding: 0.6rem 0.8rem;
-   margin-left: 2vw;
    font-size: 1rem;
    cursor: pointer;
-
 }
 
 .login-button:hover {
@@ -136,8 +135,111 @@ nav {
    display: none;
 }
 
+.toggle .line1 {
+   transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+   transition: all 0.7s ease;
+   width: 0;
+}
+
+.toggle .line3 {
+   transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.dropbtn {
+   color: white;
+   padding: 16px;
+   font-size: 16px;
+   border: none;
+   cursor: pointer;
+   border-radius: 10px;
+   background-color: #0F62FE;
+}
+
+.dropdown {
+   position: relative;
+   display: inline-block;
+   text-decoration: none;
+}
+
+.profile {
+   position: relative;
+   display: inline-block;
+   margin-left: auto;
+}
+
+.profile:hover .dropdown-content {
+   display: block;
+}
+
+.profile:hover .arrow-down {
+   transform: rotate(180deg);
+}
+
+.dropdown-content {
+   display: none;
+   position: absolute;
+   background-color: #f9f9f9;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+   z-index: 1;
+}
+
+.dropdown-content a {
+   color: black;
+   padding: 12px 16px;
+   text-decoration: none;
+   display: block;
+}
+
+.dropdown-content a:hover {
+   background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+   display: block;
+}
+
+
+.dropdown:hover .dropbtn {
+   background-color: #3e8e41;
+}
+
+.dropdown:hover .arrow-down {
+   transform: rotate(180deg);
+}
+
+.dropdownHead {
+   text-decoration: none;
+   color:white;
+   margin: 0 1.5vw;
+}
+
+.dropdownHead {
+   cursor: pointer;
+}
+
+.dropdownHead:hover {
+   color: #61DAFB;
+}
+
+/* Add this CSS for the arrow-down indicator */
+.arrow-down {
+   display: inline-block;
+   width: 0;
+   height: 0;
+   border-left: 5px solid transparent;
+   border-right: 5px solid transparent;
+   border-top: 5px solid #f2f5f7;
+   margin-left: 5px;
+   vertical-align: middle;
+   transition: transform 0.2s ease;
+}
+
 /*Stying for small screens*/
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1280px) and (max-height: 768px) {
    nav {
       position: fixed;
       z-index: 3;
@@ -164,6 +266,15 @@ nav {
       -webkit-clip-path: circle(50px at 90% -10%);
       transition: all 1s ease-out;
       pointer-events: none;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+   }
+
+   .profile {
+      position: relative;
+      display: inline-block;
+      margin-right: auto;
    }
 
    .nav-links.open {
@@ -209,59 +320,4 @@ nav {
    li.fade {
       opacity: 1;
    }
-}
-
-.toggle .line1 {
-   transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.toggle .line2 {
-   transition: all 0.7s ease;
-   width: 0;
-}
-
-.toggle .line3 {
-   transform: rotate(45deg) translate(-5px, -6px);
-}
-
-.dropbtn {
-   background-color: #4CAF50;
-   color: white;
-   padding: 16px;
-   font-size: 16px;
-   border: none;
-   cursor: pointer;
-}
-
-.dropdown {
-   position: relative;
-   display: inline-block;
-}
-
-.dropdown-content {
-   display: none;
-   position: absolute;
-   background-color: #f9f9f9;
-   min-width: 160px;
-   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-   z-index: 1;
-}
-
-.dropdown-content a {
-   color: black;
-   padding: 12px 16px;
-   text-decoration: none;
-   display: block;
-}
-
-.dropdown-content a:hover {
-   background-color: #f1f1f1
-}
-
-.dropdown:hover .dropdown-content {
-   display: block;
-}
-
-.dropdown:hover .dropbtn {
-   background-color: #3e8e41;
 }
