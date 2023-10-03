@@ -1,3 +1,20 @@
+var modal = document.getElementById("modal");
+var vidSource = document.getElementById("videoSource");
+var vidPlayer = document.getElementById("videoPlayer");
+var closeModal = document.querySelector(".close");
+
+function openVideoModal($url){
+    modal.style.display = "block";
+    vidSource.setAttribute("src", $url);
+    vidPlayer.load();
+}
+
+closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+    vidPlayer.pause();
+    vidSource.setAttribute('src', '');
+});
+
 function submitDocument(userId, fileId) {
     try {
         const formData = new FormData();
@@ -66,3 +83,4 @@ function commentDocument(userId, fileId) {
         console.error("An error occurred:", err);
     }
 }
+
