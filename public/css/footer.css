@@ -1,0 +1,20 @@
+.footer {
+    background: #0F62FE;
+    font-family: 'Roboto';
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.footer-social a {
+    margin: 0 10px;
+}
+
+.footer-info p {
+    color: white;
+}
