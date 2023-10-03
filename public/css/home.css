@@ -45,7 +45,7 @@
 }
 
 .more-info {
-    background-color: #CBEBFA;
+    background-color: transparent;
     color: #4266B0;
     border: 1px solid #4266B0;
     text-align: center;
@@ -112,6 +112,7 @@
 }
 
 .video-section-image {
+    width:auto;
     height: 300px;
     display: flex;
     justify-content: center;

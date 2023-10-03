@@ -90,9 +90,9 @@
                 <li><a href="">Our Products</a></li>
                 <li><a href="">About Us</a></li>
                 <li><a href="">Contact Us</a></li>
-                <div class="login-button-container">
+                <li class="login-button-container">
                     <li><button class="login-button" onclick="redirectToLogin()"><a>Login</a></button></li>
-                </div>
+            </li>
             <?php
             }
             ?>
