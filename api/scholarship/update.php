@@ -32,7 +32,7 @@ $types = explode(",", $_POST['type']);
 $scholarshipTypes = array_map('trim', $types);
 
 $updateSuccess = $scholarship->updateScholarship($_SESSION['user_id'], $_POST['scholarship_id'], $_POST['title'], $_POST['description'],
-                                $_POST['coverage'], $_POST['contact_name'], $_POST['contact_email']);
+                                $_POST['short_description'], $_POST['coverage'], $_POST['contact_name'], $_POST['contact_email']);
 
 if ($updateSuccess) {
     $typeModel->updateTypes($_SESSION['user_id'], $_POST['scholarship_id'], $scholarshipTypes);

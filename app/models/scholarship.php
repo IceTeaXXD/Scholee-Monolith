@@ -20,19 +20,19 @@ class Scholarship
         $this->user_id = $user_id;
     }
 
-    public function addScholarship($user_id, $scholarship_id, $title, $description, $coverage, $contact_name, $contact_email){
-        $query = "INSERT INTO $this->table(user_id, scholarship_id, title, description, coverage, contact_name, contact_email)
-                    VALUES (?,?,?,?,?,?,?)";
+    public function addScholarship($user_id, $scholarship_id, $title, $description, $short_description, $coverage, $contact_name, $contact_email){
+        $query = "INSERT INTO $this->table(user_id, scholarship_id, title, description, short_description, coverage, contact_name, contact_email)
+                    VALUES (?,?,?,?,?,?,?,?)";
         $stmt = $this->db->setSTMT($query);
-        mysqli_stmt_bind_param($stmt, "ddssdss", $user_id, $scholarship_id, $title, $description, $coverage, $contact_name, $contact_email);
+        mysqli_stmt_bind_param($stmt, "ddsssdss", $user_id, $scholarship_id, $title, $description, $short_description, $coverage, $contact_name, $contact_email);
         $res = mysqli_stmt_execute($stmt);
         return $res;
     }
-    public function updateScholarship($user_id, $scholarship_id, $title, $description, $coverage, $contact_name, $contact_email){
-        $query = "UPDATE $this->table SET title = ?, description = ?, coverage= ?, contact_name =? , contact_email = ?
+    public function updateScholarship($user_id, $scholarship_id, $title, $description, $short_description, $coverage, $contact_name, $contact_email){
+        $query = "UPDATE $this->table SET title = ?, description = ?, short_description = ?, coverage= ?, contact_name =? , contact_email = ?
                     WHERE user_id = ? AND scholarship_id = ?";
         $stmt = $this->db->setSTMT($query);
-        mysqli_stmt_bind_param($stmt, "ssissii", $title, $description, $coverage, $contact_name, $contact_email, $user_id, $scholarship_id);
+        mysqli_stmt_bind_param($stmt, "sssissii", $title, $description, $short_description, $coverage, $contact_name, $contact_email, $user_id, $scholarship_id);
         $res = mysqli_stmt_execute($stmt);
         return $res;
     }
@@ -55,7 +55,7 @@ class Scholarship
     }
     
     public function getScholarship($uid, $sid){
-        $query = "SELECT user_id, scholarship_id, title, description, coverage, contact_name, contact_email
+        $query = "SELECT user_id, scholarship_id, title, description, short_description, coverage, contact_name, contact_email
                     FROM $this->table WHERE user_id = ? and scholarship_id = ?";
 
         $stmt = $this->db->setSTMT($query);

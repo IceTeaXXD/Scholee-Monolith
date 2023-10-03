@@ -6,10 +6,11 @@ const submitForm = () => {
     const contactName = document.getElementById('contact_name').value;
     const contactEmail = document.getElementById('contact_email').value;
     const type = document.getElementById('type').value;
-    const scholarshipId = document.querySelector('input[name="scholarship_id"]').value; // Get the scholarship_id
+    const scholarshipId = document.querySelector('input[name="scholarship_id"]').value;
+    const shortDesc = document.getElementById('shortDesc').value
 
-    console.log(title, description, coverage, contactName, contactEmail, type);
-    if (!title || !description || !coverage || !contactName || !contactEmail || !type) {
+    console.log(title, description, coverage, contactName, contactEmail, type, shortDesc);
+    if (!title || !description || !coverage || !contactName || !contactEmail || !type || !shortDesc) {
         alert('Please fill out all fields');
         return false;
     }
@@ -21,6 +22,7 @@ const submitForm = () => {
     data.append("contact_name", contactName);
     data.append("contact_email", contactEmail);
     data.append("type", type);
+    data.append("short_description", shortDesc);
 
     // Append the scholarship_id to the form data
     data.append("scholarship_id", scholarshipId);
