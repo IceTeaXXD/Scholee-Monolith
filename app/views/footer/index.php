@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 <footer class="footer">
     <div class="footer-logo">
-        <img src="/public/image/logo.png" alt="Footer Logo">
+        <img src="/public/image/logo-5.svg" alt="Footer Logo">
     </div>
     <div class="footer-social">
         <a href="https://www.facebook.com/matt.mahen" target="_blank"><img src="/public/image/facebook.svg"></a>

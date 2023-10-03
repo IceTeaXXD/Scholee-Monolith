@@ -3,7 +3,7 @@
     <nav>
         <div class="logo">
             <a href="/">
-                <span class="logo-text">Scholee</span>
+                <img src="../../../public/image/logo-4.svg" alt="logo">
             </a>
         </div>
         <div class="hamburger">
