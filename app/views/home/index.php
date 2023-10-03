@@ -28,17 +28,23 @@
         </div>
     </div>
 </div>
-<!-- <div class="kata-mereka">
+<div class="kata-mereka">
     <h2>Apa Kata Mereka?</h2>
     <div class="grid-container">
-        <div class="grid-item1">
-            <img src="../../../public/image/placeholder.jpg" alt="">
+        <div class="grid-item">
+            <img src="../../../public/image/people1.webp" alt="people1">
+            <h3>John Doe</h3>
+            <p>I cannot express how grateful I am for the integrated scholarship portal in Indonesia. Thanks to this platform, I was able to secure a scholarship that completely covered my tuition fees. It's not just a game-changer; it's a life-changer!</p>
         </div>
-        <div class="grid-item2">
-            Orang 1
+        <div class="grid-item">
+            <img src="../../../public/image/people2.webp" alt="people2">
+            <h3>Jane Smith</h3>
+            <p>As a first-generation college student, I always thought pursuing higher education was out of reach due to financial constraints. But thanks to the scholarship portal, I found the perfect scholarship for me. It's a dream come true, and I'm now on my way to achieving my academic goals.</p>
         </div>
-        <div class="grid-item3">
-            Orang 1
+        <div class="grid-item">
+            <img src="../../../public/image/people3.webp" alt="people3">
+            <h3>Anna Brown</h3>
+            <p>The integrated scholarship portal is a true blessing for students like me who want to excel academically but lack the means. I applied for multiple scholarships through the portal and received offers from several institutions. I'm now on track to pursue my passion and build a brighter future for myself.</p>
         </div>
     </div>
-</div> -->
+</div>
