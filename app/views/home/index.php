@@ -48,3 +48,45 @@
         </div>
     </div>
 </div>
+<div class="easy-steps">
+    <h2>4 Easy Step to Get scholarship</h2>
+    <p class="easy-steps-desc">Securing a scholarship can be a daunting process, but we're here to help. Follow these four easy steps to find and apply for scholarships that match your interests and qualifications.</p>
+    <div class="easy-steps-grid-container">
+        <div class="easy-steps-grid-item">
+            <div class="number">
+                1
+            </div>   
+            <div>
+                <h3>Register</h3>
+                <p>Begin by creating a profile. This will enable you to access a wide array of scholarship options tailored for you.</p>
+            </div>
+        </div>
+        <div class="easy-steps-grid-item">
+            <div class="number">
+                2
+            </div>   
+            <div>
+                <h3>Find</h3>
+                <p>Explore our portal to discover scholarships that align with your academic and personal interests.</p>
+            </div>
+        </div>
+        <div class="easy-steps-grid-item">
+            <div class="number">
+                3
+            </div>   
+            <div>
+                <h3>Apply</h3>
+                <p>Fill out the necessary forms, ensuring every detail is accurate and up-to-date. Don't rush this step!</p>
+            </div>
+        </div>
+        <div class="easy-steps-grid-item">
+            <div class="number">
+                4
+            </div>   
+            <div>
+                <h3>Get</h3>
+                <p>Once selected, you'll receive notifications. Follow the given guidelines and secure your scholarship!</p>
+            </div>
+        </div>
+    </div>
+</div>
