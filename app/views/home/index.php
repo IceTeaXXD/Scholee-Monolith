@@ -17,17 +17,28 @@
     </div>
 </div>
 <div class="video-section">
-    <h2>Watch Our Video</h2>
-    <iframe width="560" height="0" src="https://www.youtube.com/embed/wheuIME0sqI?si=0oa1A22dk8czsmpK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
-<div class="black-section">
-    <div class="content">
-        <div class="text-section">
-            <h1>New Section</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div class="content-video">
+        <div class="text-column">
+            <h2>We are the first integrated scholarship portal in Indonesia</h2>
+            <p>Imagine a world where students from all walks of life can access opportunities for education, where financial burdens no longer stand in the way of academic achievement. Our mission is to break down these barriers, opening the doors to knowledge and opportunity for all.</p>
+            <button class="watch-video">Watch Our Video</button>
         </div>
-        <div class="image-section">
-            <img src="../../../public/image/placeholder.jpg" alt="Placehiolder">
+        <div class="image-column">
+            <img class="video-section-image" src="../../../public/image/video-section.webp" alt="video-section-image">
         </div>
     </div>
 </div>
+<!-- <div class="kata-mereka">
+    <h2>Apa Kata Mereka?</h2>
+    <div class="grid-container">
+        <div class="grid-item1">
+            <img src="../../../public/image/placeholder.jpg" alt="">
+        </div>
+        <div class="grid-item2">
+            Orang 1
+        </div>
+        <div class="grid-item3">
+            Orang 1
+        </div>
+    </div>
+</div> -->

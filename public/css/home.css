@@ -67,59 +67,102 @@
 
 /* VIDEO YT */
 .video-section {
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 40px;
+}
+.video-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.content-video {
+    display: flex; 
+    flex-direction: row-reverse;
+    width: 100%;
+}
+
+.text-column {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+}
+
+
+.image-column {
+    flex: 1; 
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.video-section h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.video-section iframe {
-    width: 560px;
-    height: 315px;
-}
-
-/* BLACK SECTION */
-.black-section {
-    background-color: #000;
+.watch-video {  
+    background-color: #4266B0;
     color: #fff;
+    padding: 10px 20px; 
+    width: 200px; 
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.video-section-image {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* KATA MEREKA */
+.kata-mereka {
     text-align: center;
     padding: 20px;
+    background-color: #CBEBFA;
+}
+.kata-mereka h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
 }
 
-.black-section h1 {
+.grid-item1 {
+    padding: 10px;
+    text-align: center;
+    background-color: #CBEBFA; 
+    outline: none;
+}
+.grid-item2 {
+    padding: 10px;
+    text-align: center;
+    background-color: #2A6DB6; 
+    outline: none;
+}
+.grid-item3 {
+    padding: 10px;
+    text-align: center;
+    background-color: #CBEBFA; 
+    outline: none;
+}
+
+.kata-mereka h2 {
     font-size: 24px;
     margin-bottom: 20px;
-}
-
-.black-section p {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.black-section .button-container button {
-    background-color: #61DAFB;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    margin-top: 10px;
 }
 
 /* FOOTER*/
 .footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     text-align: center;
     padding: 20px;
 }
