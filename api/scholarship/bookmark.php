@@ -1,7 +1,7 @@
 <?php
 require_once '../../app/core/App.php';
 require_once '../../app/core/Database.php';
-require_once '../../app/models/Scholarship.php';
+require_once '../../app/models/Bookmark.php';
 require_once '../../config/config.php';
 
 session_start();

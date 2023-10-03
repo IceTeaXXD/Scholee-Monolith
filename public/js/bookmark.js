@@ -2,7 +2,6 @@ async function bookmark(userID, scholarshipID){
     const formData = new FormData();
     formData.append("uis", userID);
     formData.append("sid", scholarshipID);
-
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.open('POST', '/api/scholarship/bookmark.php');
     xmlhttp.onload = () => {
@@ -15,6 +14,7 @@ async function bookmark(userID, scholarshipID){
             alert(res.error);
         }
     };
+    console.log("sent")
     xmlhttp.send(formData);
     return false;
 }
