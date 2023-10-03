@@ -78,7 +78,7 @@ create table bookmark(
     priority int not null,
     primary key(user_id_student, user_id_scholarship, scholarship_id),
     foreign key(user_id_student) references student(user_id),
-    foreign key(user_id_scholarship, scholarship_id) references scholarship(user_id, scholarship_id)
+    foreign key(user_id_scholarship, scholarship_id) references scholarship(user_id, scholarship_id) on delete cascade
 );
 
 create table review(

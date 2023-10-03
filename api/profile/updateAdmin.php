@@ -54,6 +54,20 @@ if($_GET['role'] == 'student'){
     $user -> update($value);
     $administrator -> update($value);
 
+} else if ($_GET['role'] == 'reviewer'){
+    $value = array(
+        "user_id" => $_GET['user_id'],
+        "name" => $_POST['name'],
+        "image" => $filename
+    );
+
+    if($_FILES['profilepic']['name'] == ''){
+        $value['image'] = '';
+    }else{
+        move_uploaded_file($_FILES['profilepic']['tmp_name'], $target_file);
+    }
+
+    $user -> update($value);
 }
 
 header("Location: /admin/list");

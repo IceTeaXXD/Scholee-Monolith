@@ -2,7 +2,7 @@
     <h1>Add Beasiswa</h1>
     <div class="form">
         
-        <form method = "post">
+        <form action="javascript:;" onsubmit="return submitForm()">
             <label for="scholarshipname">Scholarship Name</label>
             <input type="text" name="title" id = "scholarshipname" required />
             
@@ -27,5 +27,4 @@
 
     </div>
 </div>
-
-<script src="../../public/js/addBeasiswa.js"></script>
+<script src="../../../public/js/addScholarship.js"></script>
