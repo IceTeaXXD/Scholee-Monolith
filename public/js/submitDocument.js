@@ -1,25 +1,33 @@
-async function submitDocument(userId, fileId) {
+function submitDocument(userId, fileId) {
     try {
         const formData = new FormData();
         formData.append('uid', userId);
         formData.append('fid', fileId);
 
-        const response = await fetch('/api/review/submit.php', {
-            method: 'POST',
-            body: formData
-        });
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/api/review/submit.php', true);
 
-        const data = await response.json();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+                    if (data.status === 'success') {
+                        location.reload();
+                    }
+                } else {
+                    console.error("Request failed with status:", xhr.status);
+                }
+            }
+        };
 
-        if (data.status === 'success') {
-            location.reload();
-        }
+        xhr.send(formData);
     } catch (err) {
-        console.log("There was an error:" + err);
+        console.error("There was an error:", err);
     }
 }
 
-async function commentDocument(userId, fileId) {
+
+function commentDocument(userId, fileId) {
     try {
         const commentInput = document.getElementById("comment-" + userId + "-" + fileId);
 
@@ -35,23 +43,25 @@ async function commentDocument(userId, fileId) {
         formData.append('fid', fileId);
         formData.append('comment', commentValue);
 
-        const response = await fetch('/api/review/comment.php', {
-            method: 'POST',
-            body: formData
-        });
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/api/review/comment.php', true);
 
-        if (!response.ok) {
-            console.error("Request failed with status:", response.status);
-            return;
-        }
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+                    if (data.status === 'success') {
+                        location.reload();
+                    } else {
+                        console.error("Server returned an error:", data.error);
+                    }
+                } else {
+                    console.error("Request failed with status:", xhr.status);
+                }
+            }
+        };
 
-        const data = await response.json();
-
-        if (data.status === 'success') {
-            location.reload();
-        } else {
-            console.error("Server returned an error:", data.error);
-        }
+        xhr.send(formData);
     } catch (err) {
         console.error("An error occurred:", err);
     }
