@@ -1,4 +1,4 @@
-<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 <div class="navbar-body">
     <nav>
         <div class="logo">
