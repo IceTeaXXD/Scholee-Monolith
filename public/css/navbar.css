@@ -41,19 +41,13 @@ nav {
    text-align: center;
    display: flex;
    align-items: center;
-}
-
-.logo-text {
-   color: #2C347F;   
-   font-size: 26px;
-   font-weight: bold;
-   letter-spacing: 1px;
-   margin-left: 20px;
+   justify-content: center;
+   width: 5rem;
 }
 
 .logo img {
-   height: 5rem;
-   width: 5rem;
+   height: 3rem;
+   /* width: 3 rem; */
 }
 
 /*Styling Links*/
