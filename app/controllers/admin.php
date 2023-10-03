@@ -20,9 +20,13 @@ class Admin extends Controller{
         $data['users'] = $userModel->getUserAll();
         $data['judul'] = 'List User';
         $data['style'] = "/public/css/userlist.css";
-        $this->view('header/index', $data);
-        $this->view('navbar/index', $data);
-        $this->view('userlist/index', $data);
+        if(isset($_SESSION['role'])){
+            $this->view('header/index', $data);
+            $this->view('navbar/index', $data);
+            $this->view('userlist/index', $data);
+        }else{
+            header("Location: /login"); 
+        }
     }
 
     public function update(){
