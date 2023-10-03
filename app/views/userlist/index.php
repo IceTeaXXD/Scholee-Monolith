@@ -17,7 +17,7 @@
         while($row = mysqli_fetch_array($data['users'])){
         ?>
         <div class="box">
-            <img class="profile" src="/public/image/profiles/<?php echo $row['image'];?>">
+            <img class="profile" alt="user profile image" src="/public/image/profiles/<?php echo $row['image'];?>">
             <h3 class="name"><?php echo $row['name'];?></h3>
             <div class="attribute">Role: <?php echo $row['role'];?></div>
             <div class="attribute">Email: <?php echo $row['email'];?></div>
@@ -36,8 +36,8 @@
         <h1>Delete Confirmation</h1>
         <p>Do you want to delete <span id="modal-name"></span>?</p>
 
-        <button class="btn btn-danger" onclick="deleteUser()">Yes</button>
-        <button class="btn btn-primary"onclick="closeModal()">No</button>
+        <button class="btn btn-primary" onclick="deleteUser()">Yes</button>
+        <button class="btn btn-danger"onclick="closeModal()">No</button>
     </div>
 </div>
 

@@ -10,7 +10,7 @@ class ScholarshipType
     private $table;   
 
     public function __construct() {
-        $this->table = 'scholarshipType';
+        $this->table = 'scholarshiptype';
         $this->db = new Database;
     }
 

@@ -1,80 +1,87 @@
-.user-list{
-    position: relative;
-    z-index: 1;
-    font-family: Poppins;
-    font-weight: 300;
-    line-height: 1.42em;
-    color: #A7A1AE;
-    background-color: #1F2739;
-    margin-top: 4.5rem;
-    padding: 2rem;
-    min-height:100vh;
+body {
+    margin: 0;
+    padding: 0;
 }
 
-.user-filter{
+.user-list {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    color: #4226B0;
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    margin-top: 4.5rem;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+.user-filter {
     display: flex;
     justify-content: center;
     margin: 10px;
 }
 
-.container{
+.container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap:5px;
+    gap: 5px;
 }
 
-.box{
-    margin: 0 auto;
-    display: flex;
-    float: left;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 15px;
+/* Box Styles */
+.box {
     margin: 5px;
-    background: #eff7cd;
+    flex: 1;
+    padding: 15px;
+    background: #2A6DB6;
     border-radius: 10px;
-    color: #1F2739;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
-.box .profile{
+.box .profile {
     width: 200px;
-    border-radius: 100px;
+    height: 200px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    margin: 0 auto 10px;
 }
 
-.box h3.name{
-    display: flex;
-    justify-content: center;
+.box h3.name {
     margin-top: 10px;
 }
 
-.box .attribute{
-    display: flex;
-    justify-content: center;
+.box .attribute {
     margin-top: 10px;
 }
 
+/* Button Styles */
 .btn {
     margin: 2px;
     padding: 3px;
     border-radius: 40px;
     width: 150px;
-}
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}  
 
 .btn.btn-primary {
-    background-color: #005319;
-    color: #fff;
+    background-color: #CBEBFA;
+    border: none;
+    color: #444;
 }
 
 .btn.btn-danger {
-    background-color: #6d0101;
+    background-color: #b50101;
+    border: none;
     color: #fff;
 }
+
 
 .modal{
     display: none;
@@ -90,6 +97,9 @@
 }
 
 .modal-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: #cfcfcf;
     border-radius: 30px;
     margin: 10% auto;

@@ -39,26 +39,25 @@ class Admin extends Controller{
         $user = new User;
         $data['user'] = $user->getUser($_GET['email'], $_GET['role']);
 
-        $this->view('header/index', $data);
-        $this->view('navbar/index', $data);
-        $this->view('updateuser/index', $data);
-    }
-
-    public function delete(){
-        $model = new Superadmin;
-
-        $exec = $model->deleteUser($_GET['user_id']);
-
-        if($exec){
-            header("Location: /admin/list");
+        if(isset($_SESSION['user_id'])){
+            $this->view('header/index', $data);
+            $this->view('navbar/index', $data);
+            $this->view('updateuser/index', $data);
+        }else{
+            header("Location: /login");
         }
     }
 
     public function add(){
         $data['judul'] = 'Add User';
         $data['style'] = "/public/css/addbeasiswa.css";
-        $this->view('header/index', $data);
-        $this->view('navbar/index', $data);
-        $this->view('addnewuser/index', $data);
+
+        if(isset($_SESSION['user_id'])){
+            $this->view('header/index', $data);
+            $this->view('navbar/index', $data);
+            $this->view('addnewuser/index', $data);
+        }else{
+            header("Location: /login");
+        }
     }
 }
