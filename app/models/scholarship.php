@@ -74,14 +74,14 @@ class Scholarship
         $query = '';
         $stmt = null;
         if($this->role == 'admin'){
-            $query .= "SELECT user_id, scholarship_id, title, description, coverage, contact_name, contact_email
+            $query .= "SELECT user_id, scholarship_id, title, description, short_description, coverage, contact_name, contact_email
                     FROM $this->table 
                     WHERE user_id = ?
                     LIMIT ?, ?";
             $stmt = $this->db->setSTMT($query);
             mysqli_stmt_bind_param($stmt, "iii", $this->user_id, $offset, $limit);
         }else{
-            $query = "SELECT user_id, scholarship_id, title, description, coverage, contact_name, contact_email
+            $query = "SELECT user_id, scholarship_id, title, description, short_description, coverage, contact_name, contact_email
             FROM $this->table LIMIT ?, ?";
             $stmt = $this->db->setSTMT($query);
             mysqli_stmt_bind_param($stmt, "ii", $offset, $limit);
