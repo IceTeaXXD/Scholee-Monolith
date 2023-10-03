@@ -1,15 +1,18 @@
 <div class="image-container">
     <div class="content">
         <div class="text-section">
-            <h1>BEASISWAAAH</h1>
-            <p>Lorem ipsum dolor sir amet</p>
+            <h1>Get matched to
+            Scholarships
+            that fit you
+            </h1>
+            <p>Finding college scholarships shouldn't be overwhelming. We make it simple and match you to scholarships you qualify for.</p>
             <div class="button-container">
-                <button>GET STARTED</button>
-                <button>More information</button>
+                <button class="get-started">Get Started</button>
+                <button class="more-info">More information</button>
             </div>
         </div>
         <div class="image-section">
-            <img src="../../../public/image/placeholder.jpg" alt="Placehiolder">
+            <img class="image" src="../../../public/image/hero.webp" alt="Placeholder">
         </div>
     </div>
 </div>
