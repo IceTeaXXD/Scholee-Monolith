@@ -92,32 +92,19 @@ nav {
    cursor: pointer;
 }
 
+.login-button-container a:hover {
+   color: white !important; /* Add !important to override other styles */
+}
+
 .login-button:hover {
    color: #131418;
-   background-color: #2C347F;
+   background-color: #61DAFB;
    border: 1.5px solid #f2f5f7;
    transition: all ease-in-out 350ms;
 }
 
 .login-button:hover a {
    color: #f2f5f7;
-}
-
-.join-button {
-   color: #131418;
-   background-color: #61DAFB;
-   border: 1.5px solid #61DAFB;
-   border-radius: 2em;
-   padding: 0.6rem 0.8rem;
-   font-size: 1rem;
-   cursor: pointer;
-}
-
-.join-button:hover {
-   color: #f2f5f7;
-   background-color: transparent;
-   border: 1.5px solid #f2f5f7;
-   transition: all ease-in-out 350ms;
 }
 
 /*Styling Hamburger Icon*/
@@ -208,7 +195,7 @@ nav {
    background-color: #3e8e41;
 }
 
-.dropdown:hover .arrow-down {
+.dropdown:hover .arrow-down-nav {
    transform: rotate(180deg);
 }
 
@@ -234,6 +221,18 @@ nav {
    border-left: 5px solid transparent;
    border-right: 5px solid transparent;
    border-top: 5px solid #f2f5f7;
+   margin-left: 5px;
+   vertical-align: middle;
+   transition: transform 0.2s ease;
+}
+
+.arrow-down-nav {
+   display: inline-block;
+   width: 0;
+   height: 0;
+   border-left: 5px solid transparent;
+   border-right: 5px solid transparent;
+   border-top: 5px solid black;
    margin-left: 5px;
    vertical-align: middle;
    transition: transform 0.2s ease;

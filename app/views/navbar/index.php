@@ -20,7 +20,7 @@
                     <li><a href="/scholarships">List Beasiswa</a></li>
                     <li><a href="/bookmarks">Bookmark</a></li>
                     <div class="dropdown">
-                        <a class="dropdownHead">Document Preparation<span class="arrow-down"></span></a>
+                        <a class="dropdownHead">Document Preparation<span class="arrow-down-nav"></span></a>
                         <div class="dropdown-content">
                             <a href="/reviews">Check Document Review</a>
                             <a href="/reviews/add">Add Document</a>
@@ -91,8 +91,8 @@
                 <li><a href="">About Us</a></li>
                 <li><a href="">Contact Us</a></li>
                 <li class="login-button-container">
-                    <li><button class="login-button" onclick="redirectToLogin()"><a>Login</a></button></li>
-            </li>
+                    <button class="login-button" onclick="redirectToLogin()"><a>Login</a></button>
+                </li>
             <?php
             }
             ?>
