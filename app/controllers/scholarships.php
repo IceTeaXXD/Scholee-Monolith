@@ -10,7 +10,7 @@ class Scholarships extends Controller
     public function index()
     {
         $data['judul'] = 'Scholarships';
-        $data['style'] = "/public/css/portal.css";
+        $data['style'] = "/public/css/scholarships.css";
         $this->view('header/index', $data);
         $this->view('navbar/index', $data);
         $model = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
