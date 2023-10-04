@@ -14,7 +14,8 @@ class Login extends Controller
     public function error() {
         $data['judul'] = 'Login Page';
         $data['style'] = "/public/css/login.css";
-        $data['error'] = "Login Gagal";
+        $data['error'] = "Incorrect username or password.";
+        // $data['email'] = $_SESSION['failemail'];
         $this->view('header/index', $data);
         $this->view('navbar/index', $data);
         $this->view('login/index', $data);

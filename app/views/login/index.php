@@ -21,7 +21,11 @@
                         <input type="password" class="Text" placeholder="Enter your password" name="password" id="password">
                     </div>
                 </div>
-                <div class="Description">It must be a combination of minimum 8 letters, numbers, and symbols.</div>
+                <?php
+                if (isset($data['error'])) {
+                    echo '<div class="ErrorText">' . $data['error'] . '</div>';
+                }
+                ?>
             </div>
             <button type="submit" class="Button">
                 <div class="TextContainer">
