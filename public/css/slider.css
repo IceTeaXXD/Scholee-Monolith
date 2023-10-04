@@ -1,0 +1,10 @@
+.slidecontainer {
+    width: 250px;
+    height: 10%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.slidecontainer p {
+    text-align: center;
+}

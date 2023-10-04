@@ -42,7 +42,7 @@ input,
     transition: all calc(1s * 0.5) linear;
 }
 
-input {
+.search-form input {
     background: transparent;
     border-radius: 50%;
     box-shadow: 0 0 0 0.25em inset;

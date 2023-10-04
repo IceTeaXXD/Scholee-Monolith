@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?= $data['style']; ?>">
 <link rel="stylesheet" type="text/css" href="/public/css/search.css">
+<link rel="stylesheet" type="text/css" href="/public/css/slider.css">
 <div class="scholarship-body">
     <table class="container">
         <div class="search-form">
@@ -10,6 +11,10 @@
                     <span class="caret"></span>
                 </form>
             </body>
+        </div>
+        <div class="slidecontainer">
+            <input type="range" min="1" max="1000000" value="500000" class="slider" id="range">
+            <p>Coverage: <span id="coverage"></span></p>
         </div>
         <thead>
             <tr>
