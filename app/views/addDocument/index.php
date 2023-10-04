@@ -7,8 +7,8 @@
                 <input type="file" name="document" id="file" required />
             </div>
             <div class="button-container">
-                <button type="submit" class="save-btn">Tambah Dokumen</button>
                 <a href="/dashboard" class="cancel-btn">Cancel</a>
+                <button type="submit" class="save-btn">Tambah Dokumen</button>
             </div>
         </form>
     </div>

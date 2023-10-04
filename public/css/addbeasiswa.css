@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;  /* Using viewport height to fill the entire vertical space of the viewport */
+    height: 100vh;
+
     flex-direction: column;
 }
 
@@ -15,22 +16,23 @@
 .add-beasiswa .form {
     display: flex;
     justify-content: center;
-    align-items: center;  /* Vertically centers the items inside */
+    align-items: center;
     padding: 15px 30px;
     border-radius: 4px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: fit-content;  /* Makes the form container only as wide as it needs to be */
+    width: fit-content; 
 }
 
 .input-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-right: 20px;  /* Spacing between input and buttons */
+    /* margin-right: 20px;  */
 }
 
 .button-container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 10px;
 }
@@ -80,7 +82,7 @@
     text-decoration: none;
     background-color: #f44336;
     color: white;
-    padding: 12px 20px;
+    padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -97,7 +99,25 @@
 }
 @media (min-width: 768px) {
     .add-beasiswa .form {
-        width: 100%;
+        width: 65%;
         padding: 15px 30px;
+    }
+    .add-beasiswa .form form {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    }
+    .add-beasiswa .form .button-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 10px;
+    }
+    .add-beasiswa .form .input-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-right: 20px;
     }
 }
