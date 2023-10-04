@@ -16,16 +16,10 @@
                     <h1>DESKRIPSI</h1>
                 </th>
                 <th>
-                    <h1>CP</h1>
-                </th>
-                <th>
-                    <h1>EMAIL</h1>
-                </th>
-                <th>
                     <h1>Coverage</h1>
                 </th>
                 <th>
-                    <h1>Priority
+                    <h1>Types</h1>
                 </th>
                 <th>
                     <div class="pagination-form" id="pagination-form">
@@ -47,13 +41,26 @@
             while ($row = mysqli_fetch_array($data['row'])) {
                 echo '<tr>';
                 echo '<td>' . $row['title'] . '</td>';
-                echo '<td>' . $row['description'] . '</td>';
-                echo '<td>' . $row['contact_name'] . '</td>';
-                echo '<td>' . $row['contact_email'] . '</td>';
+                echo '<td>' . $row['short_description'] . '</td>';
                 echo '<td>' . $row['coverage'] . '</td>';
-                echo '<td>' . $row['priority'] . '</td>';
+                echo '<td>';
+                $typeModel = new ScholarshipType;
+                $types = $typeModel->getTypes($row['user_id_scholarship'], $row['scholarship_id']);
+                while($r = mysqli_fetch_array($types)){
+                    $typesArray[] = $r['type'];
+                }
+                echo implode(", ", $typesArray);
+                echo '</td>';
                 if ($_SESSION['role'] == 'student') {
-                    echo "<td><button type='button' onclick='deleteBookmark(".$row['user_id_scholarship'].",".$row['scholarship_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Delete Bookmark</button></td>";
+                    echo "<td><button type='button' onclick='deleteBookmark(".$row['user_id_scholarship'].",".$row['scholarship_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Delete Bookmark</button>";
+                    echo "<button type='button' onclick='' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>View More</button></td>";
+                } else if ($_SESSION['role'] == 'admin') {
+                    echo ("<td>
+                            <a href='scholarships/edit?user_id=".$row['user_id'] ."&scholarship_id=".$row['scholarship_id']."'>
+                                <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Edit</button>
+                            </a>
+                            <button type='button' onclick = 'deleteConfirmation(".$row['user_id'].",".$row['scholarship_id'].")' class='btn btn-danger' data-toggle='modal' data-target='#exampleModalCenter'>Delete</button>
+                        </td>");
                 }
                 echo '</tr>';
             }

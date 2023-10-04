@@ -16,10 +16,10 @@
                     <h1>DESKRIPSI</h1>
                 </th>
                 <th>
-                    <h1>CP</h1>
+                    <h1>Coverage</h1>
                 </th>
                 <th>
-                    <h1>EMAIL</h1>
+                    <h1>Types</h1>
                 </th>
                 <th>
                     <div class="pagination-form" id="pagination-form">
@@ -41,11 +41,19 @@
             while ($row = mysqli_fetch_array($data['scholarships'])) {
                 echo '<tr>';
                 echo '<td>' . $row['title'] . '</td>';
-                echo '<td>' . $row['description'] . '</td>';
-                echo '<td>' . $row['contact_name'] . '</td>';
-                echo '<td>' . $row['contact_email'] . '</td>';
+                echo '<td>' . $row['short_description'] . '</td>';
+                echo '<td>' . $row['coverage'] . '</td>';
+                echo '<td>';
+                $typeModel = new ScholarshipType;
+                $types = $typeModel->getTypes($row['user_id'], $row['scholarship_id']);
+                while($r = mysqli_fetch_array($types)){
+                    $typesArray[] = $r['type'];
+                }
+                echo implode(", ", $typesArray);
+                echo '</td>';
                 if ($_SESSION['role'] == 'student') {
-                    echo "<td><button type='button' onclick='bookmark(".$row['user_id'].",".$row['scholarship_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Bookmark</button></td>";
+                    echo "<td><button type='button' onclick='bookmark(".$row['user_id'].",".$row['scholarship_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Bookmark</button>";
+                    echo "<button type='button' onclick='' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>View More</button></td>";
                 } else if ($_SESSION['role'] == 'admin') {
                     echo ("<td>
                             <a href='scholarships/edit?user_id=".$row['user_id'] ."&scholarship_id=".$row['scholarship_id']."'>
