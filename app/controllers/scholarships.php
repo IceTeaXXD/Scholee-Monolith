@@ -9,24 +9,46 @@ class Scholarships extends Controller
 {
     public function index()
     {
-        $data['judul'] = 'Scholarships';
-        $data['style'] = "/public/css/scholarships.css";
-        $this->view('header/index', $data);
-        $this->view('navbar/index', $data);
-        $model = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
-        $itemsPerPage = isset($_GET['itemsPerPage']) ? $_GET['itemsPerPage'] : 5;
-        $totalScholarships = $model->countScholarships();
-        if ($itemsPerPage === 'all') {
-            $itemsPerPage = $totalScholarships;
+        $args = func_get_args();
+        if (!isset($args[0])) {
+            $data['judul'] = 'Scholarships';
+            $data['style'] = "/public/css/scholarships.css";
+            $this->view('header/index', $data);
+            $this->view('navbar/index', $data);
+            $model = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
+            $itemsPerPage = isset($_GET['itemsPerPage']) ? $_GET['itemsPerPage'] : 5;
+            $totalScholarships = $model->countScholarships();
+            if ($itemsPerPage === 'all') {
+                $itemsPerPage = $totalScholarships;
+            }
+            $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+            $offset = ($currentPage - 1) * $itemsPerPage;
+            $data['scholarships'] = $model->getAllScholarship($offset, $itemsPerPage);
+            $data['totalScholarships'] = $totalScholarships;
+            $data['itemsPerPage'] = $itemsPerPage;
+            $data['currentPage'] = $currentPage;
+            $this->view('scholarships/index', $data);
+        } else {
+            $scholarshipModel = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
+            $result = $scholarshipModel->getScholarship($args[0], $args[1]);
+            foreach ($result as $row) {
+                $data['user_id'] = $row['user_id'];
+                $data['scholarship_id'] = $row['scholarship_id'];
+                $data['title'] = $row['title'];
+                $data['short_description'] = $row['short_description'];
+                $data['description'] = $row['description'];
+                $data['coverage'] = $row['coverage'];
+                $data['contact_name'] = $row['contact_name'];
+                $data['contact_email'] = $row['contact_email'];
+            }
+            $data['judul'] = $data['title'];
+            $data['style'] = "/public/css/description.css";
+            $this->view('header/index', $data);
+            $this->view('navbar/index', $data);
+            $this->view('scholarships/description', $data);
         }
-        $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-        $offset = ($currentPage - 1) * $itemsPerPage;
-        $data['scholarships'] = $model->getAllScholarship($offset, $itemsPerPage);
-        $data['totalScholarships'] = $totalScholarships;
-        $data['itemsPerPage'] = $itemsPerPage;
-        $data['currentPage'] = $currentPage;
-        $this->view('scholarships/index', $data);
     }
+
     public function search()
     {
         $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
@@ -94,5 +116,10 @@ class Scholarships extends Controller
         } else {
             header('Location: /login');
         }
+    }
+
+    // view per scholarship
+    public function description()
+    {
     }
 }
