@@ -23,9 +23,10 @@
 
             <label for="type">Scholarship Type(s)</label>
             <input type="text" name="type" id="type" required />
-
-            <button type = "submit" class="save-btn">Tambah Beasiswa</button>
-            <a href = "/dashboard" class="cancel-btn">Cancel</a>
+            <div class="flex-button">
+                <a href = "/dashboard" class="cancel-btn">Cancel</a>
+                <button type = "submit" class="save-btn">Tambah Beasiswa</button>
+            </div>
         </form>
 
     </div>
