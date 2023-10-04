@@ -2,10 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 6rem;
+    height: 100vh;  /* Using viewport height to fill the entire vertical space of the viewport */
     flex-direction: column;
-    margin-left: 200px;
-    margin-right: 200px;
 }
 
 .add-beasiswa h1 {
@@ -15,16 +13,33 @@
 }
 
 .add-beasiswa .form {
-    width: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;  /* Vertically centers the items inside */
     padding: 15px 30px;
     border-radius: 4px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: fit-content;  /* Makes the form container only as wide as it needs to be */
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 20px;  /* Spacing between input and buttons */
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .add-beasiswa .form input[type='text'],
 .add-beasiswa .form input[type='email'],
 .add-beasiswa .form input[type='password' i],
-.add-beasiswa .form select {
+.add-beasiswa .form select,
+.add-beasiswa .form input[type='file'] {
     width: 100%;
     padding: 12px 20px;
     margin: 10px 0;
