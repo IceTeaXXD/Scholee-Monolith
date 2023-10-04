@@ -1,0 +1,31 @@
+const uploadCV = () => {
+    window.location.href = "../../reviews/add";
+}
+
+const applyScholarship = () => {
+    window.location.href = "../../scholarships"
+}
+
+const bookmarkClicked = (user_id, scholarship_id) => {
+    window.location.href = "../../" + user_id + "/" + scholarship_id;
+}
+let currentSlideIndex = 0;
+
+function slideTo(index) {
+    const slideWidth = 560;
+    const list = document.querySelector('.scholarship-list');
+    list.style.transform = `translateX(${-index * slideWidth}px)`;
+}
+
+function nextSlide() {
+    const list = document.querySelector('.scholarship-list');
+    const totalSlides = list.childElementCount - 1; 
+    
+    currentSlideIndex = Math.min(currentSlideIndex + 1, totalSlides);
+    slideTo(currentSlideIndex);
+}
+
+function prevSlide() {
+    currentSlideIndex = Math.max(currentSlideIndex - 1, 0);
+    slideTo(currentSlideIndex);
+}
