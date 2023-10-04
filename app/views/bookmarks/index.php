@@ -54,7 +54,7 @@
                 echo '</td>';
                 if ($_SESSION['role'] == 'student') {
                     echo "<td><button type='button' onclick='deleteBookmark(".$row['user_id_scholarship'].",".$row['scholarship_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Delete Bookmark</button>";
-                    echo "<button type='button' onclick='' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>View More</button></td>";
+                    echo "<button type='button' onclick='redirectToScholarships(".$row['user_id_scholarship'].",".$row['scholarship_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>View More</button></td>";
                 } else if ($_SESSION['role'] == 'admin') {
                     echo ("<td>
                             <a href='scholarships/edit?user_id=".$row['user_id'] ."&scholarship_id=".$row['scholarship_id']."'>
@@ -120,3 +120,4 @@
 </script>
 
 <script src="/public/js/bookmark.js"></script>
+<script src="/public/js/scholarships.js"></script>
