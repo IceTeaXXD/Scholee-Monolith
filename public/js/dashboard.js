@@ -12,8 +12,12 @@ const bookmarkClicked = (user_id, scholarship_id) => {
 let currentSlideIndex = 0;
 
 function slideTo(index) {
-    const slideWidth = 560;
     const list = document.querySelector('.scholarship-list');
+    const item = list.querySelector('.scholarship-item');
+
+    const style = window.getComputedStyle(item);
+    const slideWidth = item.offsetWidth + (parseFloat(style.marginRight) || 0) + (parseFloat(style.marginLeft) || 0);
+    
     list.style.transform = `translateX(${-index * slideWidth}px)`;
 }
 
