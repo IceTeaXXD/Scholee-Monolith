@@ -5,10 +5,12 @@ require_once 'app/models/Scholarship.php';
 require_once 'app/models/Scholarshiptype.php';
 require_once 'config/config.php';
 
-class Scholarships extends Controller {
-    public function index() {
+class Scholarships extends Controller
+{
+    public function index()
+    {
         $data['judul'] = 'Scholarships';
-        $data['style'] = "/public/css/scholarships.css";
+        $data['style'] = "/public/css/portal.css";
         $this->view('header/index', $data);
         $this->view('navbar/index', $data);
         $model = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
@@ -17,7 +19,7 @@ class Scholarships extends Controller {
         if ($itemsPerPage === 'all') {
             $itemsPerPage = $totalScholarships;
         }
-        $currentPage = isset($_GET['page']) ? $_GET['page'] : 1; 
+        $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
         $offset = ($currentPage - 1) * $itemsPerPage;
         $data['scholarships'] = $model->getAllScholarship($offset, $itemsPerPage);
         $data['totalScholarships'] = $totalScholarships;
@@ -25,22 +27,42 @@ class Scholarships extends Controller {
         $data['currentPage'] = $currentPage;
         $this->view('scholarships/index', $data);
     }
-    public function search() {
+    public function search()
+    {
         $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
         $model = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
         $results = $model->searchScholarship($searchQuery, 0, 100);
         foreach ($results as $row) {
             echo '<tr>';
             echo '<td>' . $row['title'] . '</td>';
-            echo '<td>' . $row['description'] . '</td>';
-            echo '<td>' . $row['contact_name'] . '</td>';
-            echo '<td>' . $row['contact_email'] . '</td>';
-            echo "<td><a href='scholarships?item_id=" . $row['title'] . "'><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Daftar</button></td>";
+            echo '<td>' . $row['short_description'] . '</td>';
+            echo '<td>' . $row['coverage'] . '</td>';
+            echo '<td>';
+            $typeModel = new ScholarshipType;
+            $types = $typeModel->getTypes($row['user_id'], $row['scholarship_id']);
+            while ($r = mysqli_fetch_array($types)) {
+                $typesArray[] = $r['type'];
+            }
+            echo implode(", ", $typesArray);
+            unset($typesArray);
+            echo '</td>';
+            if ($_SESSION['role'] == 'student') {
+                echo "<td><button type='button' onclick='bookmark(" . $row['user_id'] . "," . $row['scholarship_id'] . ")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Bookmark</button>";
+                echo "<button type='button' onclick='' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>View More</button></td>";
+            } else if ($_SESSION['role'] == 'admin') {
+                echo ("<td>
+                        <a href='scholarships/edit?user_id=" . $row['user_id'] . "&scholarship_id=" . $row['scholarship_id'] . "'>
+                            <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Edit</button>
+                        </a>
+                        <button type='button' onclick = 'deleteConfirmation(" . $row['user_id'] . "," . $row['scholarship_id'] . ")' class='btn btn-danger' data-toggle='modal' data-target='#exampleModalCenter'>Delete</button>
+                    </td>");
+            }
             echo '</tr>';
         }
     }
-    
-    public function add(){
+
+    public function add()
+    {
         $data['judul'] = 'Add Beasiswa';
         $data['style'] = "/public/css/dashboard.css";
         $data['style'] = "/public/css/addbeasiswa.css";
@@ -53,7 +75,8 @@ class Scholarships extends Controller {
         }
     }
 
-    public function edit(){
+    public function edit()
+    {
         $data['judul'] = 'Edit Beasiswa';
         $data['style'] = "/public/css/dashboard.css";
         $data['style'] = "/public/css/addbeasiswa.css";
@@ -61,8 +84,8 @@ class Scholarships extends Controller {
         $scholarshipModel = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
         $types = new ScholarshipType();
 
-        $data['row'] = $scholarshipModel->getScholarship($_GET['user_id'],$_GET['scholarship_id']);
-        $data['type'] = $types->getTypes($_GET['user_id'],$_GET['scholarship_id']);
+        $data['row'] = $scholarshipModel->getScholarship($_GET['user_id'], $_GET['scholarship_id']);
+        $data['type'] = $types->getTypes($_GET['user_id'], $_GET['scholarship_id']);
 
         if (isset($_SESSION['username']) && $_SESSION['role'] == 'admin') {
             $this->view('header/index', $data);
