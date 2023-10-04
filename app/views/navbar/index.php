@@ -17,8 +17,8 @@
                 if ($_SESSION['role'] == 'student') {
             ?>
                     <li><a href="/dashboard">Dashboard</a></li>
-                    <li><a href="/scholarships">List Beasiswa</a></li>
-                    <li><a href="/bookmarks">Bookmark</a></li>
+                    <li><a href="/scholarships">Scholarships</a></li>
+                    <li><a href="/bookmarks">Bookmarks</a></li>
                     <div class="dropdown">
                         <a class="dropdownHead">Document Preparation<span class="arrow-down-nav"></span></a>
                         <div class="dropdown-content">
@@ -38,8 +38,8 @@
                     </div>
                 <?php   } else if ($_SESSION['role'] == 'admin') { ?>
                     <li><a href="/dashboard">Dashboard</a></li>
-                    <li><a href="/scholarships/add">Add Beasiswa</a></li>
-                    <li><a href=" /scholarships">List Beasiswa</a></li>
+                    <li><a href="/scholarships/add">Add Scholarship</a></li>
+                    <li><a href=" /scholarships">Scholarships</a></li>
                     <div class="profile">
                         <a class="dropbtn">
                             <?php echo $_SESSION['username']; ?>
