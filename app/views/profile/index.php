@@ -6,7 +6,7 @@ $row = mysqli_fetch_array($data['user']);
         <div class="grid-item-profile-1">
             <img id="profileDisplay" src="/public/image/profiles/<?php echo $row['image']; ?>" alt="Profile Image" class="profile-image-display" height="200px">
         </div>
-        <div class="grid-item-profile">
+        <div class="grid-item-profile-2">
             <h2 id="fullNameDisplay">Name: <?php echo $row['name']; ?></h2>
             <?php
             if ($_SESSION['role'] == 'student') {
