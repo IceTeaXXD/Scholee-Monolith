@@ -58,23 +58,23 @@ body {
     margin-top: 10px;
 }
 
-.modal .btn {
-    margin: 2px;
+.btn {
+    margin: 10px;
     padding: 3px;
     border-radius: 40px;
     width: 150px;
     cursor: pointer;
     font-weight: bold;
     text-transform: uppercase;
-}  
-
-.modal .btn.btn-primary {
+}
+ 
+.btn.btn-primary {
     background-color: #CBEBFA;
     border: none;
     color: #444;
 }
 
-.modal .btn.btn-danger {
+.btn.btn-danger {
     background-color: #b50101;
     border: none;
     color: #fff;
@@ -94,13 +94,13 @@ body {
 }
 
 .modal-content{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
     background-color: #fff;
     border-radius: 30px;
     margin: 10% auto;
     padding: 20px;
-    width: 50%;
+    width: 30%;
     max-width: 600px;
+    position: relative;
+    color: #4226B0;
 }

@@ -97,6 +97,15 @@
     </div>
 </div>
 
+<div id="alert-modal" class="modal">
+    <div class="modal-content">
+        <h3 class="modal-title">
+            This scholarship has been bookmarked!
+        </h3>
+        <button class="btn btn-primary" onclick="closeModal()">Ok</button>
+    </div>
+</div>
+
 <script src="/public/js/deleteConfirm.js"></script>
 <script src="/public/js/bookmark.js"></script>
 <script src="/public/js/scholarships.js"></script>

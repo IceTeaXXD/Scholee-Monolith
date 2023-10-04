@@ -1,3 +1,6 @@
+var alertModal = document.getElementById("alert-modal");
+console.log(alertModal);
+
 async function bookmark(userID, scholarshipID){
     const formData = new FormData();
     formData.append("uis", userID);
@@ -11,12 +14,16 @@ async function bookmark(userID, scholarshipID){
         if (res.status === 'success') {
             window.location.href = "/bookmarks";
         } else {
-            alert("This scholarship has been bookmarked!");
+            alertModal.style.display = "block";
         }
     };
     console.log("sent")
     xmlhttp.send(formData);
     return false;
+}
+
+function closeModal(){
+    alertModal.style.display = "none";
 }
 
 async function deleteBookmark(userID, scholarshipID){
