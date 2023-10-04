@@ -50,6 +50,7 @@
                     $typesArray[] = $r['type'];
                 }
                 echo implode(", ", $typesArray);
+                unset($typesArray);
                 echo '</td>';
                 if ($_SESSION['role'] == 'student') {
                     echo "<td><button type='button' onclick='bookmark(".$row['user_id'].",".$row['scholarship_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Bookmark</button>";

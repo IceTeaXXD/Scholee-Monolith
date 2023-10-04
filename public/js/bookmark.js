@@ -11,7 +11,7 @@ async function bookmark(userID, scholarshipID){
         if (res.status === 'success') {
             window.location.href = "/bookmarks";
         } else {
-            alert(res.error);
+            alert("This scholarship has been bookmarked!");
         }
     };
     console.log("sent")
