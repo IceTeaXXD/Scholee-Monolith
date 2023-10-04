@@ -15,7 +15,7 @@ class Bookmark
     }
 
     public function getUserBookmark(){
-        $query = "SELECT a.user_id_scholarship, a.scholarship_id, title, description, priority, coverage, contact_name, contact_email
+        $query = "SELECT a.user_id_scholarship, a.scholarship_id, title, description, short_description, priority, coverage, contact_name, contact_email
                     FROM $this->table a inner join scholarship b on a.scholarship_id = b.scholarship_id and a.user_id_scholarship = b.user_id
                     WHERE user_id_student = ?";
 
