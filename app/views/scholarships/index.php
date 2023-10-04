@@ -1,11 +1,15 @@
 <link rel="stylesheet" type="text/css" href="<?= $data['style']; ?>">
+<link rel="stylesheet" type="text/css" href="/public/css/search.css">
 <div class="scholarship-body">
     <table class="container">
         <div class="search-form">
-            <form method="get" id="search-form">
-                <input type="text" name="search" id="search" placeholder="Search for items..." value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
-                <button type="submit">Search</button>
-            </form>
+            <body>
+                <form autocomplete="off">
+                    <label for="search">Search</label>
+                    <input id="search" type="search" pattern=".*\S.*" required>
+                    <span class="caret"></span>
+                </form>
+            </body>
         </div>
         <thead>
             <tr>
@@ -46,21 +50,21 @@
                 echo '<td>';
                 $typeModel = new ScholarshipType;
                 $types = $typeModel->getTypes($row['user_id'], $row['scholarship_id']);
-                while($r = mysqli_fetch_array($types)){
+                while ($r = mysqli_fetch_array($types)) {
                     $typesArray[] = $r['type'];
                 }
                 echo implode(", ", $typesArray);
                 unset($typesArray);
                 echo '</td>';
                 if ($_SESSION['role'] == 'student') {
-                    echo "<td><button type='button' onclick='bookmark(".$row['user_id'].",".$row['scholarship_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Bookmark</button>";
-                    echo "<button type='button' onclick='redirectToScholarships(".$row['user_id'].",".$row['scholarship_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>View More</button></td>";
+                    echo "<td><button type='button' onclick='bookmark(" . $row['user_id'] . "," . $row['scholarship_id'] . ")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Bookmark</button>";
+                    echo "<button type='button' onclick='redirectToScholarships(" . $row['user_id'] . "," . $row['scholarship_id'] . ")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>View More</button></td>";
                 } else if ($_SESSION['role'] == 'admin') {
                     echo ("<td>
-                            <a href='scholarships/edit?user_id=".$row['user_id'] ."&scholarship_id=".$row['scholarship_id']."'>
+                            <a href='scholarships/edit?user_id=" . $row['user_id'] . "&scholarship_id=" . $row['scholarship_id'] . "'>
                                 <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Edit</button>
                             </a>
-                            <button type='button' onclick = 'deleteConfirmation(".$row['user_id'].",".$row['scholarship_id'].")' class='btn btn-danger' data-toggle='modal' data-target='#exampleModalCenter'>Delete</button>
+                            <button type='button' onclick = 'deleteConfirmation(" . $row['user_id'] . "," . $row['scholarship_id'] . ")' class='btn btn-danger' data-toggle='modal' data-target='#exampleModalCenter'>Delete</button>
                         </td>");
                 }
                 echo '</tr>';
