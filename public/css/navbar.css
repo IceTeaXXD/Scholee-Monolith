@@ -330,4 +330,17 @@ nav {
    li.fade {
       opacity: 1;
    }
+
+   .dropdownHead {
+      color: white;
+   }
+
+   .dropdown-content a {
+      color: black;
+   }
+
+   .arrow-down-nav {
+      border-top: 5px solid white;
+   }
+
 }
