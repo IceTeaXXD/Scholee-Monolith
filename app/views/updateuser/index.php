@@ -35,6 +35,9 @@ $row = mysqli_fetch_array($data['user']);
             <?php } else if ($data['role'] == 'admin') { ?>
             <label for="gender">Organization</label>
             <input type="text" name="organization" value = "<?php echo $row['organization'];?>">
+            <?php } else if ($data['role'] == 'reviewer'){?>
+            <label for="occupation">Occupation</label>
+            <input type="text" id="occupation" name="occupation" value = "<?php echo $row['occupation'];?>">
             <?php } ?>
 
             <button type="submit" class="save-btn">Save Changes</button>
@@ -52,3 +55,4 @@ $row = mysqli_fetch_array($data['user']);
         </div>
     </form>
 </div>
+<script src="/public/js/updateAdmin.js"></script>

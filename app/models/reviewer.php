@@ -13,6 +13,13 @@ class Reviewer extends User{
         $this->score += $add;
     }
     
+    public function update($editVal){
+        $query = "UPDATE reviewer SET occupation = ? WHERE user_id = ?";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_bind_param($stmt, "si", $editVal['occupation'], $editVal['user_id']);
+        return mysqli_stmt_execute($stmt);
+    }
+
     public function register(string $name, string $role, string $email, string $password){
         $this->name = $name;
         $this->role = $role;

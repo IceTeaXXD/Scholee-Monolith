@@ -9,7 +9,9 @@ session_start();
 $user = new User();
 
 $target = "../../public/image/profiles/";
-$filename = time() . '_' . $_FILES['profilepic']['name'];
+$filename = "";
+if(isset($_FILES['profilepic']))
+    $filename = time() . '_' . $_FILES['profilepic']['name'];
 $target_file = $target . $filename;
 
 $response = [];
@@ -57,7 +59,7 @@ try {
 
         $user->update($value);
         $administrator->update($value);
-    } elseif ($_SESSION['role'] == 'super admin' || $_SESSION['role'] == 'reviewer') {
+    } else if ($_SESSION['role'] == 'super admin') {
         $value = array(
             "user_id" => $_SESSION['user_id'],
             "name" => $_POST['name'],
@@ -71,6 +73,24 @@ try {
         }
 
         $user->update($value);
+    } else {
+        require_once '../../app/models/Reviewer.php';
+        $model = new Reviewer();
+        $value = array(
+            "user_id" => $_SESSION['user_id'],
+            "name" => $_POST['name'],
+            "image" => $filename,
+            "occupation" => $_POST['occupation']
+        );
+
+        if (isset($_FILES['profilepic']) && $_FILES['profilepic']['name'] != '') {
+            move_uploaded_file($_FILES['profilepic']['tmp_name'], $target_file);
+        } else {
+            $value['image'] = '';
+        }
+
+        $user->update($value);
+        $model->update($value);
     }
 
     $response['status'] = 'success';

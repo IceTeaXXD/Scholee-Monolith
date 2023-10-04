@@ -38,8 +38,8 @@
 }
 
 .edit-profile .save-btn {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #CBEBFA;
+    color: #444;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
@@ -58,7 +58,8 @@
 }
 
 .edit-profile .save-btn:hover {
-    background-color: #45a049;
+    background-color: #2a6db2;
+    color: #ffffff;
 }
 
 .edit-profile .cancel-btn {

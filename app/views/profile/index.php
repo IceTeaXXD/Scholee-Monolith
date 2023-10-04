@@ -13,7 +13,9 @@ $row = mysqli_fetch_array($data['user']);
         <p class="profile-text">Level: <?php echo $row['level'];?></p>
         <?php } else if ($_SESSION['role'] == 'admin') { ?>
         <p class="profile-text">Organization: <?php echo $row['organization'];?></p>
-        <?php }?>
+        <?php } else if ($_SESSION['role'] == 'reviewer'){ ?>
+        <p class="profile-text">Occupation: <?php echo $row['occupation'];?></p>
+        <?php } ?>
         <a href="/profile/edit" class="edit-btn">Edit Profile</a>
     </div>
 </div>
