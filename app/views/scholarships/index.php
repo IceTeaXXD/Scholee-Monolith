@@ -42,7 +42,7 @@
                 echo '<tr>';
                 echo '<td>' . $row['title'] . '</td>';
                 echo '<td>' . $row['short_description'] . '</td>';
-                echo '<td>' . $row['coverage'] . '</td>';
+                echo '<td> $' . number_format($row['coverage'], 0, ',', '.') . '</td>';
                 echo '<td>';
                 $typeModel = new ScholarshipType;
                 $types = $typeModel->getTypes($row['user_id'], $row['scholarship_id']);
@@ -54,7 +54,7 @@
                 echo '</td>';
                 if ($_SESSION['role'] == 'student') {
                     echo "<td><button type='button' onclick='bookmark(".$row['user_id'].",".$row['scholarship_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Bookmark</button>";
-                    echo "<button type='button' onclick='' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>View More</button></td>";
+                    echo "<button type='button' onclick='redirectToScholarships(".$row['user_id'].",".$row['scholarship_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>View More</button></td>";
                 } else if ($_SESSION['role'] == 'admin') {
                     echo ("<td>
                             <a href='scholarships/edit?user_id=".$row['user_id'] ."&scholarship_id=".$row['scholarship_id']."'>
@@ -99,4 +99,4 @@
 
 <script src="/public/js/deleteConfirm.js"></script>
 <script src="/public/js/bookmark.js"></script>
-<script src="/public/js/search.js"></script>
+<script src="/public/js/scholarships.js"></script>
