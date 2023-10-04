@@ -104,7 +104,6 @@
 
 .file-input::file-selector-button {
     display: none;
-    /* Hide the default file selector button */
 }
 
 .file-input-text {
@@ -113,4 +112,45 @@
 
 .input-date {
     color: black;
+}
+@media (min-width: 768px) {
+    .profile-info{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+    }
+    .grid-items-1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        justify-content: center;
+        height: 100%; 
+    }
+    
+    .edit-profile {
+        flex-direction: row; 
+        padding-top: 3rem;
+        justify-content: space-between; 
+    }
+
+    .edit-profile .profile-info {
+        flex: 1; 
+        text-align: left; 
+        padding-right: 2rem;
+    }
+
+    .edit-profile .profile-form {
+        flex: 2; 
+        padding: 2rem;
+        text-align: left; 
+    }
+
+    .edit-profile img.profile-image-display {
+        display: block; 
+        margin: 0 auto 2rem auto; 
+    }
+
+    .file-input-wrapper {
+        margin-bottom: 2rem; 
+    }
 }
