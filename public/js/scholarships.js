@@ -26,3 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 });
+
+function redirectToScholarships(uid, sid) {
+    // console.log(id);
+    window.location.href = `/scholarships/${uid}/${sid}`;
+}
