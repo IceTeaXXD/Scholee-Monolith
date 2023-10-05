@@ -143,22 +143,6 @@
     font-weight: bold;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    padding-left: 50px;
-    padding-right: 50px;
-}
-
-.grid-item {
-    padding: 20px;
-    text-align: center;
-    background-color: #CBEBFA;
-    outline: none;
-    border-radius: 30px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-}
 
 .grid-item img {
     height: 100px;
@@ -221,6 +205,33 @@
     margin-bottom: 30px;
     color : #717171;
 }
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+    overflow: hidden;
+    position: relative;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    justify-content: space-between;
+}
+
+.grid-container::-webkit-scrollbar {
+    display: none;
+}
+
+.grid-item {
+    padding: 20px;
+    text-align: center;
+    background-color: #CBEBFA;
+    outline: none;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    flex: 0 0 100%;
+}
 .easy-steps-grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -228,7 +239,6 @@
     overflow: hidden;
     position: relative;
     width: 100%;
-    scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
@@ -245,6 +255,10 @@
 /* Styles for small screens */
 @media (max-width: 768px) { 
     .easy-steps-grid-container {
+        display: flex;
+        overflow-x: scroll;
+    }
+    .grid-container {
         display: flex;
         overflow-x: scroll;
     }
