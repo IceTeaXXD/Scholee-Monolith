@@ -4,7 +4,7 @@
     align-items: center;
     height: 100vh;
     flex-direction: column;
-    padding-top: 300px;
+    /* padding-top: 300px; */
 }
 
 .add-beasiswa h1 {
@@ -99,10 +99,6 @@
 }
 
 @media screen and (max-width: 450px) {
-    .add-beasiswa {
-        padding-top: 400px;
-    }
-
     .add-beasiswa h1 {
         font-size: 2rem;
     }

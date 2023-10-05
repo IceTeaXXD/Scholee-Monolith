@@ -50,7 +50,7 @@ class Admin extends Controller{
 
     public function add(){
         $data['judul'] = 'Add User';
-        $data['style'] = "/public/css/addbeasiswa.css";
+        $data['style'] = "/public/css/adduser.css";
 
         if(isset($_SESSION['user_id'])){
             $this->view('header/index', $data);
