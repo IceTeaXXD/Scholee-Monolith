@@ -1,11 +1,15 @@
 <link rel="stylesheet" type="text/css" href="<?= $data['style']; ?>">
+<link rel="stylesheet" type="text/css" href="/public/css/search.css">
 <div class="scholarship-body">
     <table class="container">
         <div class="search-form">
-            <form method="get" id="search-form">
-                <input type="text" name="search" id="search" placeholder="Search for items..." value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
-                <button type="submit">Search</button>
-            </form>
+            <body>
+                <form autocomplete="off">
+                    <label for="search">Search</label>
+                    <input id="search" type="search" pattern=".*\S.*" required>
+                    <span class="caret"></span>
+                </form>
+            </body>
         </div>
         <thead>
             <tr>
