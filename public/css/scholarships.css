@@ -208,28 +208,6 @@ h2 a {
     margin-top: 20px;
 }
 
-.search-form {
-    display: flex;
-    justify-content: center;
-    /* margin-top: 20px; */
-    font-size: 16px;
-}
-
-#search {
-    border-radius: 5px;
-    width: 300px;
-    height: 35px;
-    font-size: 16px;
-    padding: 5px;
-}
-
-.search-form button {
-    height: 35px;
-    font-size: 16px;
-    margin-left: 10px;
-    border-radius: 5px;
-}
-
 .modal{
     display: none;
     position: fixed;

@@ -1,11 +1,20 @@
 <link rel="stylesheet" type="text/css" href="<?= $data['style']; ?>">
+<link rel="stylesheet" type="text/css" href="/public/css/search.css">
+<link rel="stylesheet" type="text/css" href="/public/css/slider.css">
 <div class="scholarship-body">
     <table class="container">
         <div class="search-form">
-            <form method="get" id="search-form">
-                <input type="text" name="search" id="search" placeholder="Search for items..." value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
-                <button type="submit">Search</button>
-            </form>
+            <body>
+                <form autocomplete="off">
+                    <label for="search">Search</label>
+                    <input id="search" type="search" pattern=".*\S.*" required>
+                    <span class="caret"></span>
+                </form>
+            </body>
+        </div>
+        <div class="slidecontainer">
+            <input type="range" min="1" max="1000000" value="500000" class="slider" id="range">
+            <p>Coverage: <span id="coverage"></span></p>
         </div>
         <thead>
             <tr>
@@ -46,7 +55,7 @@
                 echo '<td>';
                 $typeModel = new ScholarshipType;
                 $types = $typeModel->getTypes($row['user_id'], $row['scholarship_id']);
-                while($r = mysqli_fetch_array($types)){
+                while ($r = mysqli_fetch_array($types)) {
                     $typesArray[] = $r['type'];
                 }
                 echo implode(", ", $typesArray);
