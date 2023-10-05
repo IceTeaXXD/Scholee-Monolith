@@ -3,6 +3,8 @@ var vidSource = document.getElementById("videoSource");
 var vidPlayer = document.getElementById("videoPlayer");
 var closeModal = document.querySelector(".close");
 
+var alertModal = document.getElementById("alert-modal");
+
 function openVideoModal($url){
     modal.style.display = "block";
     vidSource.setAttribute("src", $url);
@@ -14,6 +16,10 @@ closeModal.addEventListener('click', () => {
     vidPlayer.pause();
     vidSource.setAttribute('src', '');
 });
+
+function closeModalAlert(){
+    alertModal.style.display = 'none';
+}
 
 function submitDocument(userId, fileId) {
     try {
@@ -30,6 +36,8 @@ function submitDocument(userId, fileId) {
                     const data = JSON.parse(xhr.responseText);
                     if (data.status === 'success') {
                         location.reload();
+                    }else{
+                        alertModal.style.display="block";
                     }
                 } else {
                     console.error("Request failed with status:", xhr.status);

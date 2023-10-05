@@ -57,15 +57,8 @@
                 unset($typesArray);
                 echo '</td>';
                 if ($_SESSION['role'] == 'student') {
-                    echo "<td><button type='button' onclick='deleteBookmark(".$row['user_id_scholarship'].",".$row['scholarship_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Delete Bookmark</button>";
-                    echo "<button type='button' onclick='redirectToScholarships(".$row['user_id_scholarship'].",".$row['scholarship_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>View More</button></td>";
-                } else if ($_SESSION['role'] == 'admin') {
-                    echo ("<td>
-                            <a href='scholarships/edit?user_id=".$row['user_id'] ."&scholarship_id=".$row['scholarship_id']."'>
-                                <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Edit</button>
-                            </a>
-                            <button type='button' onclick = 'deleteConfirmation(".$row['user_id'].",".$row['scholarship_id'].")' class='btn btn-danger' data-toggle='modal' data-target='#exampleModalCenter'>Delete</button>
-                        </td>");
+                    echo "<td><button type='button' onclick='deleteBookmark(".$row['user_id_scholarship'].",".$row['scholarship_id'].")' data-toggle='modal' data-target='#exampleModalCenter'>Delete Bookmark</button>";
+                    echo "<button type='button' onclick='redirectToScholarships(".$row['user_id_scholarship'].",".$row['scholarship_id'].")' data-toggle='modal' data-target='#exampleModalCenter'>View More</button></td>";
                 }
                 echo '</tr>';
             }

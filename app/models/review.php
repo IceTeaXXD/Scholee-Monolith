@@ -26,18 +26,28 @@ class Review
     }
 
     public function submitForReview($uis, $fid){
+        /* Check if student has uploaded this file before */
+        $checkQ = "SELECT count(*) as count FROM review WHERE user_id_student = ? AND file_id = ?";
+        $stmtCheck = $this->db->setSTMT($checkQ);
+        mysqli_stmt_bind_param($stmtCheck, "ii", $uis, $fid);
+        mysqli_stmt_execute($stmtCheck);
+        $getRow = mysqli_stmt_get_result($stmtCheck);
+        $row = mysqli_fetch_array($getRow);
+        if($row['count'] == 0){
+            /* Generate random */
+            $uir = 0;
+            $query = "SELECT user_id FROM reviewer ORDER BY RAND() LIMIT 1";
+            $stmt = $this->db->setSTMT($query);
+            mysqli_stmt_execute($stmt);
+            $uir = mysqli_fetch_array(mysqli_stmt_get_result($stmt))['user_id'];
 
-        /* Generate random */
-        $uir = 0;
-        $query = "SELECT user_id FROM reviewer ORDER BY RAND() LIMIT 1";
-        $stmt = $this->db->setSTMT($query);
-        mysqli_stmt_execute($stmt);
-        $uir = mysqli_fetch_array(mysqli_stmt_get_result($stmt))['user_id'];
-
-        $query = "INSERT INTO review
-                    VALUES ($uir, $uis, $fid, 'waiting', NULL)";
-        $stmt = $this->db->setSTMT($query);
-        return mysqli_stmt_execute($stmt);
+            $query = "INSERT INTO review
+                        VALUES ($uir, $uis, $fid, 'waiting', NULL)";
+            $stmt = $this->db->setSTMT($query);
+            return mysqli_stmt_execute($stmt);
+        }else{
+            return false;
+        }
     }
 
     public function getStudentDocument(){

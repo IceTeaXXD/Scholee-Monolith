@@ -62,14 +62,14 @@
                 unset($typesArray);
                 echo '</td>';
                 if ($_SESSION['role'] == 'student') {
-                    echo "<td><button type='button' onclick='bookmark(" . $row['user_id'] . "," . $row['scholarship_id'] . ")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Bookmark</button>";
-                    echo "<button type='button' onclick='redirectToScholarships(" . $row['user_id'] . "," . $row['scholarship_id'] . ")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>View More</button></td>";
+                    echo "<td><button type='button' onclick='bookmark(".$row['user_id'].",".$row['scholarship_id'].")' data-toggle='modal' data-target='#exampleModalCenter'>Bookmark</button>";
+                    echo "<button type='button' onclick='redirectToScholarships(".$row['user_id'].",".$row['scholarship_id'].")' data-toggle='modal' data-target='#exampleModalCenter'>View More</button></td>";
                 } else if ($_SESSION['role'] == 'admin') {
                     echo ("<td>
-                            <a href='scholarships/edit?user_id=" . $row['user_id'] . "&scholarship_id=" . $row['scholarship_id'] . "'>
-                                <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Edit</button>
+                            <a href='scholarships/edit?user_id=".$row['user_id'] ."&scholarship_id=".$row['scholarship_id']."'>
+                                <button type='button' data-toggle='modal' data-target='#exampleModalCenter'>Edit</button>
                             </a>
-                            <button type='button' onclick = 'deleteConfirmation(" . $row['user_id'] . "," . $row['scholarship_id'] . ")' class='btn btn-danger' data-toggle='modal' data-target='#exampleModalCenter'>Delete</button>
+                            <button type='button' onclick = 'deleteConfirmation(".$row['user_id'].",".$row['scholarship_id'].")' data-toggle='modal' data-target='#exampleModalCenter'>Delete</button>
                         </td>");
                 }
                 echo '</tr>';
@@ -100,9 +100,18 @@
 
 <div id="deleteModal" class="modal">
     <div class="modal-content">
-        <h3>Apakah Anda benar ingin melakukan penghapusan?</h3>
-        <button onclick="confirmDelete()">Ya</button>
-        <button class="closebtn" onclick="cancelDelete()">Tidak</button>
+        <h3 class="title">Apakah Anda benar ingin melakukan penghapusan?</h3>
+        <button class="btn btn-primary" onclick="confirmDelete()">Ya</button>
+        <button class="btn btn-danger closebtn" onclick="cancelDelete()">Tidak</button>
+    </div>
+</div>
+
+<div id="alert-modal" class="modal">
+    <div class="modal-content">
+        <h3 class="modal-title">
+            This scholarship has been bookmarked!
+        </h3>
+        <button class="btn btn-primary" onclick="closeModal()">Ok</button>
     </div>
 </div>
 

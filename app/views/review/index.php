@@ -117,6 +117,13 @@
     </div>
 </div>
 
+<div id="alert-modal" class="modal">
+    <div class="modal-content">
+        <h3 class="modal-title">You have already submitted this document!</h3>
+        <button class="btn btn-primary" id="closeModalBTN" onclick="closeModalAlert()">Close</button>
+    </div>
+</div>
+
 <script src="../../../public/js/submitDocument.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {

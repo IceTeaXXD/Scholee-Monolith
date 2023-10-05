@@ -15,6 +15,8 @@ if (!isset($_SESSION['user_id'])) {
 if($_SERVER['REQUEST_METHOD'] === 'POST')
     if($model->submitForReview($_POST['uid'], $_POST['fid'])){
         echo json_encode(['status' => 'success']);
+    }else{
+        echo json_encode(['status' => 'error', 'message' => 'User session not found.']);
     }
 
 ?>
