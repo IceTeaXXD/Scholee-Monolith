@@ -225,13 +225,29 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
-    padding-left: 50px;
-    padding-right: 50px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.easy-steps-grid-container::-webkit-scrollbar {
+    display: none;
 }
 
 .easy-steps-grid-item {
-    padding: 20px;
-    outline: none;
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+}
+
+/* Styles for small screens */
+@media (max-width: 768px) { 
+    .easy-steps-grid-container {
+        display: flex;
+        overflow-x: scroll;
+    }
 }
 /* FOOTER*/
 .footer {
@@ -242,7 +258,7 @@
 }
 
 .footer-logo img {
-    width: 80px;
+    max-width: 80px;
     height: auto;
 }
 
