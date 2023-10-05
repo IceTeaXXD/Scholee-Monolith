@@ -175,37 +175,38 @@ h2 a {
     transition-timing-function: line;
 }
 
-/* Previous and Next links */
-.pagination-button a {
-    color: #FFF;
-    padding: 8px 16px;
-    text-decoration: none;
-    background-color: #333;
-    border-radius: 5px;
-    margin: 2px;
-}
-
-/* Current active page */
-.pagination-button a.active {
-    background-color: #4CAF50;
-}
-
-/* Hover effect */
-.pagination-button a:hover:not(.active) {
-    background-color: #ddd;
-}
-
-/* Center the pagination */
+/* Pagination styling */
 .pagination-button {
     display: flex;
     justify-content: center;
-    margin: 20px 0;
+    align-items: center;
+    margin-top: 20px;
 }
 
-.pagination-form {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+.pagination-button button {
+    cursor: pointer;
+    background-color: #2C347F;
+    border-radius: 10px;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    transition: background-color .3s;
+    width: 40px;  
+    height: 40px; 
+    line-height: 30px; 
+}
+
+.pagination-button button.active {
+    background-color: #CBEBFA;
+    color: black;
+}
+
+.pagination-button button:hover:not(.active) {
+    background-color: white;
+    color : #2C347F;
 }
 
 .modal{

@@ -77,21 +77,34 @@ function renderPagination(currentPage, totalItems, itemsPerPage) {
     let paginationHtml = '';
 
     for (let i = 1; i <= totalPages; i++) {
-        if (i === currentPage) {
-            paginationHtml += `<button class="active">${i}</button>`;
-        } else {
-            paginationHtml += `<button onclick="changePage(${i})">${i}</button>`;
-        }
+        paginationHtml += `<button onclick="changePage(${i})">${i}</button>`;
     }
 
     document.getElementById("pagination-button").innerHTML = paginationHtml;
+    updateActiveButton(currentPage);
 }
+
+function updateActiveButton(currentPage) {
+    const buttons = document.querySelectorAll(".pagination-button button");
+    buttons.forEach((button, index) => {
+        if ((index + 1) == currentPage) {
+            button.classList.add("active");
+        } else {
+            button.classList.remove("active");
+        }
+    });
+}
+
 function changePage(page) {
     let currentUrl = new URL(window.location.href);
     currentUrl.searchParams.set("page", page);
     history.pushState(null, '', currentUrl);
     getScholarship();
 }
+document.addEventListener("DOMContentLoaded", function() {
+    const currentPage = getQueryVariable("page") || 1;
+    updateActiveButton(currentPage);
+});
 
 // update url without refresh
 document.getElementById("itemsPerPage").addEventListener('change', function() {
