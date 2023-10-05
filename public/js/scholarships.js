@@ -68,6 +68,7 @@ function renderScholarships(response) {
                 <td>${scholarship.short_description}</td>
                 <td>${scholarship.coverage}</td>
                 <td>${types}</td>
+                <td><button onclick="redirectToScholarships(${scholarship.user_id}, ${scholarship.scholarship_id})">View More</button></td>
             </tr>`;
             scholarshipsTableBody.innerHTML += row;
         });
