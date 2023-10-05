@@ -6,8 +6,8 @@ const applyScholarship = () => {
     window.location.href = "../../scholarships"
 }
 
-const bookmarkClicked = (user_id, scholarship_id) => {
-    window.location.href = "../../" + user_id + "/" + scholarship_id;
+const viewMoreClicked = (user_id, scholarship_id) => {
+    window.location.href = "../../scholarships/" + user_id + "/" + scholarship_id;
 }
 let currentSlideIndex = 0;
 

@@ -14,8 +14,8 @@
                     echo '<li class="scholarship-item">';
                     echo "<h3>" . $row['title'] . "</h3>";
                     echo "<p>" . $row['short_description'] . "</p>";
-                    echo '<button class="bookmark-button" onclick="bookmarkClicked(' . $row["user_id"] . ',' . $row["scholarship_id"] . ')">';
-                    echo 'Bookmark';
+                    echo '<button class="viewMore-button" onclick="viewMoreClicked(' . $row["user_id"] . ',' . $row["scholarship_id"] . ')">';
+                    echo 'View More';
                     echo '</button>';
                     echo '</li>';
                 }
