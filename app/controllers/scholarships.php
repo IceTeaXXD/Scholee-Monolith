@@ -49,40 +49,6 @@ class Scholarships extends Controller
         }
     }
 
-    public function search()
-    {
-        $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
-        $model = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
-        $results = $model->searchScholarship($searchQuery, 0, 100);
-        foreach ($results as $row) {
-            echo '<tr>';
-            echo '<td>' . $row['title'] . '</td>';
-            echo '<td>' . $row['short_description'] . '</td>';
-            echo '<td>' . $row['coverage'] . '</td>';
-            echo '<td>';
-            $typeModel = new ScholarshipType;
-            $types = $typeModel->getTypes($row['user_id'], $row['scholarship_id']);
-            while ($r = mysqli_fetch_array($types)) {
-                $typesArray[] = $r['type'];
-            }
-            echo implode(", ", $typesArray);
-            unset($typesArray);
-            echo '</td>';
-            if ($_SESSION['role'] == 'student') {
-                echo "<td><button type='button' onclick='bookmark(" . $row['user_id'] . "," . $row['scholarship_id'] . ")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Bookmark</button>";
-                echo "<button type='button' onclick='' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>View More</button></td>";
-            } else if ($_SESSION['role'] == 'admin') {
-                echo ("<td>
-                        <a href='scholarships/edit?user_id=" . $row['user_id'] . "&scholarship_id=" . $row['scholarship_id'] . "'>
-                            <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Edit</button>
-                        </a>
-                        <button type='button' onclick = 'deleteConfirmation(" . $row['user_id'] . "," . $row['scholarship_id'] . ")' class='btn btn-danger' data-toggle='modal' data-target='#exampleModalCenter'>Delete</button>
-                    </td>");
-            }
-            echo '</tr>';
-        }
-    }
-
     public function add()
     {
         $data['judul'] = 'Add Beasiswa';

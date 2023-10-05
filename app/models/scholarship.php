@@ -1,4 +1,5 @@
 <?php
+require_once 'scholarshiptype.php';
 
 class Scholarship
 {
@@ -53,6 +54,102 @@ class Scholarship
         $result = mysqli_stmt_get_result($stmt);
         return $result;
     }
+    public function findScholarships($data) {
+        $query = "SELECT * FROM $this->table";
+        $whereClauses = [];
+        $params = [];
+        $types = '';
+        
+        if (isset($data['judul'])) {
+            $whereClauses[] = "LOWER(title) LIKE ?";
+            $params[] = "%" . strtolower($data['judul']) . "%";
+            $types .= "s";
+        }
+        
+        if (isset($data['coverage'])) {
+            $whereClauses[] = "coverage > ?";
+            $params[] = $data['coverage'];
+            $types .= "i"; 
+        }
+        
+        if (!empty($whereClauses)) {
+            $query .= " WHERE " . implode(" AND ", $whereClauses);
+        }
+    
+        // add limit
+        $query .= " LIMIT ? OFFSET ?";
+    
+        $params[] = $data['limit'];
+        $types .= "ii";
+        
+        // add offset
+        $offset = isset($data['page']) && is_numeric($data['page']) ? ($data['page'] - 1) * $data['limit'] : 0;
+        $params[] = $offset;
+    
+        $stmt = $this->db->setSTMT($query);
+        
+        if (!empty($params)) {
+            $stmt->bind_param($types, ...$params);
+        }
+        
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        $scholarships = [];
+        while ($row = $result->fetch_assoc()) {
+            $scholarships[] = $row;
+        }
+    
+        // menguli scholarship type
+        $scholarshipTypeModel = new ScholarshipType();
+        foreach ($scholarships as &$scholarship) {
+            $uid = $scholarship['user_id'];
+            $sid = $scholarship['scholarship_id'];
+            $typesResult = $scholarshipTypeModel->getTypes($uid, $sid);
+    
+            $types = [];
+            while ($typeRow = $typesResult->fetch_assoc()) {
+                $types[] = $typeRow['type'];
+            }
+            $scholarship['types'] = $types;
+        }
+    
+        return $scholarships;
+    }
+    public function countFilteredScholarships($data){
+        $query = "SELECT COUNT(*) as total FROM $this->table";
+        $whereClauses = [];
+        $params = [];
+        $types = '';
+        
+        if (isset($data['judul'])) {
+            $whereClauses[] = "LOWER(title) LIKE ?";
+            $params[] = "%" . strtolower($data['judul']) . "%";
+            $types .= "s";
+        }
+        
+        if (isset($data['coverage'])) {
+            $whereClauses[] = "coverage > ?";
+            $params[] = $data['coverage'];
+            $types .= "i"; 
+        }
+        
+        if (!empty($whereClauses)) {
+            $query .= " WHERE " . implode(" AND ", $whereClauses);
+        }
+        
+        $stmt = $this->db->setSTMT($query);
+        
+        if (!empty($params)) {
+            $stmt->bind_param($types, ...$params);
+        }
+        
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = mysqli_fetch_assoc($result);
+        return $row['total'];
+    }
+    
     
     public function getScholarship($uid, $sid){
         $query = "SELECT user_id, scholarship_id, title, description, short_description, coverage, contact_name, contact_email
