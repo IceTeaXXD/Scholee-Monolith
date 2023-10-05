@@ -59,21 +59,24 @@ function renderScholarships(response) {
     scholarshipsTableBody.innerHTML = '';
 
     if (response.status && response.status === 'error') {
-        scholarshipsTableBody.innerHTML = '<tr><td colspan="4">No scholarships found.</td></tr>';
+        scholarshipsTableBody.innerHTML = '<tr><td colspan="6">No scholarships found.</td></tr>';
     } else if (response.data && Array.isArray(response.data)) {
         response.data.forEach(scholarship => {
             let types = scholarship.types.join(', ');
-            let row = `<tr>
+            let row = `
+            <tr>
                 <td>${scholarship.title}</td>
                 <td>${scholarship.short_description}</td>
                 <td>${scholarship.coverage}</td>
                 <td>${types}</td>
-                <td><button onclick="redirectToScholarships(${scholarship.user_id}, ${scholarship.scholarship_id})">View More</button></td>
+                <td><button class="button-style" onclick="redirectToScholarships(${scholarship.user_id}, ${scholarship.scholarship_id})">View More</button></td>
+                <td><button class="button-style" onclick="bookmark(${scholarship.user_id}, ${scholarship.scholarship_id})"><i class="fas fa-bookmark"></i></button></td>
             </tr>`;
             scholarshipsTableBody.innerHTML += row;
         });
     }
 }
+
 
 function renderPagination(currentPage, totalItems, itemsPerPage) {
     console.log(`Rendering Pagination: currentPage=${currentPage}, totalItems=${totalItems}, itemsPerPage=${itemsPerPage}`);

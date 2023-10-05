@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/public/css/navbar.css" />
     <link rel="stylesheet" type="text/css" href=<?= $data['style']; ?>>
     <link rel="icon" href="/public/image/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <title><?= $data['judul']; ?></title>
 </head>
 
