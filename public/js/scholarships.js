@@ -42,9 +42,12 @@ function getScholarship(data="") {
         if (this.status == 200) {
             let response = JSON.parse(this.responseText);
             renderScholarships(response); 
-            if (response.status !== 'error'  && response.data) {
+            if (response.status !== 'error' && response.data && response.data.length > 0) {
                 renderPagination(response.currentPage, response.total, itemsPerPage);
-                console.log('called')
+                console.log('called');
+            } else {
+                // remove pagination injection
+                document.getElementById("pagination-button").innerHTML = '';
             }
         }
     }
