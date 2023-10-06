@@ -5,7 +5,7 @@
    letter-spacing: 1px;
    font-weight: 300;
    text-decoration: none;
-   cursor:url(/public/image/cursor.ico), auto;
+   /* cursor:url(/public/image/cursor.ico), auto; */
 }
 ::-webkit-scrollbar-track
 {

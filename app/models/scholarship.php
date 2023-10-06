@@ -197,7 +197,8 @@ class Scholarship
     }    
 
     public function countOrganizationScholarship($id){
-        $query = "SELECT count(user_id) as count FROM $this->table where user_id = $id";
+        $query = "SELECT scholarship_id as count FROM $this->table WHERE user_id = $id
+                    ORDER BY scholarship_id DESC";
         $stmt = $this->db->setSTMT($query);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
