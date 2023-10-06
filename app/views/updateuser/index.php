@@ -2,7 +2,7 @@
 $row = mysqli_fetch_array($data['user']);
 ?>
 <div class="edit-profile">
-    <form action="/api/profile/updateAdmin.php?user_id=<?php echo $data['user_id'];?>&email=<?php echo $data['email'];?>&role=<?php echo $data['role'];?>" method="post" class="profile-form" enctype="multipart/form-data">
+    <form class="profile-form" enctype="multipart/form-data">
         <div class="profile-info">
 
             <img id="profileDisplay" src="/public/image/profiles/<?php echo $row['image'];?>" alt="Profile Image" class="profile-image-display" height="200px">
