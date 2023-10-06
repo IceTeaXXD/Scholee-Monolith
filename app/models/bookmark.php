@@ -32,8 +32,11 @@ class Bookmark
     public function deleteUserBookmark($uid, $uis, $sid){
         $query = "DELETE FROM $this->table WHERE user_id_student = ? and user_id_scholarship = ? and scholarship_id = ?";
         $stmt = $this->db->setSTMT($query);
+        $uid = (int) $uid;
+        $uis = (int) $uis;
+        $sid = (int) $sid;
         mysqli_stmt_bind_param($stmt, "iii", $uid, $uis, $sid);
-
+        var_dump($uid, $uis, $sid);
         return mysqli_stmt_execute($stmt);
     }
 
