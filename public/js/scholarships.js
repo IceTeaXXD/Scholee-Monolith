@@ -93,7 +93,7 @@ function renderScholarships(response) {
 
 
 function renderPagination(currentPage, totalItems, itemsPerPage) {
-    console.log(`Rendering Pagination: currentPage=${currentPage}, totalItems=${totalItems}, itemsPerPage=${itemsPerPage}`);
+    // console.log(`Rendering Pagination: currentPage=${currentPage}, totalItems=${totalItems}, itemsPerPage=${itemsPerPage}`);
     const totalPages = Math.ceil(totalItems / itemsPerPage);
     let paginationHtml = '';
 
@@ -101,12 +101,16 @@ function renderPagination(currentPage, totalItems, itemsPerPage) {
         paginationHtml += `<button onclick="changePage(${i})">${i}</button>`;
     }
 
-    document.getElementById("pagination-button").innerHTML = paginationHtml;
-    updateActiveButton(currentPage);
+    const paginationElement = document.getElementById("pagination-button");
+    if (paginationElement) {
+        paginationElement.innerHTML = paginationHtml;
+        updateActiveButton(currentPage);
+    } 
 }
 
 function updateActiveButton(currentPage) {
     const buttons = document.querySelectorAll(".pagination-button button");
+    // console.log(buttons);
     buttons.forEach((button, index) => {
         if ((index + 1) == currentPage) {
             button.classList.add("active");
@@ -136,16 +140,33 @@ document.getElementById("itemsPerPage").addEventListener('change', function() {
     getScholarship();
 });
 // update url without refresh for search
-document.getElementById("search").addEventListener('input', function() {
-    let currentUrl = new URL(window.location.href);
-    currentUrl.searchParams.set("page", 1);
-    history.pushState(null, '', currentUrl);
+document.addEventListener("DOMContentLoaded", function() {
+    let searchElement = document.getElementById("search");
     
-    debouncedSearch();
+    if(searchElement) { 
+        searchElement.addEventListener('input', function() {
+            let currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.set("page", 1);
+            history.pushState(null, '', currentUrl);
+
+            debouncedSearch();
+        });
+    }
 });
 
-document.getElementById("search").addEventListener('input', debouncedSearch);
-document.getElementById("range").addEventListener('input', debouncedSearch);
+//check first
+document.addEventListener("DOMContentLoaded", function() {
+    let searchElement = document.getElementById("search");
+    let rangeElement = document.getElementById("range");
+
+    if(searchElement) {
+        searchElement.addEventListener('input', debouncedSearch);
+    }
+
+    if(rangeElement) {
+        rangeElement.addEventListener('input', debouncedSearch);
+    }
+});
 
 function redirectToScholarships(uid, sid) {
     window.location.href = `/scholarships/${uid}/${sid}`;
@@ -157,12 +178,14 @@ function redirectToEditScholarship(uid, sid) {
 
 var slider = document.getElementById("range");
 var output = document.getElementById("coverage");
-output.innerHTML = slider.value; 
+if (slider){
+    output.innerHTML = slider.value; 
+    
+    slider.oninput = function () {
+        output.innerHTML = "$" + this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    };
+    const coverage = document.getElementById("coverage");
+    const value = document.getElementById("range").value;
+    coverage.innerHTML = "$" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
-slider.oninput = function () {
-    output.innerHTML = "$" + this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-};
-
-const coverage = document.getElementById("coverage");
-const value = document.getElementById("range").value;
-coverage.innerHTML = "$" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

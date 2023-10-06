@@ -94,12 +94,10 @@ class Scholarship
         
         $stmt->execute();
         $result = $stmt->get_result();
-        
         $scholarships = [];
         while ($row = $result->fetch_assoc()) {
             $scholarships[] = $row;
         }
-    
         // menguli scholarship type
         $scholarshipTypeModel = new ScholarshipType();
         foreach ($scholarships as &$scholarship) {
@@ -113,7 +111,6 @@ class Scholarship
             }
             $scholarship['types'] = $types;
         }
-    
         return $scholarships;
     }
     public function countFilteredScholarships($data){

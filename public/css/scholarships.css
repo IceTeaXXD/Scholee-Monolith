@@ -216,15 +216,17 @@ h2 a {
     line-height: 30px; 
 }
 
-.pagination-button button.active {
+.pagination-button button.active, .pagination-button-bm button.active {
     background-color: #CBEBFA;
     color: black;
 }
 
-.pagination-button button:hover:not(.active) {
+.pagination-button button:hover:not(.active),
+.pagination-button-bm button:hover:not(.active) {
     background-color: white;
-    color : #2C347F;
+    color: #2C347F;
 }
+
 
 .modal{
     display: none;

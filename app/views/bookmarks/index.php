@@ -6,10 +6,14 @@
             <body>
                 <form autocomplete="off">
                     <label for="search">Search</label>
-                    <input id="search" type="search" pattern=".*\S.*" required>
+                    <input id="search-bookmark" type="search" pattern=".*\S.*" required>
                     <span class="caret"></span>
                 </form>
             </body>
+        </div>
+        <div class="slide-bookmark">
+            <input type="range" min="1" max="1000000" value="500000" class="slider" id="slide-bookmark"> 
+            <p>Coverage: $  <span id="coverage">500000</span></p> 
         </div>
         <thead>
             <tr>
@@ -29,92 +33,29 @@
                     <div class="pagination-form" id="pagination-form">
                         <form method="get">
                             <label for="itemsPerPage">Items Per Page:</label>
-                            <select name="itemsPerPage" id="itemsPerPage" onchange="this.form.submit()">
-                                <option value="5" <?php if ($data['itemsPerPage'] == 5) echo 'selected'; ?>>5</option>
-                                <option value="10" <?php if ($data['itemsPerPage'] == 10) echo 'selected'; ?>>10</option>
-                                <option value="15" <?php if ($data['itemsPerPage'] == 15) echo 'selected'; ?>>15</option>
-                                <option value="all" <?php if ($data['itemsPerPage'] == 'all') echo 'selected'; ?>>All</option>
+                            <select name="itemsPerPage" id="itemsPerPage">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="all">All</option>
                             </select>
                         </form>
                     </div>
                 </th>
             </tr>
         </thead>
-        <tbody>
-            <?php
-            while ($row = mysqli_fetch_array($data['row'])) {
-                echo '<tr>';
-                echo '<td>' . $row['title'] . '</td>';
-                echo '<td>' . $row['short_description'] . '</td>';
-                echo '<td>' . $row['coverage'] . '</td>';
-                echo '<td>';
-                $typeModel = new ScholarshipType;
-                $types = $typeModel->getTypes($row['user_id_scholarship'], $row['scholarship_id']);
-                while($r = mysqli_fetch_array($types)){
-                    $typesArray[] = $r['type'];
-                }
-                echo implode(", ", $typesArray);
-                unset($typesArray);
-                echo '</td>';
-                if ($_SESSION['role'] == 'student') {
-                    echo "<td><button type='button' onclick='deleteBookmark(".$row['user_id_scholarship'].",".$row['scholarship_id'].")' data-toggle='modal' data-target='#exampleModalCenter'>Delete Bookmark</button>";
-                    echo "<button type='button' onclick='redirectToScholarships(".$row['user_id_scholarship'].",".$row['scholarship_id'].")' data-toggle='modal' data-target='#exampleModalCenter'>View More</button></td>";
-                }
-                echo '</tr>';
-            }
-            ?>
+        <tbody id = "bookmark-list">
+            <!-- iNJECT JS -->
         </tbody>
     </table>
-    <div class="pagination-button" id="pagination-button">
-        <?php
-        if ($data['totalScholarships'] == 0) {
-            echo "<tr>";
-            echo "<td colspan='4'>There are no open submissions right now, please check back later! :D.</td>";
-            echo "</tr>";
-        } else {
-            if ($data['itemsPerPage'] == $data['totalScholarships']) {
-                echo "<a href='scholarships?page=1&itemsPerPage=all'>1</a>";
-            } else {
-                $totalPages = ceil($data['totalScholarships'] / $data['itemsPerPage']);
-                for ($i = 1; $i <= $totalPages; $i++) {
-                    $isActive = $i == $data['currentPage'] ? 'active' : '';
-                    echo "<a href='scholarships?page=$i&itemsPerPage=" . $data['itemsPerPage'] . "' class='$isActive'>" . $i . "</a> ";
-                }
-            }
-        }
-        ?>
+    <div class="pagination-button" id="pagination-button-bm">
+        <!-- Inject by js -->
     </div>
 </div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const searchForm = document.getElementById("search-form");
-        const searchInput = document.getElementById("search");
-        const scholarshipBody = document.querySelector(".scholarship-body tbody");
-        const paginationForm = document.getElementById("pagination-form");
-
-        searchForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-            performSearch();
-        });
-
-        searchInput.addEventListener("input", function () {
-            performSearch();
-        });
-
-        function performSearch() {
-            const searchQuery = searchInput.value;
-            fetch(`/scholarships/search?search=${searchQuery}`)
-                .then((response) => response.text())
-                .then((data) => {
-                    scholarshipBody.innerHTML = data;
-                    paginationForm.style.display = "none";
-                })
-                .catch((error) => {
-                    console.error("Error fetching data:", error);
-                });
-        }
-    });
-</script>
 
 <script src="/public/js/bookmark.js"></script>
 <script src="/public/js/scholarships.js"></script>
+<script>
+    var userRole = "<?php echo $_SESSION['role']; ?>";
+    var userId = "<?php echo $_SESSION['user_id']; ?>";
+</script>

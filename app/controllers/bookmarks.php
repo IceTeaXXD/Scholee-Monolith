@@ -13,16 +13,7 @@ class Bookmarks extends Controller{
         $data['style'] = "/public/css/dashboard.css";
         $data['style'] = "/public/css/scholarships.css";
         $data['row'] = $model->getUserBookmark();
-        $itemsPerPage = isset($_GET['itemsPerPage']) ? $_GET['itemsPerPage'] : 5;
-        $totalBookmark = $model->countUserBookmark();
-        if ($itemsPerPage === 'all') {
-            $itemsPerPage = $totalBookmark;
-        }
-        $currentPage = isset($_GET['page']) ? $_GET['page'] : 1; 
-        $offset = ($currentPage - 1) * $itemsPerPage;
-        $data['totalScholarships'] = $totalBookmark;
-        $data['itemsPerPage'] = $itemsPerPage;
-        $data['currentPage'] = $currentPage;
+        $data['user_id'] = $_SESSION['user_id'];
         if (isset($_SESSION['username'])) {
             $this->view('header/index', $data);
             $this->view('navbar/index', $data);

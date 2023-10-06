@@ -42,11 +42,11 @@
                     <div class="pagination-form" id="pagination-form">
                         <form method="get">
                             <label for="itemsPerPage">Items Per Page:</label>
-                            <select name="itemsPerPage" id="itemsPerPage" onchange="this.form.submit()">
-                                <option value="5" <?php if ($data['itemsPerPage'] == 5) echo 'selected'; ?>>5</option>
-                                <option value="10" <?php if ($data['itemsPerPage'] == 10) echo 'selected'; ?>>10</option>
-                                <option value="15" <?php if ($data['itemsPerPage'] == 15) echo 'selected'; ?>>15</option>
-                                <option value="all" <?php if ($data['itemsPerPage'] == 'all') echo 'selected'; ?>>All</option>
+                            <select name="itemsPerPage" id="itemsPerPage">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="all">All</option>
                             </select>
                         </form>
                     </div>
