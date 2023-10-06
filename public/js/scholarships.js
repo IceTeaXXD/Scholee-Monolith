@@ -60,7 +60,21 @@ function renderScholarships(response) {
 
     if (response.status && response.status === 'error') {
         scholarshipsTableBody.innerHTML = '<tr><td colspan="6">No scholarships found.</td></tr>';
-    } else if (response.data && Array.isArray(response.data)) {
+    } else if (userRole === 'admin'){
+        response.data.forEach(scholarship => {
+            let types = scholarship.types.join(', ');
+            let row = `
+            <tr>
+                <td>${scholarship.title}</td>
+                <td>${scholarship.short_description}</td>
+                <td>${scholarship.coverage}</td>
+                <td>${types}</td>
+                <td><button class="button-style" onclick="redirectToEditScholarship(${scholarship.user_id}, ${scholarship.scholarship_id})">Edit Beasiswa</button></td>
+            </tr>`;
+            scholarshipsTableBody.innerHTML += row;
+        });
+    }
+     else if (response.data && Array.isArray(response.data)) {
         response.data.forEach(scholarship => {
             let types = scholarship.types.join(', ');
             let row = `
@@ -135,6 +149,10 @@ document.getElementById("range").addEventListener('input', debouncedSearch);
 
 function redirectToScholarships(uid, sid) {
     window.location.href = `/scholarships/${uid}/${sid}`;
+}
+
+function redirectToEditScholarship(uid, sid) {
+    window.location.href = `/scholarships/edit?user_id=${uid}&scholarship_id=${sid}`;
 }
 
 var slider = document.getElementById("range");
