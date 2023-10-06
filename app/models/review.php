@@ -51,8 +51,9 @@ class Review
     }
 
     public function getStudentDocument(){
-        $query = "SELECT a.file_id, a.type, a.link, r.review_status, r.comment 
+        $query = "SELECT a.file_id, a.type, a.link, r.review_status, r.comment, u.name, re.occupation
                     FROM additionalfiles a left join review r on r.user_id_student = a.user_id and r.file_id = a.file_id
+                    inner join user u on u.user_id = r.user_id_reviewer inner join reviewer re on re.user_id = u.user_id
                     WHERE a.user_id = ?";
         $stmt = $this->db->setSTMT($query);
         mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);

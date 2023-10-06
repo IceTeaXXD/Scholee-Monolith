@@ -69,9 +69,9 @@
                     echo "<td style='cursor: pointer;' onclick='openVideoModal(\"/public/files/" . $row['link'] . "\")'>" . $row['link'] . "</td>";
                 }
                 echo '<td>' . $row['type'] . '</td>';
-                echo '<td>' . $row['review_status'] . '</td>';
+                echo '<td>' . $row['review_status'].'</td>';
                 if ($_SESSION['role'] == 'student') {
-                    echo '<td class="comment">' . $row['comment'] . '</td>';
+                    echo '<td class="comment">' . $row['comment'] . '<br> -- <br>'. $row['name'] .' <br><i>'. $row['occupation'].'</i></td>';
                 }else if($_SESSION['role'] == 'reviewer'){
                     echo '<td class="comment"><input type="text" value="'.$row['comment'].'" id="comment-'.$row['user_id'].'-'.$row['file_id'].'" required></td>';
                 }
