@@ -22,23 +22,19 @@ function getQueryVariable(variable) {
 
 function renderPaginationBookmark(currentPage, totalItems, itemsPerPage) {
     // console.log(`Rendering Pagination: currentPage=${currentPage}, totalItems=${totalItems}, itemsPerPage=${itemsPerPage}`);
-    console.log(Math.ceil(8 / 5));
     const totalPages = Math.ceil(totalItems / itemsPerPage);
-    console.log("totalItems:", totalItems);
-    console.log("itemsPerPage:", itemsPerPage);
+    // console.log("totalItems:", totalItems);
+    // console.log("itemsPerPage:", itemsPerPage);
 
     let paginationHtml = '';
-    console.log("TOTAL PAGEE")
-    console.log("TOTAL PAGE" , totalPages);
+    // console.log("TOTAL PAGE" , totalPages);
     for (let i = 1; i <= totalPages; i++) {
         paginationHtml += `<button onclick="changePageBookmark(${i})">${i}</button>`;
-        console.log("pp");
     }
 
     const paginationElement = document.getElementById("pagination-button-bm");
     if (paginationElement) {
         paginationElement.innerHTML = paginationHtml;
-        console.log("Pagination buttons should be rendered.");
         updateActiveButtonBookmark(currentPage);
     } 
 }
@@ -46,7 +42,7 @@ function renderPaginationBookmark(currentPage, totalItems, itemsPerPage) {
 function updateActiveButtonBookmark(currentPage) {
     // console.log("ADD ACTIVE BUTTON")
     const buttons = document.querySelectorAll(".pagination-button button");
-    console.log(buttons);
+    // console.log(buttons);
     buttons.forEach((button, index) => {
         if ((index + 1) == currentPage) {
             button.classList.add("active");
@@ -171,16 +167,18 @@ if(itemsPerPageElement) {
 
 const slideBookmarkElement = document.getElementById("slide-bookmark");
 const coverageSpanElement = document.getElementById("coverage");
-if(slideBookmarkElement && coverageSpanElement) {
+if (slideBookmarkElement && coverageSpanElement) {
     function updateCoverage() {
         const coverage = slideBookmarkElement.value;
         coverageSpanElement.textContent = coverage;
         getBookmark();
     }
+    const debouncedUpdateCoverage = debounce(updateCoverage, 300);
 
-    slideBookmarkElement.addEventListener("input", updateCoverage);
+    slideBookmarkElement.addEventListener("input", debouncedUpdateCoverage);
     updateCoverage();
 }
+
 
 getBookmark();
 
