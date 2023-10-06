@@ -1,4 +1,4 @@
-<div class="add-beasiswa">
+<div class="add-document">
     <h1>Add Document</h1>
     <div class="form">
         <form action="javascript:;" onsubmit="return submitForm()" enctype="multipart/form-data">

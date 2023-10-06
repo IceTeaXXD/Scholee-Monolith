@@ -29,7 +29,7 @@ class Reviews extends Controller{
 
     public function add(){
         $data['row'] = null;
-        $data['style'] = "/public/css/addbeasiswa.css";
+        $data['style'] = "/public/css/addDocument.css";
         $data['judul'] = "Documents Reviews";
         $data['totalScholarships'] = 0;
         $data['itemsPerPage'] = 0;

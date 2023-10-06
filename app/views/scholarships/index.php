@@ -74,3 +74,7 @@
 <script src="/public/js/deleteConfirm.js"></script>
 <script src="/public/js/bookmark.js"></script>
 <script src="/public/js/scholarships.js"></script>
+<script>
+    var userRole = "<?php echo $_SESSION['role']; ?>";
+    var userId = "<?php echo $_SESSION['user_id']; ?>";
+</script>
