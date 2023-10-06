@@ -150,7 +150,8 @@ function renderBookmarkedScholarships(bookmarkedScholarships) {
                 <td>$${scholarship.coverage}</td>
                 <td>${types}</td>
                 <td>
-                    
+                    <button onclick="deleteBookmark(${userId}, ${scholarship.scholarship_id})">Remove Bookmark</button>
+                    <button onclick="viewMore(${scholarship.user_id_scholarship},${scholarship.scholarship_id})">View More</button>
                 </td>
             </tr>`;
         bookmarkedTableBody.innerHTML += row;
@@ -214,7 +215,7 @@ async function deleteBookmark(userID, scholarshipID){
     xmr.onload = () => {
         const response = JSON.parse(xmr.response);
         if(response.status === 'success'){
-            window.location.href = "/bookmarks";
+            // window.location.href = "/bookmarks";
         }else{
             console.error(response.error);
         }
@@ -223,3 +224,7 @@ async function deleteBookmark(userID, scholarshipID){
     return false;
 }
  
+//view more
+function viewMore(uid, sid) {
+    window.location.href = `/scholarships/${uid}/${sid}`;
+}

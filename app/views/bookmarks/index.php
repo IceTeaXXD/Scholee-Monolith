@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?= $data['style']; ?>">
 <link rel="stylesheet" type="text/css" href="/public/css/search.css">
+<link rel="stylesheet" type="text/css" href="/public/css/slider.css">
 <div class="scholarship-body">
     <table class="container">
         <div class="search-form">
