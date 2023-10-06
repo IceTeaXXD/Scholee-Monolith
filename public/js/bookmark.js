@@ -175,6 +175,7 @@ if(slideBookmarkElement && coverageSpanElement) {
     function updateCoverage() {
         const coverage = slideBookmarkElement.value;
         coverageSpanElement.textContent = coverage;
+        getBookmark();
     }
 
     slideBookmarkElement.addEventListener("input", updateCoverage);
