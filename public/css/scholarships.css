@@ -11,8 +11,8 @@ body{
     font-family: Poppins;
     font-weight: 300;
     line-height: 1.42em;
-    color: #A7A1AE;
-    background-color: #1F2739;
+    color: #6d6a71;
+    /* background-color: #1F2739; */
     margin-top: 4.5rem;
     padding-top: 2rem;
     padding-bottom: 0.3rem; 
@@ -56,12 +56,12 @@ h2 a {
     font-weight: bold;
     font-size: 1em;
     text-align: center;
-    color: #185875;
+    color: #efefef;
 }
 
 .container td {
     font-weight: normal;
-    font-size: 1em;
+    font-size: 1em; 
     -webkit-box-shadow: 0 2px 2px -2px #0E1119;
     -moz-box-shadow: 0 2px 2px -2px #0E1119;
     box-shadow: 0 2px 2px -2px #0E1119;
@@ -74,6 +74,7 @@ h2 a {
     margin: 15px auto;
     display: table;
     padding: 0 0 10 0;
+    /* overflow-wrap: break-word; */
 }
 
 .container td,
@@ -101,21 +102,22 @@ h2 a {
 
 /* Background-color of the odd rows */
 .container tr:nth-child(odd) {
-    background-color: #323C50;
+    background-color: #f3f3f3;
 }
 
 /* Background-color of the even rows */
 .container tr:nth-child(even) {
-    background-color: #2C3446;
+    background-color: #e0e0e0;
 }
 
 .container th {
-    background-color: #1F2739;
+    background-color: #2C347F;
 }
+
 
 .container th:nth-child(1),
 .container td:nth-child(1) {
-    width: 200px;
+    width: max-content;
 }
 
 .container th:nth-child(2),
@@ -129,10 +131,12 @@ h2 a {
 }
 
 .container td:first-child {
-    color: #FB667A;
+    color: #4226B0;
+    font-weight: 800;
 }
 
-.container td:last-child button {
+.container td:last-child button,
+.container td button {
     border: none;
     color: white;
     padding: 15px 30px;
@@ -146,6 +150,15 @@ h2 a {
     border-radius: 10px;
 }
 
+.container td.comment, .container th.comment{
+    max-width: 100px;
+    overflow-wrap: break-word;
+}
+
+.container td a.file{
+    color: inherit;
+}
+
 /* hover for last child */
 .container td:last-child button:hover {
     background-color: #FB667A;
@@ -155,24 +168,24 @@ h2 a {
 }
 
 .container tr:hover {
-    background-color: #464A52;
+    background-color: #cbcbcb;
     -webkit-box-shadow: 0 6px 6px -6px #0E1119;
     -moz-box-shadow: 0 6px 6px -6px #0E1119;
     box-shadow: 0 6px 6px -6px #0E1119;
 }
 
 .container td:hover {
-    background-color: #FFF842;
-    color: #403E10;
+    /* background-color: #FFF842; */
+    /* color: #403E10; */
     font-weight: bold;
 
-    box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+    /* box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
     transform: translate3d(6px, -6px, 0);
 
     transition-delay: 0s;
     transition-duration: 0.4s;
     transition-property: all;
-    transition-timing-function: line;
+    transition-timing-function: line; */
 }
 
 /* Pagination styling */

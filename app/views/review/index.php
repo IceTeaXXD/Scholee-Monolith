@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" href="<?= $data['style']; ?>">
 <link rel="stylesheet" type="text/css" href="/public/css/search.css">
 <div class="scholarship-body">
     <table class="container">
@@ -28,7 +27,7 @@
                     </h1>
                 </th>
                 <th>
-                    <h1>URL</h1>
+                    <h1>File</h1>
                 </th>
                 <th>
                     <h1>Type</h1>
@@ -36,7 +35,7 @@
                 <th>
                     <h1>Review Status</h1>
                 </th>
-                <th>
+                <th class="comment">
                     <h1>Comment</h1>
                 </th>
                 <th>
@@ -64,22 +63,22 @@
                     echo '<td>' . $row['user_id'] . '</td>';
                 }
                 if($row['type']!=='mp4'){
-                    echo '<td><a href="/public/files/'.$row['link'].'" target="pdf">' . $row['link'] . '</a></td>';
+                    echo '<td><a class="file" href="/public/files/'.$row['link'].'" target="pdf">' . $row['link'] . '</a></td>';
                 }else{
                     /* Modal For Video*/
-                    echo "<td onclick='openVideoModal(\"/public/files/" . $row['link'] . "\")'>" . $row['link'] . "</td>";
+                    echo "<td style='cursor: pointer;' onclick='openVideoModal(\"/public/files/" . $row['link'] . "\")'>" . $row['link'] . "</td>";
                 }
                 echo '<td>' . $row['type'] . '</td>';
                 echo '<td>' . $row['review_status'] . '</td>';
                 if ($_SESSION['role'] == 'student') {
-                    echo '<td>' . $row['comment'] . '</td>';
+                    echo '<td class="comment">' . $row['comment'] . '</td>';
                 }else if($_SESSION['role'] == 'reviewer'){
-                    echo '<td><input type="text" value="'.$row['comment'].'" id="comment-'.$row['user_id'].'-'.$row['file_id'].'" required></td>';
+                    echo '<td class="comment"><input type="text" value="'.$row['comment'].'" id="comment-'.$row['user_id'].'-'.$row['file_id'].'" required></td>';
                 }
                 if ($_SESSION['role'] == 'student') {
-                    echo "<td><button type='button' onclick='submitDocument(".$_SESSION['user_id'].",".$row['file_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Daftarkan</button></td>";
+                    echo "<td><button type='button' onclick='submitDocument(".$_SESSION['user_id'].",".$row['file_id'].")' data-toggle='modal' data-target='#exampleModalCenter'>Daftarkan</button></td>";
                 }else if ($_SESSION['role'] == 'reviewer'){
-                    echo "<td><button type='button' onclick='commentDocument(".$row['user_id'].",".$row['file_id'].")' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalCenter'>Comment</button></td>";
+                    echo "<td><button type='button' onclick='commentDocument(".$row['user_id'].",".$row['file_id'].")' data-toggle='modal' data-target='#exampleModalCenter'>Comment</button></td>";
                 }
                 echo '</tr>';
             }
@@ -89,9 +88,9 @@
     <div class="pagination-button" id="pagination-button">
         <?php
         if ($data['totalScholarships'] == 0) {
-            echo "<tr>";
-            echo "<td colspan='4'>There are no open submissions right now, please check back later! :D.</td>";
-            echo "</tr>";
+            // echo "<tr>";
+            // echo "<td colspan='4'>There are no open submissions right now, please check back later! :D.</td>";
+            // echo "</tr>";
         } else {
             if ($data['itemsPerPage'] == $data['totalScholarships']) {
                 echo "<a href='scholarships?page=1&itemsPerPage=all'>1</a>";
