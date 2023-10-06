@@ -26,6 +26,7 @@
                             <a href="/reviews/add">Add Document</a>
                         </div>
                     </div>
+                    <li><a href="/aboutus">About Us</a></li>
                     <div class="profile">
                         <a class="dropbtn">
                             <?php echo $_SESSION['username']; ?>
@@ -40,6 +41,7 @@
                     <li><a href="/dashboard">Dashboard</a></li>
                     <li><a href="/scholarships/add">Add Scholarship</a></li>
                     <li><a href=" /scholarships">Scholarships</a></li>
+                    <li><a href="/aboutus">About Us</a></li>
                     <div class="profile">
                         <a class="dropbtn">
                             <?php echo $_SESSION['username']; ?>
@@ -56,6 +58,7 @@
                     <li><a href="/dashboard">Dashboard</a></li>
                     <li><a href="/admin/add">Add User</a></li>
                     <li><a href="/admin/list">List User</a></li>
+                    <li><a href="/aboutus">About Us</a></li>
                     <div class="profile">
                         <a class="dropbtn">
                             <?php echo $_SESSION['username']; ?>
@@ -71,6 +74,7 @@
                 ?>
                     <li><a href="/dashboard">Dashboard</a></li>
                     <li><a href="/reviews">Review Documents</a></li>
+                    <li><a href="/aboutus">About Us</a></li>
                     <div class="profile">
                         <a class="dropbtn">
                             <?php echo $_SESSION['username']; ?>
@@ -86,10 +90,7 @@
             } else {
                 ?>
                 <li><a href="/">Home</a></li>
-                <li><a href="">Nadil</a></li>
-                <li><a href="">Our Products</a></li>
-                <li><a href="">About Us</a></li>
-                <li><a href="">Contact Us</a></li>
+                <li><a href="/aboutus">About Us</a></li>
                 <li class="login-button-container">
                     <button class="login-button" onclick="redirectToLogin()"><a>Login</a></button>
                 </li>
