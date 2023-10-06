@@ -71,7 +71,11 @@
                 echo '<td>' . $row['type'] . '</td>';
                 echo '<td>' . $row['review_status'].'</td>';
                 if ($_SESSION['role'] == 'student') {
-                    echo '<td class="comment">' . $row['comment'] . '<br> -- <br>'. $row['name'] .' <br><i>'. $row['occupation'].'</i></td>';
+                    if($row['review_status'] == 'reviewed'){
+                        echo '<td class="comment">' . $row['comment'] . '<br> -- <br>'. $row['name'] .' <br><i>'. $row['occupation'].'</i></td>';
+                    }else{
+                        echo '<td class="comment"> </td>';
+                    }
                 }else if($_SESSION['role'] == 'reviewer'){
                     echo '<td class="comment"><input type="text" value="'.$row['comment'].'" id="comment-'.$row['user_id'].'-'.$row['file_id'].'" required></td>';
                 }
