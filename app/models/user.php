@@ -39,6 +39,41 @@ class User{
         return mysqli_stmt_get_result($stmt);
     }
 
+    public function searchUser($data){
+        $query = "SELECT user_id, name, image, role, email FROM user";
+
+        $whereClauses = [];
+        $params = [];
+        $types = '';
+
+        $whereClauses[] = "role != 'super admin'";
+        
+        if(isset($data['name'])){
+            $whereClauses[] = "LOWER(name) LIKE ?";
+            $params[] = "%". strtolower($data['name']). "%";
+            $types.='s';
+        }
+
+        if (!empty($whereClauses)) {
+            $query .= " WHERE " . implode(" AND ", $whereClauses);
+        }
+
+        $stmt = $this->db->setSTMT($query);
+        
+        if (!empty($params)) {
+            $stmt->bind_param($types, ...$params);
+        }
+        
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $users = [];
+        while ($row = $result->fetch_assoc()) {
+            $users[] = $row;
+        }
+
+        return $users;
+    }
+
     public function update($editVal){
         if($editVal['image'] == ''){
             $query = "UPDATE $this->table SET 
