@@ -36,7 +36,7 @@ class Bookmark
         $uis = (int) $uis;
         $sid = (int) $sid;
         mysqli_stmt_bind_param($stmt, "iii", $uid, $uis, $sid);
-        var_dump($uid, $uis, $sid);
+        // var_dump($uid, $uis, $sid);
         return mysqli_stmt_execute($stmt);
     }
 
