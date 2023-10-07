@@ -3,9 +3,10 @@
     <div class="user-filter">
         <label for ="id">Role Selector</label>
         <select id="role" name="role">
-            <option value="User">User</option>
-            <option value="Administrator">Administrator</option>
-            <option value="Reviewer">Reviewer</option>
+            <option value="All">All</option>
+            <option value="student">Student</option>
+            <option value="admin">Administrator</option>
+            <option value="reviewer">Reviewer</option>
         </select>
 
         <label for="search">Search User</label>

@@ -14,6 +14,11 @@ if (isset($_GET['name'])) {
     $params['name'] = $name;
 }
 
+if (isset($_GET['role'])) {
+    $role = $_GET['role'];
+    $params['role'] = $role;
+}
+
 $scholarships = $model->searchUser($params);
 
 if ($scholarships != null) {
@@ -26,4 +31,3 @@ if ($scholarships != null) {
     http_response_code(200);
     echo json_encode(array('status' => 'error', 'message' => 'End of list.'));
 }
-?>

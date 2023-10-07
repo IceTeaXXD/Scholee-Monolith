@@ -22,7 +22,7 @@ class Admin extends Controller{
         $data['style'] = "/public/css/userlist.css";
         if(isset($_SESSION['role'])){
             $this->view('header/index', $data);
-            $this->view('navbar/index', $data);
+            // $this->view('navbar/index', $data);
             $this->view('admin/userlist', $data);
         }else{
             header("Location: /login"); 

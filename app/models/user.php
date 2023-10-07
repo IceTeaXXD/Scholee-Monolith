@@ -54,6 +54,12 @@ class User{
             $types.='s';
         }
 
+        if(isset($data['role']) && $data['role'] != 'All'){
+            $whereClauses[] = "role = ?";
+            $params[] = $data['role'];
+            $types.='s';
+        }
+
         if (!empty($whereClauses)) {
             $query .= " WHERE " . implode(" AND ", $whereClauses);
         }
@@ -158,4 +164,3 @@ class User{
         return $this->userID;
     }
 }
-?>

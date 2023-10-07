@@ -2,13 +2,13 @@ const modal = document.getElementById("modal");
 const userName = document.getElementById("modal-name");
 var $userID = 0;
 
-function deleteConfirmation($name, $uid){
+function deleteConfirmation($name, $uid) {
     modal.style.display = "block";
     userName.innerHTML = $name;
     $userID = $uid;
 }
 
-function deleteUser(){
+function deleteUser() {
     const data = new FormData();
     data.append("user_id", $userID);
 
@@ -28,13 +28,13 @@ function deleteUser(){
     return false;
 }
 
-function closeModal(){
+function closeModal() {
     modal.style.display = "none";
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target == modal) {
-      modal.style.display = "none";
+        modal.style.display = "none";
     }
 }
 
@@ -58,8 +58,9 @@ function getQueryVariable(variable) {
 
 const debouncedSearch = debounce(getScholarship, 300);
 
-function getScholarship(data="") {
+function getScholarship(data = "") {
     const name = document.getElementById("search").value;
+    const role = document.getElementById("role").value;
     // console.log("CALLED");
     // console.log(title, coverage);
 
@@ -67,6 +68,7 @@ function getScholarship(data="") {
     let add_url = "";
 
     add_url += "?name=" + name;
+    add_url += "&role=" + role;
 
     const page = getQueryVariable("page") || 1;
     add_url += "&page=" + page;
@@ -78,7 +80,8 @@ function getScholarship(data="") {
     xhr.onload = function () {
         if (this.status == 200) {
             let response = JSON.parse(this.responseText);
-            renderScholarships(response); 
+            console.log(response);
+            renderScholarships(response);
         }
     }
     xhr.send();
@@ -90,7 +93,7 @@ function renderScholarships(response) {
 
     if (response.status && response.status === 'error') {
         scholarshipsTableBody.innerHTML = 'No Users found';
-    }else{
+    } else {
         response.data.forEach(scholarship => {
             let row = `
             <div class="box">
@@ -107,11 +110,25 @@ function renderScholarships(response) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     let searchElement = document.getElementById("search");
-    
-    if(searchElement) { 
-        searchElement.addEventListener('input', function() {
+
+    if (searchElement) {
+        searchElement.addEventListener('input', function () {
+            let currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.set("page", 1);
+            history.pushState(null, '', currentUrl);
+
+            debouncedSearch();
+        });
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    let roleElement = document.getElementById("role");
+
+    if (roleElement) {
+        roleElement.addEventListener('input', function () {
             let currentUrl = new URL(window.location.href);
             currentUrl.searchParams.set("page", 1);
             history.pushState(null, '', currentUrl);
