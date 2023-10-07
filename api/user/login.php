@@ -5,14 +5,13 @@ require_once '../../app/models/User.php';
 require_once '../../config/config.php';
 
 $user = new User();
-if($user->login($_POST['username'],$_POST['password'])){
+if ($user->login($_POST['username'], $_POST['password'])) {
     session_start();
     $_SESSION['user_id'] = $user->getID();
     $_SESSION['username'] = $user->getName();
     $_SESSION['role'] = $user->getRole();
-    $_SESSION['email'] = $user -> getEmail();
-    header("Location: /dashboard");
-}else{
-    $_SESSION['failemail'] = $_POST['username'];
-    header("Location: /login/error");
+    $_SESSION['email'] = $user->getEmail();
+    echo json_encode(['status' => 'success']);
+} else {
+    echo json_encode(['status' => 'error', 'message' => 'Incorrect username or password']);
 }
