@@ -1,5 +1,5 @@
 .image-container {
-    background-image: url('../image/wave.webp');
+    background-image: url('/public/image/assets/home/wave.webp');
     background-size: cover;
     /* background-position: center; */
     background-repeat: no-repeat;

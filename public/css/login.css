@@ -20,7 +20,7 @@
     align-items: center;
     background-size: cover;
     background-position: center;
-    background-image: url('/public/image/login.webp');
+    background-image: url('/public/image/assets/log-reg/login.webp');
 }
 
 .SectionText {

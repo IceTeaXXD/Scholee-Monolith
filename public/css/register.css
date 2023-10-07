@@ -21,7 +21,7 @@
     align-items: center;
     background-size: cover;
     background-position: center;
-    background-image: url('/public/image/register.webp');
+    background-image: url('/public/image/assets/log-reg/register.webp');
 }
 
 .SectionText {
