@@ -10,9 +10,8 @@ if($user->login($_POST['email'],$_POST['password'])){
     $_SESSION['user_id'] = $user->getID();
     $_SESSION['username'] = $user->getName();
     $_SESSION['role'] = $user->getRole();
-    $_SESSION['email'] = $user -> getEmail();
-    header("Location: /dashboard");
-}else{
-    $_SESSION['failemail'] = $_POST['username'];
-    header("Location: /login/error");
+    $_SESSION['email'] = $user->getEmail();
+    echo json_encode(['status' => 'success']);
+} else {
+    echo json_encode(['status' => 'error', 'message' => 'Incorrect username or password']);
 }

@@ -9,8 +9,6 @@ require_once '../../config/config.php';
 
 session_start();
 
-header('Content-Type: application/json');
-
 if (!isset($_SESSION['role'])) {
     $student = new Student();
     $succ = $student->register($_POST['name'], "student", $_POST['email'], $_POST['password']);
@@ -18,7 +16,7 @@ if (!isset($_SESSION['role'])) {
     if ($succ === true) {
         echo json_encode(['status' => 'success']);
     } else {
-        echo json_encode(['status' => 'error', 'error' => 'Registration failed.']);
+        echo json_encode(['status' => 'error', 'message' => 'User already exists.']);
     }
 } else {
     $succ;
@@ -28,7 +26,7 @@ if (!isset($_SESSION['role'])) {
     } else if ($_POST['role'] == 'admin') {
         $admin = new Administrator();
         $succ = $admin->register($_POST['name'], $_POST['role'], $_POST['email'], $_POST['password']);
-    }else if ($_POST['role'] == 'reviewer'){
+    } else if ($_POST['role'] == 'reviewer'){
         $reviewer = new Reviewer();
         $succ = $reviewer->register($_POST['name'], $_POST['role'], $_POST['email'], $_POST['password']);
     }
@@ -36,7 +34,6 @@ if (!isset($_SESSION['role'])) {
     if ($succ) {
         echo json_encode(['status' => 'success']);
     } else {
-        echo json_encode(['status' => 'error', 'error' => 'Registration failed.']);
+        echo json_encode(['status' => 'error', 'message' => 'User already exists.']);
     }
 }
-?>

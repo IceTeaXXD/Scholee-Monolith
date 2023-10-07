@@ -1,23 +1,17 @@
 const form = document.querySelector('form');
 form.addEventListener('submit', function (event) {
     event.preventDefault(); // prevent the form from submitting normally
-    if (!isValidPassword(password.value)) {
-        const error = document.querySelector('.ErrorText');
-        error.textContent = 'Password must be a combination of minimum 8 letters and numbers';
-        error.style.display = 'block';
-        return;
-    }
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/api/user/register.php');
+    xhr.open('POST', '/api/user/login.php');
     xhr.onload = function () {
         if (xhr.status === 200) {
             const response = JSON.parse(xhr.responseText);
+            console.log(response);
             if (response.status === 'success') {
-                window.location.href = '/login';
+                window.location.href = '/dashboard';
             } else {
                 const error = document.querySelector('.ErrorText');
-                console.log(response.message);
                 error.textContent = response.message;
                 error.style.display = 'block';
             }
@@ -27,9 +21,3 @@ form.addEventListener('submit', function (event) {
     };
     xhr.send(new FormData(form));
 });
-
-function isValidPassword(password) {
-    // password must be atleast 1 uppercase, 1 number, and 8 characters long
-    const re = /^(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
-    return re.test(password);
-}

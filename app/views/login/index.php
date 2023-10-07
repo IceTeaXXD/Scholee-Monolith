@@ -5,7 +5,7 @@
                 <div class="SecondaryHeadline">Log In</div>
             </div>
         </div>
-        <form class="login-form" method="post" action="/api/user/login.php">
+        <form class="login-form" method="post">
             <div class="TextField">
                 <div class="LabelAndField">
                     <div class="Label">Email Address</div>
@@ -21,11 +21,7 @@
                         <input type="password" class="Text" placeholder="Enter your password" name="password" id="password">
                     </div>
                 </div>
-                <?php
-                if (isset($data['error'])) {
-                    echo '<div class="ErrorText">' . $data['error'] . '</div>';
-                }
-                ?>
+                <div class="ErrorText"></div>
             </div>
             <button type="submit" class="Button">
                 <div class="TextContainer">
@@ -38,3 +34,4 @@
     </div>
     <div class="RightColumn"></div>
 </div>
+<script src="/public/js/login.js"></script>

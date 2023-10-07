@@ -157,7 +157,7 @@
 .Button {
     align-self: stretch;
     height: 50px;
-    margin-top: 55px;
+    margin-top: 70px;
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 16px;
@@ -200,6 +200,16 @@
     word-wrap: break-word;
     /* margin-top: 30px; */
 }
+
+.ErrorText {
+    color: red;
+    font-size: 15px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    display: none;
+    padding-bottom: 10px;
+}
+
 
 @media screen and (max-width: 991px) {
     .RightColumn {
