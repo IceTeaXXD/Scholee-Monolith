@@ -44,6 +44,17 @@
     border-radius: 30px;
 }
 
+.get-started:hover {
+    background-color: #24385f;
+    color: white;
+    border: none;
+    text-align: center;
+    padding: 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+}
+
 .more-info {
     background-color: transparent;
     color: #4266B0;
@@ -51,6 +62,16 @@
     text-align: center;
     padding: 20px;
     border-radius: 30px;
+}
+
+.more-info:hover {
+    background-color: #4266B0;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
 
 .content img {

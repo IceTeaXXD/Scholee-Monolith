@@ -113,3 +113,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     startAutoScroll(); // Start auto-scroll when the document is ready
 });
+
+function redirectToRegister() {
+    window.location.href = "/register";
+}
+
+function redirectToAboutus() {
+    window.location.href = "/aboutus";
+}

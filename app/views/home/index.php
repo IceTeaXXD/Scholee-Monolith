@@ -7,8 +7,8 @@
             </h1>
             <p>Finding college scholarships shouldn't be overwhelming. We make it simple and match you to scholarships you qualify for.</p>
             <div class="button-container">
-                <button class="get-started">Get Started</button>
-                <button class="more-info">More information</button>
+                <button class="get-started" onclick="redirectToRegister()">Get Started</button>
+                <button class="more-info" onclick="redirectToAboutus()">More information</button>
             </div>
         </div>
         <div class="image-section">
