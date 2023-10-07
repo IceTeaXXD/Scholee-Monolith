@@ -14,7 +14,7 @@
         </div>
         <div class="slide-bookmark">
             <input type="range" min="1" max="1000000" value="500000" class="slider" id="slide-bookmark"> 
-            <p>Coverage: $  <span id="coverage">500000</span></p> 
+            <p>Coverage: <span id="coverage">500000</span></p> 
         </div>
         <thead>
             <tr>

@@ -170,7 +170,8 @@ const coverageSpanElement = document.getElementById("coverage");
 if (slideBookmarkElement && coverageSpanElement) {
     function updateCoverage() {
         const coverage = slideBookmarkElement.value;
-        coverageSpanElement.textContent = coverage;
+        // format in dollar currency, e.g. $500,000
+        coverageSpanElement.textContent = "$" + coverage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         getBookmark();
     }
     const debouncedUpdateCoverage = debounce(updateCoverage, 300);
