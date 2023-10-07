@@ -10,7 +10,7 @@
                 <div class="LabelAndField">
                     <div class="Label">Email Address</div>
                     <div class="Field">
-                        <input type="text" class="Text" placeholder="Enter your email address" name="username">
+                        <input type="text" class="Text" placeholder="Enter your email address" name="email">
                     </div>
                 </div>
             </div>
@@ -33,6 +33,7 @@
                 </div>
             </button>
             <div class="NoAccountYetSignUp">No account yet? <a href="/register">Sign Up</a></div>
+            <div class="NoAccountYetSignUp">Forgot your password? <a href="/resetpassword">Reset Password</a></div>
         </form>
     </div>
     <div class="RightColumn"></div>
