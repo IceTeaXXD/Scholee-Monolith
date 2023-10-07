@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
     let searchElement = document.getElementById("search");
     let rangeElement = document.getElementById("range");
-
+    getScholarship()
     if(searchElement) {
         searchElement.addEventListener('input', debouncedSearch);
     }
