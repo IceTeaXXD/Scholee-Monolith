@@ -12,7 +12,7 @@
         <input type="text" id="search" name="search">
     </div>
 
-    <div class="container">
+    <div class="container" id="content">
         <?php
         while($row = mysqli_fetch_array($data['users'])){
         ?>
