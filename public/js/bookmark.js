@@ -125,7 +125,7 @@ function getBookmark(data="") {
                 // console.log("RENDER PAGINATION")
                 renderPaginationBookmark(response.currentPage, response.total, itemsPerPage);
             } else {
-                document.getElementById("bookmark-list").innerHTML = '<tr><td colspan="4">No bookmarked scholarships found.</td></tr>';
+                document.getElementById("bookmark-list").innerHTML = '<tr><td colspan="5">No bookmarked scholarships found.</td></tr>';
                 document.getElementById("pagination-button-bm").innerHTML = '';
             }
         }
