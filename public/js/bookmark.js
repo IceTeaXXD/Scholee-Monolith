@@ -143,7 +143,7 @@ function renderBookmarkedScholarships(bookmarkedScholarships) {
             <tr>
                 <td>${scholarship.title}</td>
                 <td>${scholarship.short_description}</td>
-                <td>$${scholarship.coverage}</td>
+                <td>$${scholarship.coverage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
                 <td>${types}</td>
                 <td>
                     <button onclick="deleteBookmark(${scholarship.user_id_scholarship}, ${scholarship.scholarship_id})">Remove Bookmark</button>

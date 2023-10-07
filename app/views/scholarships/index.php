@@ -13,7 +13,7 @@
             </body>
         </div>
         <div class="slidecontainer">
-            <input type="range" min="1" max="1000000" value="500000" class="slider" id="range">
+            <input type="range" min="1" max="1000000" value="1" class="slider" id="range">
             <p>Coverage: <span id="coverage"></span></p>
         </div>
         <thead>

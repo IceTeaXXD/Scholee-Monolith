@@ -67,7 +67,7 @@ function renderScholarships(response) {
             <tr>
                 <td>${scholarship.title}</td>
                 <td>${scholarship.short_description}</td>
-                <td>${scholarship.coverage}</td>
+                <td>$${scholarship.coverage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
                 <td>${types}</td>
                 <td><button class="button-style" onclick="redirectToEditScholarship(${scholarship.user_id}, ${scholarship.scholarship_id})">Edit Beasiswa</button></td>
             </tr>`;
