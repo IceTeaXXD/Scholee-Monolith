@@ -23,7 +23,7 @@ class Admin extends Controller{
         if(isset($_SESSION['role'])){
             $this->view('header/index', $data);
             $this->view('navbar/index', $data);
-            $this->view('userlist/index', $data);
+            $this->view('admin/userlist', $data);
         }else{
             header("Location: /login"); 
         }
@@ -42,7 +42,7 @@ class Admin extends Controller{
         if(isset($_SESSION['user_id'])){
             $this->view('header/index', $data);
             $this->view('navbar/index', $data);
-            $this->view('updateuser/index', $data);
+            $this->view('admin/update', $data);
         }else{
             header("Location: /login");
         }
@@ -55,7 +55,7 @@ class Admin extends Controller{
         if(isset($_SESSION['user_id'])){
             $this->view('header/index', $data);
             $this->view('navbar/index', $data);
-            $this->view('addnewuser/index', $data);
+            $this->view('admin/addnewuser', $data);
         }else{
             header("Location: /login");
         }
