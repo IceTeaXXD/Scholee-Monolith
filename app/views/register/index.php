@@ -5,7 +5,7 @@
                 <div class="SecondaryHeadline">Register</div>
             </div>
         </div>
-        <form class="register-form" action="javascript:;" onsubmit="return submitForm()">
+        <form class="register-form" method="post">
             <div class="TextField">
                 <div class="LabelAndField">
                     <div class="Label">Full Name</div>
@@ -29,7 +29,8 @@
                         <input type="password" class="Text" placeholder="Enter your password" name="password" id="password" required />
                     </div>
                 </div>
-                <div class="Description">It must be a combination of minimum 8 letters, numbers, and symbols.</div>
+                <div class="Description">It must be a combination of minimum 8 letters and numbers</div>
+                <div class="ErrorText"></div>
             </div>
             <button type="submit" class="Button">
                 <div class="TextContainer">
