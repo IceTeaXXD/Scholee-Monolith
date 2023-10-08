@@ -5,21 +5,41 @@
                 <div class="SecondaryHeadline">Reset Your Password</div>
             </div>
         </div>
-        <form class="login-form" method="post" action="/api/user/resetpassword.php">
+        <!-- action="/api/user/resetpassword.php" -->
+        <form class="login-form" method="post">
             <div class="TextField">
                 <div class="LabelAndField">
-                    <div class="Label">Email Address</div>
-                    <div class="Field">
-                        <input type="text" class="Text" placeholder="Enter your email address" name="email">
-                    </div>
+                    <?php if (isset($data['token'])) : ?>
+                        <div class="Label">New Password</div>
+                        <div class="Field">
+                            <input type="password" class="Text" placeholder="Enter your new password" name="password" id="password">
+                        </div>
+                        <div class="Label">Confirm New Password</div>
+                        <div class="Field">
+                            <input type="password" class="Text" placeholder="Confirm your new password" name="password2" id="password2">
+                        </div>
+                        <input type="hidden" class="Text" placeholder="Enter your token" name="token" value="<?= $data['token'] ?>">
+                    <?php else : ?>
+                        <div class="Label">Email Address</div>
+                        <div class="Field">
+                            <input type="email" class="Text" placeholder="Enter your email address" name="email" required>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
-            <button type="submit" class="Button">
-                <div class="TextContainer">
-                    <div class="ButtonText">Reset Password</div>
-                </div>
+            <div class="ErrorText"></div>
+            <div class="SuccessText"></div>
+            <?php if (isset($data['token'])) : ?>
+                <button type="submit" class="Button" style="margin-top:150px">
+            <?php else : ?>
+                <button type="submit" class="Button">
+            <?php endif; ?>
+            <div class="TextContainer">
+                <div class="ButtonText">Reset Password</div>
+            </div>
             </button>
         </form>
     </div>
     <div class="RightColumn"></div>
 </div>
+<script src="/public/js/resetpassword.js"></script>
