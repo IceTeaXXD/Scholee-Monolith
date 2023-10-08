@@ -214,6 +214,8 @@ h2 a {
     width: 40px;  
     height: 40px; 
     line-height: 30px; 
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .pagination-button button.active, .pagination-button-bm button.active {
@@ -283,6 +285,12 @@ h2 a {
     color: #444;
 }
 
+.btn.btn-primary:hover {
+    background-color: #2C347F;
+    border: none;
+    color: #CBEBFA;
+}
+
 .btn.btn-danger {
     background-color: #b50101;
     border: none;
@@ -306,5 +314,25 @@ h2 a {
     .container td:last-child button {
         font-size: 10px;
         /* width: 100px; */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%; 
+        font-size: 0.8em; 
+    }
+
+    .container td , .container th{
+        font-size: 0.6em;
+        padding: 2% 2%;
+        overflow-wrap: break-word;
+    }
+
+    .container td:last-child button {
+        font-size: 7px;
+        padding: 3px;
+        box-sizing: border-box;
+        max-width: 100%;
     }
 }
