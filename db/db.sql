@@ -5,8 +5,10 @@ create table user(
     role enum('student', 'admin', 'super admin', 'reviewer'),
     email varchar(255) not null,
     image varchar(255) not null default 'placeholder.jpg',
-    primary key (user_id),
     reset_token varchar(64) null default null,
+    is_verified boolean not null default false,
+    verify_token varchar(64) null default null,
+    primary key (user_id),
     unique key (email)
 );
 

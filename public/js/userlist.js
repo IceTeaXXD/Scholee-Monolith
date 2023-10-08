@@ -137,3 +137,24 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+
+function verify($userid) {
+    const data = new FormData();
+    data.append("user_id", $userid);
+
+    const xmr = new XMLHttpRequest();
+    xmr.open("POST", "/api/user/verify.php");
+    xmr.send(data);
+    xmr.onload = () => {
+        const response = JSON.parse(xmr.responseText);
+        console.log('Response:', response);
+
+        if (response.status === 'success') {
+            location.reload();
+        } else {
+            alert('Failed to verify user');
+        }
+    };
+    return false;
+}

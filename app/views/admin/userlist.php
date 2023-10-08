@@ -23,6 +23,9 @@
             <div class="attribute">Role: <?php echo $row['role'];?></div>
             <div class="attribute">Email: <?php echo $row['email'];?></div>
             <a href="/admin/update?user_id=<?php echo $row['user_id'];?>&email=<?php echo $row['email'];?>&role=<?php echo $row['role'];?>"> <button class="btn btn-primary">View More</button> </a>
+            <?php if($row['is_verified'] == 0){?>
+            <a> <button class="btn btn-primary" onclick="verify(<?php echo $row['user_id'];?>)">Verify</button> </a>
+            <?php } ?>
             <button class="btn btn-danger" onclick="deleteConfirmation('<?php echo $row['name'];?>',<?php echo $row['user_id'];?>)">Delete</button></a>
         </div> 
         <?php

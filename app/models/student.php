@@ -30,16 +30,16 @@ class Student extends User {
         mysqli_stmt_execute($stmt);
     }
 
-    public function register(string $name, string $role, string $email, string $password){
+    public function register(string $name, string $role, string $email, string $password, string $token){
         $this->name = $name;
         $this->role = $role;
         $this->email = $email;
         $this->password = password_hash($password, PASSWORD_DEFAULT);
 
         try {
-            $query = "INSERT INTO user (name, role, email, password) VALUES (?,?,?,?)";
+            $query = "INSERT INTO user (name, role, email, password, verify_token) VALUES (?,?,?,?,?)";
             $stmt = $this->db->setSTMT($query);
-            mysqli_stmt_bind_param($stmt, "ssss", $this->name, $this->role, $this->email, $this->password);
+            mysqli_stmt_bind_param($stmt, "sssss", $this->name, $this->role, $this->email, $this->password, $token);
             $insert = mysqli_stmt_execute($stmt);
 
             if ($insert === false) {
