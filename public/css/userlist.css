@@ -75,8 +75,20 @@ body {
     color: #444;
 }
 
+.btn.btn-primary:hover {
+    background-color: #2C347F;
+    border: none;
+    color: #CBEBFA;
+}
+
 .btn.btn-danger {
     background-color: #b50101;
+    border: none;
+    color: #fff;
+}
+
+.btn.btn-danger:hover {
+    background-color: #680000;
     border: none;
     color: #fff;
 }
