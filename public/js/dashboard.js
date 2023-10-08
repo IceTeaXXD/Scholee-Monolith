@@ -5,7 +5,9 @@ const uploadCV = () => {
 const applyScholarship = () => {
     window.location.href = "../../scholarships"
 }
-
+const viewMoreReviews = () => {
+    window.location.href = "../../reviews"
+}
 const viewMoreClicked = (user_id, scholarship_id) => {
     window.location.href = "../../scholarships/" + user_id + "/" + scholarship_id;
 }
