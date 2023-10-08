@@ -10,7 +10,7 @@
                 <div class="LabelAndField">
                     <div class="Label">Email Address</div>
                     <div class="Field">
-                        <input type="text" class="Text" placeholder="Enter your email address" name="email">
+                        <input type="email" class="Text" placeholder="Enter your email address" name="email">
                     </div>
                 </div>
             </div>
