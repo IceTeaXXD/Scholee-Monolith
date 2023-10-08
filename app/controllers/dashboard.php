@@ -57,5 +57,23 @@ class Dashboard extends Controller
                 header('Location: /login');
             }
         }
+        if ($_SESSION['role']=="admin")
+        {
+            $data['judul'] = 'Dashboard';
+            $data['style'] = "/public/css/dashboard.css";
+            $model = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
+            $itemsPerPage = 10;
+            $offset = 0;
+            $data['scholarships'] = $model->getAllScholarship($offset, $itemsPerPage);
+            $data['count'] = $model->countAllScholarships();
+            if (isset($_SESSION['username'])) {
+                $this->view('header/index', $data);
+                $this->view('navbar/index', $data);
+                $this->view('dashboard/index', $data);
+                $this->view('dashboard/administrator', $data);
+            } else {
+                header('Location: /login');
+            }
+        }
     }
 }

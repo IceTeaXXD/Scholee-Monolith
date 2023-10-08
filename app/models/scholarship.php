@@ -196,6 +196,26 @@ class Scholarship
         $result = mysqli_stmt_get_result($stmt);
         return $result;
     }
+    public function countAllScholarships() {
+        $query = '';
+        $stmt = null;
+        if ($this->role == 'admin') {
+            $query .= "SELECT COUNT(*) AS count
+                        FROM $this->table 
+                        WHERE user_id = ?";
+            $stmt = $this->db->setSTMT($query);
+            mysqli_stmt_bind_param($stmt, "i", $this->user_id);
+        } else {
+            $query = "SELECT COUNT(*) AS count
+                      FROM $this->table";
+            $stmt = $this->db->setSTMT($query);
+        }
+        
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row = mysqli_fetch_assoc($result);
+        return $row['count'];
+    }
     public function countScholarships(){
         $query = "SELECT COUNT(*) as total FROM $this->table";
         $stmt = $this->db->setSTMT($query);
