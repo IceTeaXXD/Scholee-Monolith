@@ -3,7 +3,7 @@ form.addEventListener('submit', function (event) {
     event.preventDefault(); // prevent the form from submitting normally
     if (!isValidPassword(password.value)) {
         const error = document.querySelector('.ErrorText');
-        error.textContent = 'Password must be a combination of minimum 8 letters and numbers';
+        error.textContent = 'Password must be a combination of minimum 8 letters, 1 uppercase, and numbers';
         error.style.display = 'block';
         return;
     }
