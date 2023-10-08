@@ -6,6 +6,7 @@ create table user(
     email varchar(255) not null,
     image varchar(255) not null default 'placeholder.jpg',
     primary key (user_id),
+    reset_token varchar(64) null default null,
     unique key (email)
 );
 
