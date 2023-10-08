@@ -59,7 +59,7 @@ function renderReviews(response){
             ${action}
             <td>${review.type}</td>
             <td>${review.review_status}</td>
-            <td class="comment">${review.comment === null ? "" : review.comment} <br> -- <br> ${review.name} <br><i>${review.occupation}</i></td>
+            <td class="comment">${review.comment === null ? "" : review.comment} <br> ${review.comment === null ? "" : "--"}<br> ${review.comment === null ? "" :review.name} <br><i>${review.comment === null ? "" :review.occupation}</i></td>
             <td><button type='button' onclick='submitDocument("${review.user_id}","${review.file_id}")' data-toggle='modal' data-target='#exampleModalCenter'>Daftarkan</button></td>`;         
             
             content.innerHTML += row;
