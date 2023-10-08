@@ -170,6 +170,10 @@
     cursor: pointer
 }
 
+.Button:hover {
+    background-color: #213357;
+}
+
 .TextContainer {
     padding-left: 16px;
     padding-right: 16px;
@@ -202,6 +206,13 @@
 
 .ErrorText {
     color: red;
+    font-size: 15px;
+    margin-top: 45px;
+    display: none;
+}
+
+.SuccessText {
+    color: green;
     font-size: 15px;
     margin-top: 45px;
     display: none;
