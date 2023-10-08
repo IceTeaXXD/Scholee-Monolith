@@ -59,6 +59,12 @@ class Scholarship
         $whereClauses = [];
         $params = [];
         $types = '';
+
+        if($_SESSION['role'] == 'admin'){
+            $whereClauses[] = "user_id = ?";
+            $params[] = $_SESSION['user_id'];
+            $types .= "i";
+        }
         
         if (isset($data['judul'])) {
             $whereClauses[] = "LOWER(title) LIKE ?";
@@ -118,6 +124,12 @@ class Scholarship
         $whereClauses = [];
         $params = [];
         $types = '';
+
+        if($_SESSION['role'] == 'admin'){
+            $whereClauses[] = "user_id = ?";
+            $params[] = $_SESSION['user_id'];
+            $types .= "i";
+        }
         
         if (isset($data['judul'])) {
             $whereClauses[] = "LOWER(title) LIKE ?";

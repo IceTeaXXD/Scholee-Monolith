@@ -66,7 +66,7 @@ class Review
         $query = "SELECT a.user_id, a.file_id, a.type, a.link, r.review_status, r.comment 
                     FROM additionalfiles a inner join review r on r.user_id_student = a.user_id and r.file_id = a.file_id
                     WHERE r.user_id_reviewer = ?
-                    GROUP BY a.user_id, a.file_id
+                    GROUP BY a.user_id, a.file_id, r.review_status, r.comment
                     ORDER BY review_status";
         $stmt = $this->db->setSTMT($query);
         mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);
