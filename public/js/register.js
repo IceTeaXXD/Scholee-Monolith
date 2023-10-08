@@ -14,7 +14,7 @@ form.addEventListener('submit', function (event) {
         if (xhr.status === 200) {
             const response = JSON.parse(xhr.responseText);
             if (response.status === 'success') {
-                window.location.href = '/login';
+                window.location.href = '/verify';
             } else {
                 const error = document.querySelector('.ErrorText');
                 console.log(response.message);

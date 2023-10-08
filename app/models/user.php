@@ -5,6 +5,7 @@ class User{
     private string $role;
     private string $email;
     private string $password;
+    private bool $isVerified;
     private string $image;
     private $db;
     private $table;
@@ -33,7 +34,7 @@ class User{
     }
 
     public function getUserAll(){
-        $query = "select user_id, name, image, role, email from user where role != 'super admin' order by role desc";
+        $query = "select user_id, name, image, role, email, is_verified from user where role != 'super admin' order by role desc";
         $stmt = $this->db->setSTMT($query);
         mysqli_stmt_execute($stmt);
         return mysqli_stmt_get_result($stmt);
@@ -102,16 +103,16 @@ class User{
         }
     }
 
-    public function register(string $name, string $role, string $email, string $password){
+    public function register(string $name, string $role, string $email, string $password, string $token){
         $this->name = $name;
         $this->role = $role;
         $this->email = $email;
         $this->password = password_hash($password, PASSWORD_DEFAULT);
 
         try {
-            $query = "INSERT INTO $this->table (name, role, email, password) VALUES (?,?,?,?)";
+            $query = "INSERT INTO $this->table (name, role, email, password, verify_token) VALUES (?,?,?,?,?)";
             $stmt = $this->db->setSTMT($query);
-            mysqli_stmt_bind_param($stmt, "ssss", $this->name, $this->role, $this->email, $this->password);
+            mysqli_stmt_bind_param($stmt, "sssss", $this->name, $this->role, $this->email, $this->password, $token);
             $insert = mysqli_stmt_execute($stmt);
             if ($insert === false) {
                 throw new Exception(mysqli_stmt_error($stmt));
@@ -123,7 +124,7 @@ class User{
     }
 
     public function login($email, $password){
-        $query = "SELECT user_id, name, role, email, password FROM $this->table WHERE email = ?";
+        $query = "SELECT user_id, name, role, email, password, is_verified FROM $this->table WHERE email = ?";
         $stmt = $this->db->setSTMT($query);
         mysqli_stmt_bind_param($stmt, "s", $email);
         $exists = mysqli_stmt_execute($stmt);
@@ -140,6 +141,7 @@ class User{
                     $this->name = $row['name'];
                     $this->email = $row['email'];
                     $this->userID = $row['user_id'];
+                    $this->isVerified = $row['is_verified'];
                     return true;
                 }else{
                     return false;
@@ -214,6 +216,61 @@ class User{
         }
         return $insert;
     }
+
+    public function verify($userid) {
+        $query = "UPDATE $this->table SET is_verified = 1, verify_token = NULL WHERE user_id = ?";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_bind_param($stmt, "s", $userid);
+        $insert = mysqli_stmt_execute($stmt);
+        if ($insert === false) {
+            throw new Exception(mysqli_stmt_error($stmt));
+        }
+        return $insert;
+    }
+
+    public function verifyToken($token) {
+        $query = "UPDATE $this->table SET is_verified = 1, verify_token = NULL WHERE verify_token = ?";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_bind_param($stmt, "s", $token);
+        $insert = mysqli_stmt_execute($stmt);
+        if ($insert === false) {
+            throw new Exception(mysqli_stmt_error($stmt));
+        }
+        return $insert;
+    }
+
+    public function getUserByVerifyToken($token) {
+        $query = "SELECT user_id, name, role, email, password FROM $this->table WHERE verify_token = ?";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_bind_param($stmt, "s", $token);
+        $exists = mysqli_stmt_execute($stmt);
+        if(!$exists){
+            /* Tidak ada usernya */
+            return $exists;
+        }else{
+            /* Ambil hasilnya */
+            $result = mysqli_stmt_get_result($stmt);
+            $row = mysqli_fetch_array($result);
+            if($row){
+                $this->role = $row['role'];
+                $this->name = $row['name'];
+                $this->email = $row['email'];
+                $this->userID = $row['user_id'];
+                return true;
+            }
+        }
+    }
+
+    public function createverifytoken($email, $token) {
+        $query = "UPDATE $this->table SET verify_token = ? WHERE email = ?";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_bind_param($stmt, "ss", $token, $email);
+        $insert = mysqli_stmt_execute($stmt);
+        if ($insert === false) {
+            throw new Exception(mysqli_stmt_error($stmt));
+        }
+        return $insert;
+    }
     
     public function getName(){
         return $this->name;
@@ -229,5 +286,9 @@ class User{
 
     public function getID(){
         return $this->userID;
+    }
+
+    public function getIsVerified(){
+        return $this->isVerified;
     }
 }

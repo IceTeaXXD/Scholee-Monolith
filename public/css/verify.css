@@ -1,0 +1,41 @@
+.verify {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.verify h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #2C347F;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.verify p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #2C347F;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.verify a {
+    font-size: 16px;
+    font-weight: 400;
+    color: #2C347F;
+    text-decoration: none;
+    border-bottom: 1px solid #2C347F;
+    padding-bottom: 2px;
+    display: block;
+    justify-content: center;
+    text-align: center;
+}
