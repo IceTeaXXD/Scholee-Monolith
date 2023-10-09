@@ -84,7 +84,7 @@ function renderScholarships(response) {
             <tr>
                 <td class='comment'>${scholarship.title}</td>
                 <td class='comment'>${scholarship.short_description}</td>
-                <<td>Rp${scholarship.coverage.toLocaleString('id-ID')}</td>
+                <td>Rp${scholarship.coverage.toLocaleString('id-ID')}</td>
                 <td class='comment'>${types}</td>
                 <td>
                     <button class="button-style" onclick="redirectToEditScholarship(${scholarship.user_id}, ${scholarship.scholarship_id})" aria-labelledby="editButtonLabel">Edit</button>
