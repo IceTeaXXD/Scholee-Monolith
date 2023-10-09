@@ -37,6 +37,7 @@ const submitForm = () => {
         console.log(xhr.response);
         if (res.status === 'success') {
             alert('Scholarship updated successfully');
+            window.location.href = '/scholarships';
         } else {
             alert(res.error);
         }

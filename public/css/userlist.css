@@ -107,6 +107,7 @@ body {
 }
 
 .modal-content{
+    text-align: center;
     align-items: center;
     background-color: #fff;
     border-radius: 30px;

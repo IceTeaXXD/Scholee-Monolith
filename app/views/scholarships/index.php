@@ -56,11 +56,13 @@
 
 <div id="deleteModal" class="modal">
     <div class="modal-content">
-        <h3 class="title">Apakah Anda benar ingin melakukan penghapusan?</h3>
+        <h3>Apakah Anda benar ingin melakukan penghapusan?</h3>
+        <p> </p>
         <button class="btn btn-primary" onclick="confirmDelete()">Ya</button>
-        <button class="btn btn-danger closebtn" onclick="cancelDelete()">Tidak</button>
+        <button class="btn btn-danger" onclick="cancelDelete()">Tidak</button>
     </div>
 </div>
+
 
 <div id="alert-modal" class="modal">
     <div class="modal-content">
