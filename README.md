@@ -99,6 +99,9 @@ Finding college scholarships shouldn't be overwhelming. We make it simple and ma
 - User List
 <img src="docs/pages/userlist.png">
 
+## Lighthouse Report
+Lighthouse report can be viewed at [here](docs/lighthouse/lighthouse.md)
+
 ## Task Allocation 
 
 ### Server Side
