@@ -25,6 +25,10 @@ Finding college scholarships shouldn't be overwhelming. We make it simple and ma
 5. XAMPP
 6. MySQLi Extension for PHP
 
+## How to Install
+1. Install Docker from [here](https://www.docker.com/products/docker-desktop/)
+2. Install XAMPP from [here](https://www.apachefriends.org/download.html)
+
 ## How to Run
 ### Using XAMPP
 1. Place this project in the htdocs folder in XAMPP
@@ -94,13 +98,16 @@ Finding college scholarships shouldn't be overwhelming. We make it simple and ma
 <img src="docs/pages/AddBeasiswa.png">
 
 - Add User as Super Admin
-<img src="docs/pages/UserAdd.png">
+<img src="docs/pages/useradd.png">
 
 - User List
 <img src="docs/pages/userlist.png">
 
 ## Lighthouse Report
 Lighthouse report can be viewed at [here](docs/lighthouse/lighthouse.md)
+
+## Responsive Web Design
+Website is responsive to media size
 
 ## Task Allocation 
 
