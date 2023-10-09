@@ -22,6 +22,7 @@ if (!isset($_SESSION['role'])) {
     $succ = $student->register($_POST['name'], "student", $_POST['email'], $_POST['password'], $token);
     if ($succ === true) {
         $email = $_POST['email'];
+        $name = $_POST['name'];
         $mail = new PHPMailer(true);
         try {
             //Server settings
@@ -42,7 +43,7 @@ if (!isset($_SESSION['role'])) {
             $mail->Subject = 'Scholee Account Verification';
             $mail->Body = <<<END
     
-            <p>Hi,</p>
+            <p>Hi, $name</p>
             <p>Thank you for registering. Please click the link below to verify your account.</p>
             <p><a href="http://localhost:3000/verify?token=$token">Verify Account</a></p>
             <p>Thank you.</p>
