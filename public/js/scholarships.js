@@ -81,14 +81,8 @@ function renderScholarships(response) {
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
                 <td class='comment'>${types}</td>
                 <td>
-                    <button class="button-style" onclick="redirectToEditScholarship(${
-                        scholarship.user_id
-                    }, ${scholarship.scholarship_id})">Edit Beasiswa</button>
-                    <button type='button' class='btn btn-danger' data-toggle='modal' onclick="deleteConfirmation(${
-                        scholarship.user_id
-                    }, ${
-                scholarship.scholarship_id
-            })" data-target='#deleteModal'>Delete</button>
+                    <button class="button-style" onclick="redirectToEditScholarship(${scholarship.user_id}, ${scholarship.scholarship_id})" aria-labelledby="editButtonLabel">Edit</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" onclick="deleteConfirmation(${scholarship.user_id}, ${scholarship.scholarship_id})" data-target="#deleteModal" aria-labelledby="deleteButtonLabel">Delete</button>
                 </td>
                 
             </tr>`;
@@ -104,7 +98,7 @@ function renderScholarships(response) {
                 <td>${scholarship.coverage}</td>
                 <td class='comment'>${types}</td>
                 <td><button class="button-style" onclick="redirectToScholarships(${scholarship.user_id}, ${scholarship.scholarship_id})">View More</button>
-                <button class="button-style" onclick="bookmark(${scholarship.user_id}, ${scholarship.scholarship_id})"><i class="fas fa-bookmark"></i></button></td>
+                <button class="button-style" onclick="bookmark(${scholarship.user_id}, ${scholarship.scholarship_id})" aria-label="Bookmark Beasiswa"><i class="fas fa-bookmark"></i></button></td>
             </tr>`;
             scholarshipsTableBody.innerHTML += row;
         });
