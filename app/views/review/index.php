@@ -78,14 +78,16 @@
                         echo '<td class="comment"> </td>';
                     }
                 } else if ($_SESSION['role'] == 'reviewer') {
-                    echo '<td class="comment"><input aria-label="comment-section" type="text" value="' . $row['comment'] . '" id="comment-' . $row['user_id'] . '-' . $row['file_id'] . '" required></td>';
+                    echo '<td class="comment"><label for="comment-' . $row['user_id'] . '-' . $row['file_id'] . '">Comment:</label>';
+                    echo '<input type="text" value="' . $row['comment'] . '" id="comment-' . $row['user_id'] . '-' . $row['file_id'] . '" required></td>';
                 }
+                
                 if ($_SESSION['role'] == 'student') {
                     echo "<td><button type='button' onclick='submitDocument(" . $_SESSION['user_id'] . "," . $row['file_id'] . ")' data-toggle='modal' data-target='#exampleModalCenter'>Daftarkan</button></td>";
                 } else if ($_SESSION['role'] == 'reviewer') {
                     echo "<td><button type='button' onclick='commentDocument(" . $row['user_id'] . "," . $row['file_id'] . ")' data-toggle='modal' data-target='#exampleModalCenter'>Comment</button></td>";
                 }
-                echo '</tr>';
+                echo '</tr>';                
             }
             ?>
         </tbody>
