@@ -33,7 +33,7 @@
                 <th>
                     <div class="pagination-form" id="pagination-form">
                         <form method="get">
-                            <label for="itemsPerPage">Items Per Page:</label>
+                            <span class="itemsPerPage" style="color:white;">Items Per Page:</span>
                             <select name="itemsPerPage" id="itemsPerPage">
                                 <option value="5">5</option>
                                 <option value="10">10</option>
