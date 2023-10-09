@@ -235,6 +235,15 @@ class Scholarship
         return $row['count'];
     }
 
+    public function maxCoverage() {
+        $query = "SELECT MAX(coverage) AS max FROM $this->table";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row = mysqli_fetch_assoc($result);
+        return $row['max'];
+    }
+
     public function getUserId(){
         return $this->user_id;
     }

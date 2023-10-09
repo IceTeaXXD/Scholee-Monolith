@@ -176,8 +176,16 @@ class Bookmark
         return $row['total'];
     }
     
-    
-    
+    public function maxCoverage() {
+        // join with scholarship table
+        $query = "SELECT MAX(coverage) as max FROM $this->table a INNER JOIN scholarship b ON a.scholarship_id = b.scholarship_id";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row = mysqli_fetch_assoc($result);
+        return $row['max'];
+    }
+
     public function updatePrio($prio, $uid, $uis, $sid){
         $query = "UPDATE bookmark SET prio = ? WHERE user_id_student = ? AND user_id_scholarship = ? AND scholarship_id = ?";
         $stmt = $this->db->setSTMT($query);

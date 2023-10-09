@@ -2,6 +2,7 @@
 <div class="scholarship-body">
     <table class="container">
         <div class="search-form">
+
             <body>
                 <form autocomplete="off">
                     <label for="search">Search</label>
@@ -14,15 +15,15 @@
             <tr>
                 <th>
                     <h1>
-                        <?php 
-                            if($_SESSION['role']=='student'){
+                        <?php
+                        if ($_SESSION['role'] == 'student') {
                         ?>
-                        ID FILE
-                        <?php 
-                            }else{        
+                            ID FILE
+                        <?php
+                        } else {
                         ?>
-                        USER ID
-                        <?php } 
+                            USER ID
+                        <?php }
                         ?>
                     </h1>
                 </th>
@@ -59,30 +60,30 @@
                 echo '<tr>';
                 if ($_SESSION['role'] == 'student') {
                     echo '<td>' . $row['file_id'] . '</td>';
-                }else if($_SESSION['role'] == 'reviewer'){
+                } else if ($_SESSION['role'] == 'reviewer') {
                     echo '<td>' . $row['user_id'] . '</td>';
                 }
-                if($row['type']!=='mp4'){
-                    echo '<td><a class="file" href="/public/files/'.$row['link'].'" target="pdf">' . $row['link'] . '</a></td>';
-                }else{
+                if ($row['type'] !== 'mp4') {
+                    echo '<td><a class="file" href="/public/files/' . $row['link'] . '" target="pdf">' . $row['link'] . '</a></td>';
+                } else {
                     /* Modal For Video*/
                     echo "<td style='cursor: pointer;' onclick='openVideoModal(\"/public/files/" . $row['link'] . "\")'>" . $row['link'] . "</td>";
                 }
                 echo '<td>' . $row['type'] . '</td>';
-                echo '<td>' . $row['review_status'].'</td>';
+                echo '<td>' . $row['review_status'] . '</td>';
                 if ($_SESSION['role'] == 'student') {
-                    if($row['review_status'] == 'reviewed'){
-                        echo '<td class="comment">' . $row['comment'] . '<br> -- <br>'. $row['name'] .' <br><i>'. $row['occupation'].'</i></td>';
-                    }else{
+                    if ($row['review_status'] == 'reviewed') {
+                        echo '<td class="comment">' . $row['comment'] . '<br> -- <br>' . $row['name'] . ' <br><i>' . $row['occupation'] . '</i></td>';
+                    } else {
                         echo '<td class="comment"> </td>';
                     }
-                }else if($_SESSION['role'] == 'reviewer'){
-                    echo '<td class="comment"><input type="text" value="'.$row['comment'].'" id="comment-'.$row['user_id'].'-'.$row['file_id'].'" required></td>';
+                } else if ($_SESSION['role'] == 'reviewer') {
+                    echo '<td class="comment"><input aria-label="comment-section" type="text" value="' . $row['comment'] . '" id="comment-' . $row['user_id'] . '-' . $row['file_id'] . '" required></td>';
                 }
                 if ($_SESSION['role'] == 'student') {
-                    echo "<td><button type='button' onclick='submitDocument(".$_SESSION['user_id'].",".$row['file_id'].")' data-toggle='modal' data-target='#exampleModalCenter'>Daftarkan</button></td>";
-                }else if ($_SESSION['role'] == 'reviewer'){
-                    echo "<td><button type='button' onclick='commentDocument(".$row['user_id'].",".$row['file_id'].")' data-toggle='modal' data-target='#exampleModalCenter'>Comment</button></td>";
+                    echo "<td><button type='button' onclick='submitDocument(" . $_SESSION['user_id'] . "," . $row['file_id'] . ")' data-toggle='modal' data-target='#exampleModalCenter'>Daftarkan</button></td>";
+                } else if ($_SESSION['role'] == 'reviewer') {
+                    echo "<td><button type='button' onclick='commentDocument(" . $row['user_id'] . "," . $row['file_id'] . ")' data-toggle='modal' data-target='#exampleModalCenter'>Comment</button></td>";
                 }
                 echo '</tr>';
             }
@@ -128,8 +129,8 @@
 </div>
 
 <script>
-    var user_id = "<?php echo $_SESSION['user_id'];?>";
-    var role = "<?php echo $_SESSION['role'];?>";  
+    var user_id = "<?php echo $_SESSION['user_id']; ?>";
+    var role = "<?php echo $_SESSION['role']; ?>";
 </script>
 <script src="../../../public/js/submitDocument.js"></script>
 <script src="../../../public/js/searchReview.js"></script>

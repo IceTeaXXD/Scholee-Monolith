@@ -65,20 +65,26 @@ function getScholarship(data = "") {
 function renderScholarships(response) {
     let scholarshipsTableBody = document.getElementById("scholarship-list");
     scholarshipsTableBody.innerHTML = "";
+    let maxCoverage = 0;
+    let minCoverage = 0;
 
     if (response.status && response.status === "error") {
         scholarshipsTableBody.innerHTML =
             '<tr><td colspan="6">No scholarships found.</td></tr>';
     } else if (userRole === "admin") {
         response.data.forEach((scholarship) => {
+            if (scholarship.coverage > maxCoverage) {
+                maxCoverage = scholarship.coverage;
+            }
+            if (scholarship.coverage < minCoverage) {
+                minCoverage = scholarship.coverage;
+            }
             let types = scholarship.types.join(", ");
             let row = `
             <tr>
                 <td class='comment'>${scholarship.title}</td>
                 <td class='comment'>${scholarship.short_description}</td>
-                <td>$${scholarship.coverage
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                <<td>Rp${scholarship.coverage.toLocaleString('id-ID')}</td>
                 <td class='comment'>${types}</td>
                 <td>
                     <button class="button-style" onclick="redirectToEditScholarship(${scholarship.user_id}, ${scholarship.scholarship_id})" aria-labelledby="editButtonLabel">Edit</button>
@@ -90,12 +96,18 @@ function renderScholarships(response) {
         });
     } else if (response.data && Array.isArray(response.data)) {
         response.data.forEach((scholarship) => {
+            if (scholarship.coverage > maxCoverage) {
+                maxCoverage = scholarship.coverage;
+            }
+            if (scholarship.coverage < minCoverage) {
+                minCoverage = scholarship.coverage;
+            }
             let types = scholarship.types.join(", ");
             let row = `
             <tr>
                 <td class='comment'>${scholarship.title}</td>
                 <td class='comment'>${scholarship.short_description}</td>
-                <td>${scholarship.coverage}</td>
+                <td>Rp${scholarship.coverage.toLocaleString('id-ID')}</td>
                 <td class='comment'>${types}</td>
                 <td><button class="button-style" onclick="redirectToScholarships(${scholarship.user_id}, ${scholarship.scholarship_id})">View More</button>
                 <button class="button-style" onclick="bookmark(${scholarship.user_id}, ${scholarship.scholarship_id})" aria-label="Bookmark Beasiswa"><i class="fas fa-bookmark"></i></button></td>
@@ -196,10 +208,10 @@ if (slider) {
 
     slider.oninput = function () {
         output.innerHTML =
-            "$" + this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            "Rp" + this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     };
     const coverage = document.getElementById("coverage");
     const value = document.getElementById("range").value;
     coverage.innerHTML =
-        "$" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        "Rp" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

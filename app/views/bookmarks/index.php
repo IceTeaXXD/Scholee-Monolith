@@ -12,8 +12,12 @@
         </div>
         <div class="slide-bookmark">
             <label for="slide-bookmark">Coverage:</label>
-            <input type="range" min="1" max="1000000" value="1" class="slider" id="slide-bookmark"> 
-            <p>Coverage: <span id="coverage">500000</span></p> 
+            <input type="range" min="1" max=<?
+                                            $bookmarksModel = new Bookmark();
+                                            $maxCoverage = $bookmarksModel->maxCoverage();
+                                            echo $maxCoverage;
+                                            ?> value="1" class="slider" id="slide-bookmark">
+            <p>Coverage: <span id="coverage">500000</span></p>
         </div>
         <thead>
             <tr>
@@ -44,7 +48,7 @@
                 </th>
             </tr>
         </thead>
-        <tbody id = "bookmark-list">
+        <tbody id="bookmark-list">
             <!-- iNJECT JS -->
         </tbody>
     </table>
