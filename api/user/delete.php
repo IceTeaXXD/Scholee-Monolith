@@ -11,5 +11,7 @@
 
     if($exec){
         echo json_encode(['status' => 'success']);
+    }else{
+        echo json_encode(['status' => 'error', 'message' => 'deletion failed']);
     }
 ?>
