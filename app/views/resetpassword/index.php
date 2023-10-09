@@ -40,6 +40,6 @@
             </button>
         </form>
     </div>
-    <div class="RightColumn"></div>
+    <div class="RightColumn" style="background-image: url('/public/image/assets/log-reg/forgot.webp');"></div>
 </div>
 <script src="/public/js/resetpassword.js"></script>
