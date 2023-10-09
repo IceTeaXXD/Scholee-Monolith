@@ -57,6 +57,47 @@ Finding college scholarships shouldn't be overwhelming. We make it simple and ma
 3. Ahmad Nadil - 13521024
 
 ## Screenshots
+- Landing Page
+<img src="docs/pages/landingpage.png">
+
+- About Us
+<img src="docs/pages/aboutus.png">
+
+- Login
+<img src="docs/pages/login.png">
+
+- Register
+<img src="docs/pages/register.png">
+
+- Dashboard
+<img src="docs/pages/dashboard.png">
+
+- Scholarship List
+<img src="docs/pages/scholarshiplist.png">
+
+- Scholarship View More
+<img src="docs/pages/viewmore.png">
+
+- Scholarship Bookmark
+<img src="docs/pages/bookmark.png">
+
+- Document Review
+<img src="docs/pages/review.png">
+
+- Document Upload
+<img src="docs/pages/docupload.png">
+
+- User Profile
+<img src="docs/pages/profile.png">
+
+- Add Scholarship
+<img src="docs/pages/AddBeasiswa.png">
+
+- Add User as Super Admin
+<img src="docs/pages/UserAdd.png">
+
+- User List
+<img src="docs/pages/userlist.png">
 
 ## Task Allocation 
 
