@@ -110,7 +110,7 @@ CREATE TABLE `review` (
   PRIMARY KEY (`user_id_reviewer`,`user_id_student`,`file_id`),
   KEY `user_id_student` (`user_id_student`,`file_id`),
   CONSTRAINT `review_ibfk_1` FOREIGN KEY (`user_id_reviewer`) REFERENCES `reviewer` (`user_id`),
-  CONSTRAINT `review_ibfk_2` FOREIGN KEY (`user_id_student`, `file_id`) REFERENCES `additionalfiles` (`user_id`, `file_id`)
+  CONSTRAINT `review_ibfk_2` FOREIGN KEY (`user_id_student`, `file_id`) REFERENCES `additionalfiles` (`user_id`, `file_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
