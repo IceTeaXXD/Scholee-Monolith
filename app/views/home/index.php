@@ -90,4 +90,12 @@
         </div>
     </div>
 </div>
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <video id="videoPlayer" class="videoPlayer" controls>
+            <source id="videoSource" src="public/video/scholarships.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
 <script src="/public/js/home.js"></script>

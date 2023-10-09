@@ -121,3 +121,17 @@ function redirectToRegister() {
 function redirectToAboutus() {
     window.location.href = "/aboutus";
 }
+
+var modal = document.getElementById("modal");
+var watchButton = document.getElementsByClassName("watch-video")[0];
+var close = document.getElementsByClassName("close")[0];
+var videoPlayer = document.getElementById("videoPlayer");
+watchButton.addEventListener("click", () => {
+    modal.style.display = "block";
+    videoPlayer.load(); 
+});
+
+close.addEventListener("click", () => {
+    modal.style.display = "none";
+    videoPlayer.pause();
+})
