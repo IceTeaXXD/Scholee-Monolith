@@ -15,7 +15,6 @@
         <div class="slidecontainer">
             <label for="range">Coverage:</label>
             <input type="range" min="1" max="1000000" value="1" class="slider" id="range" aria-describedby="coverage">
-            <input type="range" min="1" max="1000000" value="1" class="slider" id="range" aria-label="range">
             <p>Coverage: <span id="coverage"></span></p>
         </div>
         <thead>
