@@ -13,7 +13,7 @@
                 </div>
                 <div class="card__back flow-content">
                     <p class="card__name">Henry Anand Septian R.</p>
-                    <q>Sikontol sipaling uggh uggh pecinta Maria Khellen</q>
+                    <q>Halo, aku manusia dari Mojokerto, aku rasis, kerjaku adalah membully tiap hari.</q>
                     <ul role="list" class="card__social flex-group">
                         <li>
                             <a href="https://twitter.com/cclarc8">
@@ -45,7 +45,7 @@
                 </div>
                 <div class="card__back flow-content">
                     <p class="card__name">Matthew Mahendra</p>
-                    <q>Sipaling bucin sama 13221002 ke bandung mulu dahlah gak ngerti lagi.</q>
+                    <q>Sipaling bucin sama 13221002 ke Bandung mulu dahlah gak ngerti lagi.</q>
                     <ul role="list" class="card__social flex-group">
                         <li>
                             <a href="https://twitter.com/ifmahendra">
