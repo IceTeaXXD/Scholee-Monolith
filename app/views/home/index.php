@@ -90,4 +90,14 @@
         </div>
     </div>
 </div>
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Video Player</h1>
+        <video id="videoPlayer" class="videoPlayer" controls>
+            <source id="videoSource" src="" type="video/mp4">
+        </video>
+    </div>
+</div>
 <script src="/public/js/home.js"></script>
+<script src="/public/js/submitDocument.js"></script>
