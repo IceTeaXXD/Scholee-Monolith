@@ -36,7 +36,8 @@ function cancelDelete(){
     modal.style.display = 'none';
 }
 
-close.addEventListener('click', function() {
-    modal.style.display = 'none';
-});
+if(close !== null)
+    close.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
 

@@ -13,7 +13,7 @@
             </body>
         </div>
         <div class="slidecontainer">
-            <input type="range" min="1" max="1000000" value="1" class="slider" id="range">
+            <input type="range" min="1" max="1000000" value="1" class="slider" id="range" aria-label="range">
             <p>Coverage: <span id="coverage"></span></p>
         </div>
         <thead>
@@ -34,7 +34,7 @@
                     <div class="pagination-form" id="pagination-form">
                         <form method="get">
                             <span class="itemsPerPage" style="color:white;">Items Per Page:</span>
-                            <select name="itemsPerPage" id="itemsPerPage">
+                            <select name="itemsPerPage" id="itemsPerPage" aria-label="itemsPerPage">
                                 <option value="5">5</option>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
