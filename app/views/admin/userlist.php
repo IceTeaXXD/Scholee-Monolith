@@ -18,7 +18,7 @@
         while($row = mysqli_fetch_array($data['users'])){
         ?>
         <div class="box">
-            <img class="profile" alt="user profile image" src="/public/image/profiles/<?php echo $row['image'];?>">
+            <img class="profile" width="200px" height="200px" alt="user profile image" src="/public/image/profiles/<?php echo $row['image'];?>">
             <h3 class="name"><?php echo $row['name'];?></h3>
             <div class="attribute">Role: <?php echo $row['role'];?></div>
             <div class="attribute">Email: <?php echo $row['email'];?></div>

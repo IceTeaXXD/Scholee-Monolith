@@ -41,14 +41,15 @@ body {
 }
 
 .box .profile {
-    width: 200px;
-    height: 200px;
+    max-width: 200px !important;
+    max-height: 200px !important;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     margin: 0 auto 10px;
+    object-fit: cover;
 }
 
 .box h3.name {
