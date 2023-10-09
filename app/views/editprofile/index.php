@@ -35,8 +35,8 @@ $row = mysqli_fetch_array($data['user']);
                 <label for="dob">Zipcode</label>
                 <input type="text" name="zipcode" id="zipcode" value = "<?php echo $row['zipcode'];?>">
                 <?php } else if ($_SESSION['role'] == 'admin') { ?>
-                <label for="gender">Organization</label>
-                <input type="text" name="organization" id="organization"value = "<?php echo $row['organization'];?>">
+                <label for="organization">Organization:</label>
+                <input type="text" name="organization" id="organization" value="<?php echo $row['organization']; ?>">
                 <?php } else if ($_SESSION['role'] == 'reviewer'){?>
                 <label for="occupation">Occupation</label>
                 <input type="text" name="occupation" id="occupation"value = "<?php echo $row['occupation'];?>">
