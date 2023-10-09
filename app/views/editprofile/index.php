@@ -17,9 +17,9 @@ $row = mysqli_fetch_array($data['user']);
                 <label for="fullName">Full Name:</label>
                 <input type="text" id="fullName" name="name" value="<?php echo $row['name'];?>">
                 <?php if($_SESSION['role'] == 'student'){ ?>
-                <label for="gender">University</label>
+                <label for="university">University</label>
                 <input type="text" name="university" id="university" value = "<?php echo $row['university'];?>">
-                <label for="dob">Major</label>
+                <label for="major">Major</label>
                 <input type="text" name="major" id="major" value = "<?= $row['major'];?>">
                 <label for="level">Level:</label>
                 <select id="level" name="level" id="level">
@@ -28,11 +28,11 @@ $row = mysqli_fetch_array($data['user']);
                     <option value="Postgraduate">Postgraduate</option>
                     <option value="Doctoral">Doctoral</option>
                 </select>
-                <label for="dob">Street</label>
+                <label for="street">Street</label>
                 <input type="text" name="street" id="street" value = "<?php echo $row['street'];?>">
-                <label for="dob">City</label>
+                <label for="city">City</label>
                 <input type="text" name="city" id = "city"value = "<?php echo $row['city'];?>">
-                <label for="dob">Zipcode</label>
+                <label for="zipcode">Zipcode</label>
                 <input type="text" name="zipcode" id="zipcode" value = "<?php echo $row['zipcode'];?>">
                 <?php } else if ($_SESSION['role'] == 'admin') { ?>
                 <label for="organization">Organization:</label>
