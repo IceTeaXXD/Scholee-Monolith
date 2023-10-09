@@ -143,6 +143,10 @@
     margin-top: 20px;
 }
 
+.watch-video:hover{
+    background-color: #24385f;
+}
+
 .video-section-image {
     width:auto;
     height: 300px;
@@ -303,7 +307,7 @@
 }
 
 .modal {
-    display: none !important;
+    display: none;
     position: fixed;
     z-index: 1;
     width: 100%;
@@ -322,7 +326,7 @@
     border-radius: 30px;
     margin: 10% auto;
     padding: 20px;
-    width: 30%;
+    width: 50%;
     max-width: 600px;
     position: relative;
     color: #4226B0;
@@ -345,4 +349,5 @@
 .videoPlayer {
     max-width: 100%;
     height: auto;
+    margin-top: 5%;
 }
