@@ -59,7 +59,7 @@ class Scholarship
         $whereClauses = [];
         $params = [];
         $types = '';
-
+    
         if($_SESSION['role'] == 'admin'){
             $whereClauses[] = "user_id = ?";
             $params[] = $_SESSION['user_id'];
@@ -80,6 +80,12 @@ class Scholarship
         
         if (!empty($whereClauses)) {
             $query .= " WHERE " . implode(" AND ", $whereClauses);
+        }
+    
+        // add sorting
+        if (isset($data['sort'])) {
+            $sort = $data['sort'] === 'asc' ? 'ASC' : 'DESC';
+            $query .= " ORDER BY coverage " . $sort;
         }
     
         // add limit
@@ -304,4 +310,3 @@ class Scholarship
         $this->contact_email = $contact_email;
     }
 }
-?>

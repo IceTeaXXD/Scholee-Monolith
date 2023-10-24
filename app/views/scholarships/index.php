@@ -29,7 +29,9 @@
                     <h1>DESKRIPSI</h1>
                 </th>
                 <th>
-                    <h1>Coverage</h1>
+                    <button id="sortButton" style="background: none; border: none; padding: 0; color: inherit; text-align: inherit;">
+                        <h1>Coverage <span id="arrow"></span></h1>
+                    </button>
                 </th>
                 <th>
                     <h1>Types</h1>

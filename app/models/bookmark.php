@@ -60,8 +60,8 @@ class Bookmark
     public function findBookmarks($data) {
         $query = "SELECT a.user_id_scholarship, a.scholarship_id, title, description, 
               short_description, priority, coverage, contact_name, contact_email
-              FROM $this->table a 
-              INNER JOIN scholarship b ON a.scholarship_id = b.scholarship_id";
+              FROM $this->table a  
+              INNER JOIN scholarship b ON a.scholarship_id = b.scholarship_id and a.user_id_scholarship = b.user_id";
 
         $whereClauses = [];
         $params = [];

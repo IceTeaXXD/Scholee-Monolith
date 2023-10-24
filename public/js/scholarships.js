@@ -30,6 +30,10 @@ function getScholarship(data = "") {
     add_url += "?judul=" + title;
     add_url += "&coverage=" + coverage;
     add_url += "&itemsPerPage=" + itemsPerPage;
+    console.log(isAscending);
+    if (isAscending !== undefined) {
+        add_url += "&sort=" + (isAscending ? "asc" : "desc");
+    }
 
     const page = getQueryVariable("page") || 1;
     add_url += "&page=" + page;
@@ -84,11 +88,19 @@ function renderScholarships(response) {
             <tr>
                 <td class='comment'>${scholarship.title}</td>
                 <td class='comment'>${scholarship.short_description}</td>
-                <td>Rp${scholarship.coverage.toLocaleString('id-ID')}</td>
+                <td>Rp${scholarship.coverage.toLocaleString("id-ID")}</td>
                 <td class='comment'>${types}</td>
                 <td>
-                    <button class="button-style" onclick="redirectToEditScholarship(${scholarship.user_id}, ${scholarship.scholarship_id})" aria-labelledby="editButtonLabel">Edit</button>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" onclick="deleteConfirmation(${scholarship.user_id}, ${scholarship.scholarship_id})" data-target="#deleteModal" aria-labelledby="deleteButtonLabel">Delete</button>
+                    <button class="button-style" onclick="redirectToEditScholarship(${
+                        scholarship.user_id
+                    }, ${
+                scholarship.scholarship_id
+            })" aria-labelledby="editButtonLabel">Edit</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" onclick="deleteConfirmation(${
+                        scholarship.user_id
+                    }, ${
+                scholarship.scholarship_id
+            })" data-target="#deleteModal" aria-labelledby="deleteButtonLabel">Delete</button>
                 </td>
                 
             </tr>`;
@@ -107,10 +119,16 @@ function renderScholarships(response) {
             <tr>
                 <td class='comment'>${scholarship.title}</td>
                 <td class='comment'>${scholarship.short_description}</td>
-                <td>Rp${scholarship.coverage.toLocaleString('id-ID')}</td>
+                <td>Rp${scholarship.coverage.toLocaleString("id-ID")}</td>
                 <td class='comment'>${types}</td>
-                <td><button class="button-style" onclick="redirectToScholarships(${scholarship.user_id}, ${scholarship.scholarship_id})">View More</button>
-                <button class="button-style" onclick="bookmark(${scholarship.user_id}, ${scholarship.scholarship_id})" aria-label="Bookmark Beasiswa"><i class="fas fa-bookmark"></i></button></td>
+                <td><button class="button-style" onclick="redirectToScholarships(${
+                    scholarship.user_id
+                }, ${scholarship.scholarship_id})">View More</button>
+                <button class="button-style" onclick="bookmark(${
+                    scholarship.user_id
+                }, ${
+                scholarship.scholarship_id
+            })" aria-label="Bookmark Beasiswa"><i class="fas fa-bookmark"></i></button></td>
             </tr>`;
             scholarshipsTableBody.innerHTML += row;
         });
@@ -118,18 +136,39 @@ function renderScholarships(response) {
 }
 
 function renderPagination(currentPage, totalItems, itemsPerPage) {
-    // console.log(`Rendering Pagination: currentPage=${currentPage}, totalItems=${totalItems}, itemsPerPage=${itemsPerPage}`);
+    currentPage = parseInt(currentPage);
     const totalPages = Math.ceil(totalItems / itemsPerPage);
     let paginationHtml = "";
 
+    if (currentPage > 1) {
+        paginationHtml += `<button onclick="changePage(${currentPage - 1})" ${
+            currentPage == 1 ? "disabled" : ""
+        }>←</button>`;
+    }
+
     for (let i = 1; i <= totalPages; i++) {
-        paginationHtml += `<button onclick="changePage(${i})">${i}</button>`;
+        if (
+            i == 1 ||
+            i == totalPages ||
+            (i >= currentPage - 1 && i <= currentPage + 1)
+        ) {
+            paginationHtml += `<button onclick="changePage(${i})" ${
+                i == currentPage ? 'class="active"' : ""
+            }>${i}</button>`;
+        } else if (i == currentPage - 2 || i == currentPage + 2) {
+            paginationHtml += `<span>...</span>`;
+        }
+    }
+
+    if (currentPage < totalPages) {
+        paginationHtml += `<button onclick="changePage(${currentPage + 1})" ${
+            currentPage == totalPages ? "disabled" : ""
+        }>→</button>`;
     }
 
     const paginationElement = document.getElementById("pagination-button");
     if (paginationElement) {
         paginationElement.innerHTML = paginationHtml;
-        updateActiveButton(currentPage);
     }
 }
 
@@ -215,3 +254,29 @@ if (slider) {
     coverage.innerHTML =
         "Rp" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+var sortButton = document.getElementById("sortButton");
+var arrow = document.getElementById("arrow");
+var isClicked = false;
+var isAscending;
+
+sortButton.onclick = function () {
+    if (!isClicked) {
+        // Sort data in ascending order
+        arrow.innerHTML = "↑";
+        isClicked = true;
+        isAscending = false;
+    } else {
+        if (arrow.innerHTML === "↑") {
+            // Sort data in descending order
+            arrow.innerHTML = "↓";
+            isAscending = true;
+        } else {
+            // Sort data in ascending order
+            arrow.innerHTML = "↑";
+            isAscending = false;
+        }
+    }
+    // console.log(isAscending);
+    getScholarship("", isAscending ? "asc" : "desc");
+};

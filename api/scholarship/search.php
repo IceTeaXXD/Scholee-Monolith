@@ -33,6 +33,11 @@ if (isset($_GET['itemsPerPage'])) {
     $params['limit'] = 5;
 }
 
+if (isset($_GET['sort'])) {
+    $sort = $_GET['sort'];
+    $params['sort'] = $sort;
+}
+
 $scholarships = $scholarship_model->findScholarships($params);
 $total = $scholarship_model->countFilteredScholarships($params);
 if ($scholarships != null) {
