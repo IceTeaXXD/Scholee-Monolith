@@ -21,10 +21,8 @@ function getScholarship(data = "") {
     const title = document.getElementById("search").value;
     const coverage = document.getElementById("range").value;
     const itemsPerPage = document.getElementById("itemsPerPage").value;
-    // console.log("CALLED");
-    // console.log(title, coverage);
 
-    let base_url = "../../api/scholarship/search.php";
+    let base_url = "/api/scholarship/search.php";
     let add_url = "";
 
     add_url += "?judul=" + title;

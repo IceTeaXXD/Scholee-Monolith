@@ -73,7 +73,7 @@ class Scholarship
         }
         
         if (isset($data['coverage'])) {
-            $whereClauses[] = "coverage > ?";
+            $whereClauses[] = "coverage >= ?";
             $params[] = $data['coverage'];
             $types .= "i"; 
         }
