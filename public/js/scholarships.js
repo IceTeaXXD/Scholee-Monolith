@@ -88,7 +88,7 @@ function renderScholarships(response) {
             <tr>
                 <td class='comment'>${scholarship.title}</td>
                 <td class='comment'>${scholarship.short_description}</td>
-                <td>Rp${scholarship.coverage.toLocaleString("id-ID")}</td>
+                <td>$${scholarship.coverage.toLocaleString("id-ID")}</td>
                 <td class='comment'>${types}</td>
                 <td>
                     <button class="button-style" onclick="redirectToEditScholarship(${
@@ -119,7 +119,7 @@ function renderScholarships(response) {
             <tr>
                 <td class='comment'>${scholarship.title}</td>
                 <td class='comment'>${scholarship.short_description}</td>
-                <td>Rp${scholarship.coverage.toLocaleString("id-ID")}</td>
+                <td>$${scholarship.coverage.toLocaleString("id-ID")}</td>
                 <td class='comment'>${types}</td>
                 <td><button class="button-style" onclick="redirectToScholarships(${
                     scholarship.user_id
@@ -247,12 +247,12 @@ if (slider) {
 
     slider.oninput = function () {
         output.innerHTML =
-            "Rp" + this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            "$" + this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     };
     const coverage = document.getElementById("coverage");
     const value = document.getElementById("range").value;
     coverage.innerHTML =
-        "Rp" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        "$" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 var sortButton = document.getElementById("sortButton");

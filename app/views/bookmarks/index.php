@@ -12,11 +12,7 @@
         </div>
         <div class="slide-bookmark">
             <label for="slide-bookmark">Coverage:</label>
-            <input type="range" min="1" max=<?
-                                            $bookmarksModel = new Bookmark();
-                                            $maxCoverage = $bookmarksModel->maxCoverage();
-                                            echo $maxCoverage;
-                                            ?> value="1" class="slider" id="slide-bookmark">
+            <input type="range" min="1" max=<?= $data['max_coverage']; ?> value="1" class="slider" id="slide-bookmark" aria-describedby="coverage">
             <p>Coverage: <span id="coverage">500000</span></p>
         </div>
         <thead>
