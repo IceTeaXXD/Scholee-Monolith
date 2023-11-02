@@ -1,5 +1,5 @@
 <div class="user-actions">
-        <button class="action-button" onclick="uploadCV()">Upload CV</button>
+        <button class="action-button" onclick="uploadDocument()">Upload Document</button>
         <button class="action-button" onclick="applyScholarship()">Apply for Scholarship</button>
 </div>
 <div class="scholarships">

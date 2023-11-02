@@ -1,15 +1,15 @@
-const uploadCV = () => {
-    window.location.href = "../../reviews/add";
+const uploadDocument = () => {
+    window.location.href = "/reviews/add";
 }
 
 const applyScholarship = () => {
-    window.location.href = "../../scholarships"
+    window.location.href = "/scholarships"
 }
 const viewMoreReviews = () => {
-    window.location.href = "../../reviews"
+    window.location.href = "/reviews"
 }
 const viewMoreClicked = (user_id, scholarship_id) => {
-    window.location.href = "../../scholarships/" + user_id + "/" + scholarship_id;
+    window.location.href = "/scholarships/" + user_id + "/" + scholarship_id;
 }
 let currentSlideIndex = 0;
 
