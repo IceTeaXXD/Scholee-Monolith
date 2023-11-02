@@ -16,12 +16,12 @@
                     <q>Halo, aku manusia dari Mojokerto, aku rasis, kerjaku adalah membully tiap hari.</q>
                     <ul role="list" class="card__social flex-group">
                         <li>
-                            <a href="https://twitter.com/cclarc8" aria-label="Henry's Twitter">
+                            <a href="https://twitter.com/cclarc8" aria-label="Henry's Twitter" target="_blank"
                                 <i class="fa-brands fa-twitter "></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.linkedin.com/in/henry-anand-septian-radityo/" aria-label="Henry's LinkedIn">
+                            <a href="https://www.linkedin.com/in/henry-anand-septian-radityo/" aria-label="Henry's LinkedIn" target="_blank">
                                 <i class="fa-brands fa-linkedin "></i>
                             </a>
                         </li>
@@ -49,12 +49,12 @@
                     <q>Sipaling bucin sama 13221002 ke Bandung mulu dahlah gak ngerti lagi.</q>
                     <ul role="list" class="card__social flex-group">
                         <li>
-                            <a href="https://twitter.com/ifmahendra" aria-label="Matthew's Twitter">
+                            <a href="https://twitter.com/ifmahendra" aria-label="Matthew's Twitter" target="_blank">
                                 <i class="fa-brands fa-twitter"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.linkedin.com/in/matthew-mahendra-117845214/" aria-label="Matthew's LinkedIn">
+                            <a href="https://www.linkedin.com/in/matthew-mahendra-117845214/" aria-label="Matthew's LinkedIn" target="_blank">
                                 <i class="fa-brands fa-linkedin"></i>
                             </a>
                         </li>
@@ -82,12 +82,12 @@
                     <q>hah hoh hah hoh saya suka ngoding ngoding is lyfe lyfe is ngoding ha ho ha ho</q>
                     <ul role="list" class="card__social flex-group">
                         <li>
-                            <a href="https://twitter.com/dealdealna" aria-label="Ahmad's Twitter">
+                            <a href="https://twitter.com/dealdealna" aria-label="Ahmad's Twitter" target="_blank">
                                 <i class="fa-brands fa-twitter"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.linkedin.com/in/ahmadnadil/" aria-label="Ahmad's LinkedIn">
+                            <a href="https://www.linkedin.com/in/ahmadnadil/" aria-label="Ahmad's LinkedIn" target="_blank">
                                 <i class="fa-brands fa-linkedin "></i>
                             </a>
                         </li>
