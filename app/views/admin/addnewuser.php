@@ -19,6 +19,22 @@
                 <option value="reviewer">Reviewer</option>
             </select>
 
+            <label for="university">University</label>
+            <select name="university" id="university">
+                <?php 
+                $db = new Database();
+                $query = "SELECT name FROM university";
+                $stmt = $db->setSTMT($query);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+
+                while( $row = mysqli_fetch_assoc($result) ) {
+                ?>
+                <option value="<?php echo $row['name'];?>"><?php echo $row['name'];?></option>
+
+                <?php } ?>
+            </select>
+
             <button type = "submit" class="save-btn">Tambah User</button>
             <a href = "/dashboard" class="cancel-btn">Cancel</a>
         </form>

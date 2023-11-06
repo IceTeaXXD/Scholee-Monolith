@@ -22,7 +22,7 @@ class Administrator extends User{
         mysqli_stmt_execute($stmt);
     }
 
-    public function register(string $name, string $role, string $email, string $password, string $token){
+    public function register(string $name, string $role, string $email, string $password, string $token, string $university = ""){
         $this->name = $name;
         $this->role = $role;
         $this->email = $email;

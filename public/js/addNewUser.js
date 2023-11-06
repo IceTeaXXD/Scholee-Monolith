@@ -3,6 +3,7 @@ const submitForm = () => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const role = document.getElementById('role').value;
+    const universityID = document.getElementById('university').value;
     if (!userName || !email || !password || !role) {
         alert('Please fill out all fields');
         return false;
@@ -15,6 +16,7 @@ const submitForm = () => {
     data.append("email", email);
     data.append("password", password);
     data.append("role", role);
+    data.append("uni_id", universityID);
 
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/user/register.php');

@@ -18,7 +18,7 @@ $row = mysqli_fetch_array($data['user']);
                 <input type="text" id="fullName" name="name" value="<?php echo $row['name'];?>">
                 <?php if($_SESSION['role'] == 'student'){ ?>
                 <label for="university">University</label>
-                <input type="text" name="university" id="university" value = "<?php echo $row['university'];?>">
+                <input type="text" name="university" id="university" value = "<?php echo $row['university'];?>" disabled>
                 <label for="major">Major</label>
                 <input type="text" name="major" id="major" value = "<?= $row['major'];?>">
                 <label for="level">Level:</label>

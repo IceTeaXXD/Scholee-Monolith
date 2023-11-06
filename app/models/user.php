@@ -103,7 +103,7 @@ class User{
         }
     }
 
-    public function register(string $name, string $role, string $email, string $password, string $token){
+    public function register(string $name, string $role, string $email, string $password, string $token, string $university){
         $this->name = $name;
         $this->role = $role;
         $this->email = $email;

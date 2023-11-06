@@ -63,7 +63,7 @@ if (!isset($_SESSION['role'])) {
     if ($_POST['role'] == 'student') {
         $token = bin2hex(random_bytes(16));
         $student = new Student();
-        $succ = $student->register($_POST['name'], $_POST['role'], $_POST['email'], $_POST['password'], $token);
+        $succ = $student->register($_POST['name'], $_POST['role'], $_POST['email'], $_POST['password'], $token, $_POST['uni_id']);
     } else if ($_POST['role'] == 'admin') {
         $admin = new Administrator();
         $succ = $admin->register($_POST['name'], $_POST['role'], $_POST['email'], $_POST['password'], '');

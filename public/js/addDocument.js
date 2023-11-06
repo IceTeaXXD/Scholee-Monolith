@@ -3,6 +3,11 @@ function submitForm() {
     const formData = new FormData();
     formData.append('document', fileInput.files[0]);
 
+    if (!isFileExtensionValid(fileInput)) {
+        alert('Invalid file type. Only .mp4 and .pdf files are allowed.');
+        return false;
+    }
+
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/review/add.php', true);
     
@@ -25,3 +30,18 @@ function submitForm() {
 
     return false; 
 }
+
+function isFileExtensionValid(fileInput) {
+    if (fileInput.files.length === 0) {
+      return false;
+    }
+  
+    const file = fileInput.files[0];
+    const fileName = file.name;
+    const fileExtension = fileName.slice(((fileName.lastIndexOf(".") - 1) >>> 0) + 2);
+    const allowedExtensions = ['.mp4', '.pdf'];
+
+    console.log(fileExtension)
+  
+    return allowedExtensions.includes('.' + fileExtension);
+  }

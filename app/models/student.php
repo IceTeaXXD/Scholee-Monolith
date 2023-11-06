@@ -29,7 +29,7 @@ class Student extends User {
         mysqli_stmt_execute($stmt);
     }
 
-    public function register(string $name, string $role, string $email, string $password, string $token){
+    public function register(string $name, string $role, string $email, string $password, string $token, string $university){
         $this->name = $name;
         $this->role = $role;
         $this->email = $email;
@@ -48,9 +48,9 @@ class Student extends User {
                 $this->userID = mysqli_insert_id($this->db->getDatabase());
                 
                 /* INSERT INTO STUDENT */
-                $query = "INSERT INTO student (user_id) values (?)";
+                $query = "INSERT INTO student (user_id, university) values (?,?)";
                 $stmt = $this->db->setSTMT($query);
-                mysqli_stmt_bind_param($stmt, "i", $this->userID);
+                mysqli_stmt_bind_param($stmt, "is", $this->userID, $university);
                 $insert = mysqli_stmt_execute($stmt);
             }
             return $insert;
