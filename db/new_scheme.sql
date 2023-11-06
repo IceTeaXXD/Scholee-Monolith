@@ -28,7 +28,7 @@ create table student(
     zipcode int not null default 0,
     primary key (user_id),
     foreign key(user_id) references user(user_id) on delete cascade,
-    foreign key(univ_id) references university(university_id),
+    foreign key(univ_id) references university(university_id)
 );
 
 create table administrator(
