@@ -24,8 +24,8 @@ class SOAP{
 
     public function doRequest($method, $param){
         try{
-            $this->client->$method($param);
-            // return json_encode($response);
+            $response = $this->client->$method($param);
+            return $response;
         }catch(SoapFault $e){
             return $e->getMessage();
         }

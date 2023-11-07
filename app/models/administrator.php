@@ -45,6 +45,11 @@ class Administrator extends User{
                 $stmt = $this->db->setSTMT($query);
                 mysqli_stmt_bind_param($stmt, "i", $this->userID);
                 $insert = mysqli_stmt_execute($stmt);
+
+                /* Insert to SOAP */
+                $soapClient = new SOAP("OrganizationRegistration?wsdl");
+                $param = array("org_id_php"=>$this->userID);
+                $soapClient->doRequest("registerOrganization", $param);
             }
             return $insert;
         } catch (Exception $e) {

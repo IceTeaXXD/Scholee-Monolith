@@ -30,10 +30,10 @@ class Scholarship
         $res = mysqli_stmt_execute($stmt);
 
         // Also add to SOAP Service
-        $soapClient = new SOAP("OrganizationRegistration?wsdl");
-        $param = array("org_id_php"=>$scholarship_id);
-        $soapClient->doRequest("registerOrganization", $param);
-        
+        $soapClient = new SOAP("ScholarshipService?wsdl");
+        $param = array("user_id_scholarship_php"=>$user_id, "scholarship_id_php"=>$scholarship_id);
+        $response = $soapClient->doRequest("registerScholarship", $param);
+
         return $res;
     }
     public function updateScholarship($user_id, $scholarship_id, $title, $description, $short_description, $coverage, $contact_name, $contact_email){
