@@ -24,15 +24,16 @@ class Application{
             if(is_array($response->return)){
                 for($i = 0; $i < count($response->return); $i++){
 
+                    $user_id_student = $response->return[$i]->user_id_student;
                     $user_id_scholarship = $response->return[$i]->user_id_scholarship;
                     $scholarship_id = $response->return[$i]->scholarship_id;
                     $status = $response->return[$i]->status;
 
-                    $query = "SELECT title, description, coverage, ? as status FROM scholarship WHERE user_id = ? AND scholarship_id = ?";
+                    $query = "SELECT ? as user_id_student, user_id as user_id_scholarship, scholarship_id, title, description, coverage, ? as status FROM scholarship WHERE user_id = ? AND scholarship_id = ?";
 
                     $stmt = $this->db->setSTMT($query);
 
-                    mysqli_stmt_bind_param($stmt, "sii", $status, $user_id_scholarship, $scholarship_id);
+                    mysqli_stmt_bind_param($stmt, "isii", $user_id_student, $status, $user_id_scholarship, $scholarship_id);
 
                     mysqli_stmt_execute($stmt);
 
@@ -45,14 +46,16 @@ class Application{
                 }
             }else{
                 $returnElement = $response->return;
+
+                $user_id_student = $returnElement->user_id_student;
                 $user_id_scholarship = $returnElement->user_id_scholarship;
                 $scholarship_id = $returnElement->scholarship_id;
                 $status = $returnElement->status;
 
-                $query = "SELECT title, description, coverage, ? as status FROM scholarship WHERE user_id = ? AND scholarship_id = ?";
+                $query = "SELECT ? as user_id_student, user_id as user_id_scholarship, scholarship_id, title, description, coverage, ? as status FROM scholarship WHERE user_id = ? AND scholarship_id = ?";
                 $stmt = $this->db->setSTMT($query);
 
-                mysqli_stmt_bind_param($stmt, "sii", $status, $user_id_scholarship, $scholarship_id);
+                mysqli_stmt_bind_param($stmt, "isii", $user_id_student, $status, $user_id_scholarship, $scholarship_id);
                 mysqli_stmt_execute($stmt);
 
                 $result = mysqli_stmt_get_result($stmt);

@@ -20,7 +20,9 @@ const getApplications = () => {
                         <td class="comment">${element.description}</td>
                         <td class="comment">$${element.coverage.toLocaleString("id-ID")}</td>
                         <td class="comment">${element.status}</td>
+                        ${element.status == 'accepted' ? '<td class="comment"><button class="button-style" onclick="">View Assignments</button></td>' : ''}
                     </tr>`
+                    // To-Do: Create a Function to move to /assignments. Pass along the user_id_student, user_id_scholarship, and scholarship_id
                     scholarshipsTableBody.innerHTML += row;
                 });
             }else{
