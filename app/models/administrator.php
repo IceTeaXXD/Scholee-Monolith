@@ -1,4 +1,5 @@
 <?php
+require_once 'SOAP.php';
 class Administrator extends User{
     private string $organization;
     
