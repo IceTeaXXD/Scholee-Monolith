@@ -122,6 +122,7 @@ function renderScholarships(response) {
                 <td><button class="button-style" onclick="redirectToScholarships(${
                     scholarship.user_id
                 }, ${scholarship.scholarship_id})">View More</button>
+                <button class="button-style" onclick="register(${scholarship.user_id}, ${scholarship.scholarship_id})">Register</button>
                 <button class="button-style" onclick="bookmark(${
                     scholarship.user_id
                 }, ${
@@ -278,3 +279,30 @@ sortButton.onclick = function () {
     // console.log(isAscending);
     getScholarship("", isAscending ? "asc" : "desc");
 };
+
+const register = (uis, sid) => {
+    const formData = new FormData();
+    formData.append("user_id_scholarship", uis);
+    formData.append("scholarship_id", sid);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/scholarship/register.php');
+
+    xhr.onload = () => {
+        if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+
+            if (response.status === 'success') {
+                alert('Scholarship Registered');
+            } else {
+                alert('Failed to register scholarship');
+            }
+        } else {
+            alert('Failed to send the request. Server responded with status: ' + xhr.status);
+        }
+    };
+
+    xhr.send(formData);
+
+    return false; 
+}
