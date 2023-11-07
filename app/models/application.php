@@ -21,18 +21,38 @@ class Application{
         $response = $soapClient->doRequest("getAcceptanceStatus", $param);
         $return = [];
         if(isset($response->return)){
-            for($i = 0; $i < count($response->return); $i++){
+            if(is_array($response->return)){
+                for($i = 0; $i < count($response->return); $i++){
 
-                $user_id_scholarship = $response->return[$i]->user_id_scholarship;
-                $scholarship_id = $response->return[$i]->scholarship_id;
-                $status = $response->return[$i]->status;
+                    $user_id_scholarship = $response->return[$i]->user_id_scholarship;
+                    $scholarship_id = $response->return[$i]->scholarship_id;
+                    $status = $response->return[$i]->status;
+
+                    $query = "SELECT title, description, coverage, ? as status FROM scholarship WHERE user_id = ? AND scholarship_id = ?";
+
+                    $stmt = $this->db->setSTMT($query);
+
+                    mysqli_stmt_bind_param($stmt, "sii", $status, $user_id_scholarship, $scholarship_id);
+
+                    mysqli_stmt_execute($stmt);
+
+                    $result = mysqli_stmt_get_result($stmt);
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $return[] = $row;
+                    }
+
+                }
+            }else{
+                $returnElement = $response->return;
+                $user_id_scholarship = $returnElement->user_id_scholarship;
+                $scholarship_id = $returnElement->scholarship_id;
+                $status = $returnElement->status;
 
                 $query = "SELECT title, description, coverage, ? as status FROM scholarship WHERE user_id = ? AND scholarship_id = ?";
-
                 $stmt = $this->db->setSTMT($query);
 
                 mysqli_stmt_bind_param($stmt, "sii", $status, $user_id_scholarship, $scholarship_id);
-
                 mysqli_stmt_execute($stmt);
 
                 $result = mysqli_stmt_get_result($stmt);
@@ -40,7 +60,6 @@ class Application{
                 while ($row = mysqli_fetch_assoc($result)) {
                     $return[] = $row;
                 }
-
             }
         }else{
             /* Do Nothing */

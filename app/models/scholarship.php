@@ -245,7 +245,11 @@ class Scholarship
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         $row = mysqli_fetch_assoc($result);
-        return $row['count'];
+        if(!isset($row['count'])){
+            return 0;
+        }else{
+            return $row['count'];
+        };
     }
 
     public function maxCoverage() {
