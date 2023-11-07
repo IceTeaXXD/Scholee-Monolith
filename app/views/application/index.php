@@ -48,7 +48,7 @@
     </div>
 </div>
 
-<script src="/public/js/registration.js"></script>
+<script src="/public/js/applications.js"></script>
 <!-- <script src="/public/js/scholarships.js"></script> -->
 <script>
     var userRole = "<?php echo $_SESSION['role']; ?>";

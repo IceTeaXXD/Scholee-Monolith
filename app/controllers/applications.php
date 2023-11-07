@@ -1,10 +1,10 @@
 <?php
 
-require_once 'app/models/registration.php';
+require_once 'app/models/application.php';
 require_once 'app/models/soap.php';
 require_once 'app/core/Database.php';
 
-class Registration extends Controller {
+class Applications extends Controller {
     public function index() {
         $data['judul'] = 'Registration';
         $data['style'] = "/public/css/dashboard.css";
@@ -13,7 +13,7 @@ class Registration extends Controller {
         if (isset($_SESSION['username'])) {
             $this->view('header/index', $data);
             $this->view('navbar/index', $data);
-            $this->view('registration/index', $data);
+            $this->view('application/index', $data);
         } else {
             header('Location: /login');
         }

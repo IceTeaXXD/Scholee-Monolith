@@ -2,7 +2,7 @@
 
 require_once '../../app/core/App.php';
 require_once '../../app/core/Database.php';
-require_once '../../app/models/registration.php';
+require_once '../../app/models/application.php';
 require_once '../../app/models/soap.php';
 require_once '../../config/config.php';
 
@@ -15,12 +15,17 @@ if (!isset($_SESSION['role'], $_SESSION['user_id'])) {
     exit;
 }
 
-$model = new RegistrationModel;
+$model = new Application;
 
-$response = [
-    'data'=> $model->getRegistrations($_SESSION['user_id'])
-];
-
-echo json_encode($response);
+$data = $model->getApplications($_SESSION['user_id']);
+if($data != null){
+    $response = [
+        'data'=> $data
+    ];
+    echo json_encode($response);
+}else{
+    http_response_code(200);
+    echo json_encode(array('status' => 'error', 'message' => 'End of list.'));
+}
 
 ?>
