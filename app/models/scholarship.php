@@ -1,5 +1,6 @@
 <?php
 require_once 'scholarshiptype.php';
+require_once 'SOAP.php';
 
 class Scholarship
 {
@@ -27,6 +28,12 @@ class Scholarship
         $stmt = $this->db->setSTMT($query);
         mysqli_stmt_bind_param($stmt, "ddsssdss", $user_id, $scholarship_id, $title, $description, $short_description, $coverage, $contact_name, $contact_email);
         $res = mysqli_stmt_execute($stmt);
+
+        // Also add to SOAP Service
+        $soapClient = new SOAP("OrganizationRegistration?wsdl");
+        $param = array("org_id_php"=>$scholarship_id);
+        $soapClient->doRequest("registerOrganization", $param);
+        
         return $res;
     }
     public function updateScholarship($user_id, $scholarship_id, $title, $description, $short_description, $coverage, $contact_name, $contact_email){
