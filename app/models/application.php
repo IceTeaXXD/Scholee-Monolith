@@ -49,7 +49,7 @@ class Application{
 
                 $user_id_student = $returnElement->user_id_student;
                 $user_id_scholarship = $returnElement->user_id_scholarship;
-                $scholarship_id = $returnElement->scholarship_id;
+                $scholarship_id = $returnElement->scholarship_id_php;
                 $status = $returnElement->status;
 
                 $query = "SELECT ? as user_id_student, user_id as user_id_scholarship, scholarship_id, title, description, coverage, ? as status FROM scholarship WHERE user_id = ? AND scholarship_id = ?";
