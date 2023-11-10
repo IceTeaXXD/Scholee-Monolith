@@ -9,6 +9,6 @@
 </div>
 
 <script>
-    const assignmentsData = <?php echo $data['assignments'];?>
+    const sid = <?php echo $_GET['sid'];?>
 </script>
 <script src="/public/js/assignments.js"></script>

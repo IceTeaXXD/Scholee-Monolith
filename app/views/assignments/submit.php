@@ -1,5 +1,6 @@
 <div class="add-document">
-    <h1>Assignment Submission</h1>
+    <h1 id="assignment_name"></h1>
+    <p id="description"></p>
     <div class="form">
         <form action="javascript:;" onsubmit="return submitForm()" enctype="multipart/form-data">
             <div class="input-container">
@@ -13,3 +14,9 @@
         </form>
     </div>
 </div>
+
+<script>
+    var sid = <?php echo $_GET['sid'];?>;
+    var aid = <?php echo $_GET['aid'];?>;
+</script>
+<script src="/public/js/submit.js"></script>

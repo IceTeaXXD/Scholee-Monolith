@@ -19,13 +19,7 @@
                     <li><a href="/dashboard">Dashboard</a></li>
                     <li><a href="/scholarships">Scholarships</a></li>
                     <li><a href="/bookmarks">Bookmarks</a></li>
-                    <div class="dropdown">
-                        <a class="dropdownHead">Applications<span class="arrow-down-nav"></span></a>
-                        <div class="dropdown-content">
-                            <a href="/applications">Scholarship Applications</a>
-                            <a href="/assignments">Assignments</a>
-                        </div>
-                    </div>
+                    <li><a href="/applications">Applications</a></li>
                     <div class="dropdown">
                         <a class="dropdownHead">Document Preparation<span class="arrow-down-nav"></span></a>
                         <div class="dropdown-content">
