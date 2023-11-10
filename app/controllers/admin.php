@@ -32,6 +32,19 @@ class Admin extends Controller
         }
     }
 
+    public function university()
+    {
+        if ($_SESSION['role'] == 'super admin') {
+            $data['judul'] = 'Add University';
+            $data['style'] = "/public/css/addDocument.css";
+            $this->view('header/index', $data);
+            $this->view('navbar/index', $data);
+            $this->view('admin/addUniversity', $data);
+        } else {
+            header("Location: /page404");
+        }
+    }
+
     public function update()
     {
 
