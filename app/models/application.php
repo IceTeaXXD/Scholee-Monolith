@@ -26,7 +26,7 @@ class Application{
 
                     $user_id_student = $response->return[$i]->user_id_student;
                     $user_id_scholarship = $response->return[$i]->user_id_scholarship;
-                    $scholarship_id = $response->return[$i]->scholarship_id;
+                    $scholarship_id = $response->return[$i]->scholarship_id_php;
                     $status = $response->return[$i]->status;
 
                     $query = "SELECT ? as user_id_student, user_id as user_id_scholarship, scholarship_id, title, description, coverage, ? as status FROM scholarship WHERE user_id = ? AND scholarship_id = ?";
