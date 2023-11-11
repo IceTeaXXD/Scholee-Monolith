@@ -14,7 +14,7 @@ class SOAP{
         $this->streamContext = stream_context_create(
             array(
                 'http' => array(
-                    'header' => "API-KEY: ".SOAP_KEY
+                    'header' => "X-API-KEY: ".SOAP_KEY
                 )
             )
         );
