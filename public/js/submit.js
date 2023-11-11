@@ -1,6 +1,6 @@
 const render = () => {
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", `http://localhost:5000/api/assignment/${sid}/${aid}`)
+    xhr.open("GET", `http://localhost:5001/api/assignment/${sid}/${aid}`)
 
     xhr.onload = () => {
         const res = JSON.parse(xhr.response);
@@ -21,7 +21,7 @@ const description = document.getElementById("description");
 
 const submitForm = () => {
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", `http://localhost:5000/api/files/scholarship/${sid}/assignment/${aid}`)
+    xhr.open("POST", `http://localhost:5001/api/files/scholarship/${sid}/assignment/${aid}`)
 
     xhr.onload = () => {
         const res = JSON.parse(xhr.response);

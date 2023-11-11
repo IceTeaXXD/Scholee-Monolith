@@ -6,7 +6,7 @@ function renderAssignments(){
     const element = document.getElementById("content");
 
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", `http://localhost:5000/api/assignment/${sid}`)
+    xhr.open("GET", `http://localhost:5001/api/assignment/${sid}`)
 
     xhr.onload = () => {
         const res = JSON.parse(xhr.response);
