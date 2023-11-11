@@ -3,8 +3,6 @@ class Reviewer extends User{
     private string $occupation;
     private int $score;
 
-    private $db;
-
     public function __construct(){
         $this->db = new Database;
     }

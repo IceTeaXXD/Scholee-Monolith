@@ -9,7 +9,7 @@ class SOAP{
 
     public function __construct($wsdl){
         $this->key = SOAP_KEY;
-        $this->$wsdl = WSDL;
+        $this->wsdl = WSDL;
 
         $this->streamContext = stream_context_create(
             array(

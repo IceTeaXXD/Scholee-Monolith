@@ -1,14 +1,14 @@
 <?php
 class User{
-    private int $userID;
-    private string $name;
-    private string $role;
-    private string $email;
-    private string $password;
-    private bool $isVerified;
-    private string $image;
-    private $db;
-    private $table;
+    protected int $userID;
+    protected string $name;
+    protected string $role;
+    protected string $email;
+    protected string $password;
+    protected bool $isVerified;
+    protected string $image;
+    protected $db;
+    protected $table;
 
     public function __construct(){
         $this->db = new Database;

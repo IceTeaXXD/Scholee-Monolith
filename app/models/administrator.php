@@ -2,10 +2,6 @@
 require_once 'SOAP.php';
 class Administrator extends User{
     private string $organization;
-    
-    private $db;
-
-    private $table;
 
     public function __construct(){
         $this->db = new Database;

@@ -6,8 +6,6 @@ class Student extends User {
     private string $street;
     private string $city;
     private string $zipcode;
-    private $db;
-    private $table;
 
     public function __construct(){
         $this->db = new Database;
