@@ -1,15 +1,15 @@
 const render = () => {
     const xhr = new XMLHttpRequest();
     xhr.open("GET", `http://localhost:5001/api/assignment/${sid}/${aid}`)
-
+    xhr.setRequestHeader("user_id", uid);
     xhr.onload = () => {
         const res = JSON.parse(xhr.response);
         console.log(res.data);
-
+        console.log(res.data.assignments[0])
         if (res.status === 'success') {
 
-            title.innerHTML = res.data.assignment_name
-            description.innerHTML = res.data.assignment_description
+            title.innerHTML = res.data.assignments[0].assignment_name
+            description.innerHTML = res.data.assignments[0].assignment_description
 
         }
     }
@@ -18,29 +18,32 @@ const render = () => {
 }
 const title = document.getElementById("assignment_name");
 const description = document.getElementById("description");
-
 const submitForm = () => {
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", `http://localhost:5001/api/files/scholarship/${sid}/assignment/${aid}`)
+    const formData = new FormData();
+
+    // Get the file input element
+    const fileInput = document.getElementById('file');
+
+    // Append data to the FormData object
+    formData.append("uid", uid);
+    formData.append("file", fileInput.files[0]); // Assuming fileInput is your file input element
+
+    xhr.open("POST", `http://localhost:5001/api/files/scholarship/${sid}/assignment/${aid}`);
 
     xhr.onload = () => {
         const res = JSON.parse(xhr.response);
-        console.log(res.data);
 
         if (res.status === 'success') {
-
-            title.innerHTML = res.data.assignment_name
-            description.innerHTML = res.data.assignment_description
-
+            // Update the HTML elements with the response data
+            document.getElementById('assignment_name').innerHTML = res.data.assignment_name;
+            document.getElementById('description').innerHTML = res.data.assignment_description;
         }
     }
 
-    const body = {
-        "uid": uid,
-        "file_path": file_path
-    }
-
-    xhr.send(body)
+    xhr.send(formData);
 }
+
+
 
 document.addEventListener("DOMContentLoaded", render);

@@ -9,6 +9,8 @@
 </div>
 
 <script>
-    const sid = <?php echo $_GET['sid'];?>
+    const sid = <?php echo json_encode($_GET['sid']); ?>;
+    const uid = <?php echo json_encode($data['user_id']); ?>;
 </script>
+
 <script src="/public/js/assignments.js"></script>

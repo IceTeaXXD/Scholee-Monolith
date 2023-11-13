@@ -18,5 +18,6 @@
 <script>
     var sid = <?php echo $_GET['sid'];?>;
     var aid = <?php echo $_GET['aid'];?>;
+    const uid = <?php echo json_encode($data['user_id']); ?>;
 </script>
 <script src="/public/js/submit.js"></script>
