@@ -2,6 +2,7 @@
 require_once 'app/core/App.php';
 require_once 'app/core/Database.php';
 require_once 'app/models/Scholarship.php';
+require_once 'app/models/SOAP.php';
 require_once 'config/config.php';
 
 class Scholarships extends Controller
@@ -19,6 +20,12 @@ class Scholarships extends Controller
             } else { // View per scholarships
                 $scholarshipModel = new Scholarship($_SESSION['role'], $_SESSION['user_id']);
                 $result = $scholarshipModel->getScholarship($args[0], $args[1]);
+
+                /* Increment View Count */
+                $soapClient = new SOAP("ScholarshipService?wsdl");
+                $params = array("user_id_scholarship_php" => $args[0], "scholarship_id_php"=>$args[1]);
+                $soapClient->doRequest("addScholarshipView", $params);
+
                 foreach ($result as $row) {
                     $data['user_id'] = $row['user_id'];
                     $data['scholarship_id'] = $row['scholarship_id'];
