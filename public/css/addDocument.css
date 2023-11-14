@@ -97,6 +97,29 @@
     margin-top: 20px;
 }
 
+.notification {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.error {
+    background-color: #f44336;
+    color: white;
+}
+
+.fas {
+    margin-right: 10px;
+}
+
+
 @media screen and (max-width: 450px) {
     .add-document {
         padding-top: 400px;

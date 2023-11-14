@@ -13,6 +13,9 @@
             </div>
         </form>
     </div>
+    <div id="notification">
+        <!-- Inject from js -->
+    </div>
 </div>
 
 <script>

@@ -4,8 +4,6 @@ const render = () => {
     xhr.setRequestHeader("user_id", uid);
     xhr.onload = () => {
         const res = JSON.parse(xhr.response);
-        console.log(res.data);
-        console.log(res.data.assignments[0])
         if (res.status === 'success') {
 
             title.innerHTML = res.data.assignments[0].assignment_name
@@ -33,11 +31,14 @@ const submitForm = () => {
 
     xhr.onload = () => {
         const res = JSON.parse(xhr.response);
+        const notificationElement = document.getElementById('notification');
 
         if (res.status === 'success') {
-            // Update the HTML elements with the response data
-            document.getElementById('assignment_name').innerHTML = res.data.assignment_name;
-            document.getElementById('description').innerHTML = res.data.assignment_description;
+            notificationElement.classList.add('success');
+            notificationElement.innerHTML = '<i class="fas fa-check-circle"></i> Berhasil Mengupload assignment';
+        } else {
+            notificationElement.classList.add('error');
+            notificationElement.innerHTML = '<i class="fas fa-times-circle"></i> Gagal Mengupload Assignment';
         }
     }
 
