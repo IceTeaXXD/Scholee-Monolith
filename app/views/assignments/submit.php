@@ -8,7 +8,7 @@
                 <input type="file" name="document" id="file" required accept=".mp4, .pdf"/>
             </div>
             <div class="button-container">
-                <a href="/dashboard" class="cancel-btn">Cancel</a>
+                <a href="/assignments?sid=<?php echo $_GET['sid'];?>" class="cancel-btn">Cancel</a>
                 <button type="submit" class="save-btn">Tambah Dokumen</button>
             </div>
         </form>

@@ -18,7 +18,7 @@ class Reviewer extends User{
         return mysqli_stmt_execute($stmt);
     }
 
-    public function register(string $name, string $role, string $email, string $password, string $token, string $university = ""){
+    public function register(string $name, string $role, string $email, string $password, string $token, int $university = 0){
         $this->name = $name;
         $this->role = $role;
         $this->email = $email;

@@ -18,8 +18,9 @@ class User{
     public function getUser(string $email, string $role){
         $query = "";
         if($role == "student"){
-            $query = "select name, image, university, major, level, street, city, zipcode
-                        from $this->table natural join student where email = ?";
+            $query = "select user.name as name, university.name as university, image, major, level, street, city, zipcode 
+                        from $this->table natural join student inner join university on student.university_id = university.university_id 
+                        where email = ?";
         }else if ($role == "admin"){
             $query = "select name, image, organization from $this->table natural join administrator where email = ?";
         }else if($role == 'reviewer'){
@@ -103,7 +104,7 @@ class User{
         }
     }
 
-    public function register(string $name, string $role, string $email, string $password, string $token, string $university){
+    public function register(string $name, string $role, string $email, string $password, string $token, int $university){
         $this->name = $name;
         $this->role = $role;
         $this->email = $email;
