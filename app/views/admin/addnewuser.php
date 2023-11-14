@@ -23,14 +23,14 @@
             <select name="university" id="university">
                 <?php 
                 $db = new Database();
-                $query = "SELECT name FROM university";
+                $query = "SELECT university_id, name FROM university";
                 $stmt = $db->setSTMT($query);
                 mysqli_stmt_execute($stmt);
                 $result = mysqli_stmt_get_result($stmt);
 
                 while( $row = mysqli_fetch_assoc($result) ) {
                 ?>
-                <option value="<?php echo $row['name'];?>"><?php echo $row['name'];?></option>
+                <option value="<?php echo $row['university_id'];?>"><?php echo $row['name'];?></option>
 
                 <?php } ?>
             </select>

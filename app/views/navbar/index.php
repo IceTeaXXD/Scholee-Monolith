@@ -59,7 +59,6 @@
                     <li><a href="/dashboard">Dashboard</a></li>
                     <li><a href="/admin/add">Add User</a></li>
                     <li><a href="/admin/list">List User</a></li>
-                    <li><a href="/admin/university">Add University</a></li>
                     <li><a href="/aboutus">About Us</a></li>
                     <div class="profile">
                         <a class="dropbtn">
