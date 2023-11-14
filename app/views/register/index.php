@@ -16,6 +16,24 @@
             </div>
             <div class="TextField">
                 <div class="LabelAndField">
+                    <div class="Label">University</div>
+                    <select name="university" id="university" class="Field">
+                        <?php 
+                        $db = new Database();
+                        $query = "SELECT university_id, name FROM university";
+                        $stmt = $db->setSTMT($query);
+                        mysqli_stmt_execute($stmt);
+                        $result = mysqli_stmt_get_result($stmt);
+
+                        while( $row = mysqli_fetch_assoc($result) ) {
+                        ?>
+                        <option value="<?php echo $row['university_id'];?>"><?php echo $row['name'];?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="TextField">
+                <div class="LabelAndField">
                     <div class="Label">Email Address</div>
                     <div class="Field">
                         <input type="email" class="Text" placeholder="Enter your email address" name="email" id="email" required />

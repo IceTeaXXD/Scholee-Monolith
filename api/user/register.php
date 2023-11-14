@@ -19,7 +19,7 @@ session_start();
 if (!isset($_SESSION['role'])) {
     $student = new Student();
     $token = bin2hex(random_bytes(16));
-    $succ = $student->register($_POST['name'], "student", $_POST['email'], $_POST['password'], $token);
+    $succ = $student->register($_POST['name'], "student", $_POST['email'], $_POST['password'], $token, $_POST['university']);
     if ($succ === true) {
         $email = $_POST['email'];
         $name = $_POST['name'];

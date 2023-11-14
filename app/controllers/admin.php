@@ -4,7 +4,7 @@ require_once 'app/core/Database.php';
 require_once 'app/models/User.php';
 require_once 'app/models/superadmin.php';
 require_once 'config/config.php';
-
+require_once './api/polling/universitysync.php';
 class Admin extends Controller
 {
 
@@ -27,19 +27,6 @@ class Admin extends Controller
             $this->view('header/index', $data);
             $this->view('navbar/index', $data);
             $this->view('admin/userlist', $data);
-        } else {
-            header("Location: /page404");
-        }
-    }
-
-    public function university()
-    {
-        if ($_SESSION['role'] == 'super admin') {
-            $data['judul'] = 'Add University';
-            $data['style'] = "/public/css/addDocument.css";
-            $this->view('header/index', $data);
-            $this->view('navbar/index', $data);
-            $this->view('admin/addUniversity', $data);
         } else {
             header("Location: /page404");
         }

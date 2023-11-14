@@ -14,20 +14,20 @@ class Student extends User {
 
     public function update($editVal){
         $query = "UPDATE $this->table SET 
-                university = ?, major = ?, level = ?, street = ?, city = ?, zipcode = ?
+                major = ?, level = ?, street = ?, city = ?, zipcode = ?
                 WHERE user_id = ?";
 
 
         $stmt = $this->db->setSTMT($query);
         
-        mysqli_stmt_bind_param($stmt, "sssssii", $editVal['university'], $editVal['major'], $editVal['level'], 
+        mysqli_stmt_bind_param($stmt, "ssssii", $editVal['major'], $editVal['level'], 
                                 $editVal['street'], $editVal['city'], $editVal['zipcode'], $editVal['user_id']);
 
 
         mysqli_stmt_execute($stmt);
     }
 
-    public function register(string $name, string $role, string $email, string $password, string $token, string $university){
+    public function register(string $name, string $role, string $email, string $password, string $token, int $university){
         $this->name = $name;
         $this->role = $role;
         $this->email = $email;
@@ -46,9 +46,9 @@ class Student extends User {
                 $this->userID = mysqli_insert_id($this->db->getDatabase());
                 
                 /* INSERT INTO STUDENT */
-                $query = "INSERT INTO student (user_id, university) values (?,?)";
+                $query = "INSERT INTO student (user_id, university_id) values (?,?)";
                 $stmt = $this->db->setSTMT($query);
-                mysqli_stmt_bind_param($stmt, "is", $this->userID, $university);
+                mysqli_stmt_bind_param($stmt, "ii", $this->userID, $university);
                 $insert = mysqli_stmt_execute($stmt);
             }
             return $insert;
