@@ -24,7 +24,37 @@ INNER JOIN (
         university_id
 ) counts ON uni.university_id = counts.university_id";
 
+$whereClauses = [];
+$params = [];
+$types = "";
+
+if(isset($_GET["uid"]) && $_GET['uid'] != NULL){
+    $whereClauses[] = " uni.university_id = ? ";
+    $params[] = $_GET['uid'];
+    $types .= 'i';
+}
+
+if(isset($_GET["name"]) && ($_GET['name'] != NULL || $_GET['name'] == "undefined") ){
+    $whereClauses[] = ' u.name LIKE ? ';
+    $params[] = "%".$_GET['name']."%";
+    $types .= 's';
+}
+
+if($whereClauses != NULL){
+    $query .= ' WHERE '.implode(" AND ", $whereClauses);
+}
+if(isset($_GET["currentpage"]) && $_GET["currentpage"] != NULL){
+    $query .= "LIMIT ? OFFSET ?";
+    $offset = ($_GET['currentpage'] - 1) * $_GET['itemsperpage'];
+    $types .= "ii";
+    $params[] = $_GET['itemsperpage'];
+    $params[] = $offset;
+}
+
 $stmt = $db->setSTMT($query);
+if($types != ''){
+    mysqli_stmt_bind_param($stmt, $types, ...$params);
+}
 $result = mysqli_stmt_execute($stmt);
 $row = mysqli_fetch_all(mysqli_stmt_get_result($stmt), MYSQLI_ASSOC);
 
