@@ -169,15 +169,6 @@ CREATE TABLE `university` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `university`
---
-
-INSERT INTO `university` (`university_id`, `name`) VALUES
-(1, 'Institut Teknologi Bandung');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user`
 --
 
