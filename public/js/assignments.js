@@ -23,7 +23,7 @@ function renderAssignments(){
                     element.innerHTML += `
                     <div class="box">   
                         <h2 class="name">${el.assignment_name}</h2>
-                        <button class="btn btn-primary" onclick="openAssignment(${el.scholarship_id}, ${el.assignment_id})">Submit</button>
+                        <button class="btn btn-primary" onclick="openAssignment(${el.scholarship_id}, ${el.assignment_id})">View</button>
                     </div>
                     `;
                 });
