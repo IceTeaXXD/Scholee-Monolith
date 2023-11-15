@@ -173,6 +173,28 @@ class User{
         }
     }
 
+    public function getUserById($userid) {
+        $query = "SELECT user_id, name, role, email, password FROM $this->table WHERE user_id = ?";
+        $stmt = $this->db->setSTMT($query);
+        mysqli_stmt_bind_param($stmt, "s", $userid);
+        $exists = mysqli_stmt_execute($stmt);
+        if(!$exists){
+            /* Tidak ada usernya */
+            return $exists;
+        }else{
+            /* Ambil hasilnya */
+            $result = mysqli_stmt_get_result($stmt);
+            $row = mysqli_fetch_array($result);
+            if($row){
+                $this->role = $row['role'];
+                $this->name = $row['name'];
+                $this->email = $row['email'];
+                $this->userID = $row['user_id'];
+                return true;
+            }
+        }
+    }
+
     public function createresettoken($email, $token) {
         $query = "UPDATE $this->table SET reset_token = ? WHERE email = ?";
         $stmt = $this->db->setSTMT($query);
