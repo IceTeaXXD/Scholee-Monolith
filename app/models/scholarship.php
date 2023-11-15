@@ -190,8 +190,8 @@ class Scholarship
     }
 
     public function getAllScholarshipREST(){
-        $query = "SELECT user_id, scholarship_id, title, description, short_description, coverage, contact_name, contact_email
-                    FROM $this->table";
+        $query = "SELECT user_id, scholarship_id, title, description, short_description, coverage, contact_name, contact_email, GROUP_CONCAT(type) as type
+                    FROM $this->table NATURAL JOIN scholarshiptype GROUP BY user_id, scholarship_id";
         $stmt = $this->db->setSTMT($query);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
