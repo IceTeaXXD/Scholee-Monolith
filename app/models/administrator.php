@@ -38,14 +38,15 @@ class Administrator extends User{
                 $this->userID = mysqli_insert_id($this->db->getDatabase());
                 
                 /* INSERT INTO Administrator */
-                $query = "INSERT INTO administrator (user_id, organization) values (?, '')";
+                $query = "INSERT INTO administrator (user_id, organization, referral_code) values (?, '', ?)";
                 $stmt = $this->db->setSTMT($query);
-                mysqli_stmt_bind_param($stmt, "i", $this->userID);
+                $referral_code = bin2hex(random_bytes(16));
+                mysqli_stmt_bind_param($stmt, "is", $this->userID, $referral_code);
                 $insert = mysqli_stmt_execute($stmt);
 
                 /* Insert to SOAP */
                 $soapClient = new SOAP("OrganizationRegistration?wsdl");
-                $param = array("org_id_php"=>$this->userID);
+                $param = array("org_id_php"=>$this->userID, "referral"=>$referral_code);
                 $soapClient->doRequest("registerOrganization", $param);
             }
             return $insert;
