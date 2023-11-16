@@ -1,4 +1,4 @@
-# Milestone 1 IF3110
+# Milestone 2 IF3110
 ## Website Name
 Scholee
 
@@ -10,6 +10,7 @@ Finding college scholarships shouldn't be overwhelming. We make it simple and ma
 1. Find scholarships
 2. Bookmark scholarships
 3. Review documents needed for a scholarship. Documents will be reviewed by professionals
+4. [UPDATE] Scholarship Applications
 
 ### Roles
 1. Student: A student, normal user
@@ -138,6 +139,11 @@ Website is responsive to media size
 | Docker                | 13521024      |
 | MVC               | 13521004, 13521024 |
 | Database              | 13521007           |
+| [UPDATE] Security Handling | 13521024 |
+| [UPDATE] Connection to SOAP | 13521007  |
+| [UPDATE] Connection to REST | 13521007 | 
+| [UPDATE] Update and Created New API's       | 13521004, 13521007, 13521024 |
+| [UPDATE] Scholarship Assignment Upload | 13521024 |
 
 
 
@@ -168,3 +174,6 @@ Website is responsive to media size
 | Landing Page             | 13521004,  13521007, 13521024                   |
 | About Us Page            | 13521024                   |
 | Navbar                   | 13521004, 13521024         |
+| [UPDATE] Scholarship Application Page | 13521007 |
+| [UPDATE] Scholarship Assignment Page | 13521007 |
+| [UPDATE] Scholarship Assignment Submission Page | 13521004 |
