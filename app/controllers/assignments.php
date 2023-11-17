@@ -10,6 +10,7 @@ class Assignments extends Controller{
         $data['style'] = "/public/css/dashboard.css";
         $data['style'] = "/public/css/userlist.css";
         $data['user_id'] = $_SESSION['user_id'];
+        $data['apiKey'] = getenv('REST_KEY');
         if (isset($_SESSION['username'])) {
             $this->view('header/index', $data);
             $this->view('navbar/index', $data);

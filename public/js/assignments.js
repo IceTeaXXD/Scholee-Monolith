@@ -4,12 +4,11 @@ function renderAssignments(){
      */
 
     const element = document.getElementById("content");
-
+    
     const xhr = new XMLHttpRequest();
     xhr.open("GET", `http://localhost:5001/api/assignment/${sid}`)
     xhr.setRequestHeader("user_id", uid);
-    console.log(uid)
-    console.log("ASSIGNMENT JS")
+    xhr.setRequestHeader("x-api-key", key)
     xhr.onload = () => {
         const res = JSON.parse(xhr.response);
 
